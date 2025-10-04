@@ -1,0 +1,347 @@
+[2025-10-04T14:35:55.714Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T14-35-55-712Z.log
+[2025-10-04T14:35:55.959Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T14:35:55.960Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T14:35:55.960Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "PIIS0022347618306024.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "moonshotai/kimi-k2-instruct-0905",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T14:35:55.962Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T14:35:55.963Z] [INFO] File: PIIS0022347618306024.pdf
+[2025-10-04T14:35:55.964Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T14:35:55.967Z] [INFO] Uploading and processing PDF...
+[2025-10-04T14:36:17.816Z] [SUCCESS] Conversion complete.
+[2025-10-04T14:36:17.816Z] [INFO] Markdown length: 27370 chars
+[2025-10-04T14:36:17.816Z] [INFO] HTML length: 26943 chars
+[2025-10-04T14:36:17.817Z] [INFO] Pages: 4
+================================================================================
+[2025-10-04T14:36:17.817Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T14:36:17.817Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T14:36:17.818Z] [DEBUG] Extracted 2 tables from markdown
+[2025-10-04T14:36:17.818Z] [INFO] Created 5 raw chunks from headers
+[2025-10-04T14:36:17.818Z] [SUCCESS] Chunking complete: 5 total chunks
+[2025-10-04T14:36:17.819Z] [INFO] Size distribution: Small=1, Medium=3, Large=1, Tables=2
+[2025-10-04T14:36:17.819Z] [WARN] Warning: 1 chunks still exceed max size (likely tables)
+[2025-10-04T14:36:17.819Z] [SUCCESS] Created 5 chunks from markdown
+================================================================================
+[2025-10-04T14:36:17.820Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:36:17.820Z] [INFO] Processing 5 chunks
+[2025-10-04T14:36:17.820Z] [DEBUG] Processing chunk 1/5 (metadata extraction): Food Protein-Induced Enterocolitis Instead of Necr...
+[2025-10-04T14:36:18.678Z] [DEBUG] Raw metadata extraction response: {"tags":["Case series comparing NEC vs FPIES in NICU neonates","Retrospective chart review of 5 atypical NEC cases","FPIES likely underdiagnosed among preterm infants; similar presentation but differe
+[2025-10-04T14:36:18.678Z] [INFO] Found authors: Mary W. Lenfestey, Diomel de la Cruz, Josef Neu
+[2025-10-04T14:36:18.678Z] [INFO] Found date: 2018
+[2025-10-04T14:36:18.679Z] [DEBUG] Chunk 1 tagged with: Case series comparing NEC vs FPIES in NICU neonates, Retrospective chart review of 5 atypical NEC cases, FPIES likely underdiagnosed among preterm infants; similar presentation but different management, 2018; J Pediatr publication
+[2025-10-04T14:36:18.679Z] [DEBUG] Processing chunk 2/5 (metadata extraction): Methods...
+[2025-10-04T14:36:19.276Z] [DEBUG] Raw metadata extraction response: {"tags":["retrospective chart review of 56 NEC infants 2014-2017","identification of 5 atypical nonsurgical NEC cases with eosinophilia and feed-related symptom fluctuation","clinical presentation, la
+[2025-10-04T14:36:19.276Z] [DEBUG] Chunk 2 tagged with: retrospective chart review of 56 NEC infants 2014-2017, identification of 5 atypical nonsurgical NEC cases with eosinophilia and feed-related symptom fluctuation, clinical presentation, laboratory and imaging findings detailed in tables, Division of Pediatric Gastroenterology & Neonatology, University of Florida, 2018
+[2025-10-04T14:36:19.276Z] [DEBUG] Processing chunk 3/5 (metadata extraction): Case A...
+[2025-10-04T14:36:20.068Z] [DEBUG] Raw metadata extraction response: {"tags":["Case series of 5 pre-term infants initially mis-labeled as necrotizing enterocolitis (NEC) but later recognized as food protein-induced enterocolitis syndrome (FPIES)","Retrospective chart r
+[2025-10-04T14:36:20.069Z] [DEBUG] Chunk 3 tagged with: Case series of 5 pre-term infants initially mis-labeled as necrotizing enterocolitis (NEC) but later recognized as food protein-induced enterocolitis syndrome (FPIES), Retrospective chart review comparing clinical/imaging/laboratory features of FPIES vs classic NEC, Recurrent feeding intolerance, hematochezia, and pneumatosis after cow’s-milk formula; resolution on extensively hydrolyzed casein formula, FPIES can mimic NEC; absence of free air, portal venous gas, positive cultures or elevated CRP helps differentiate; consider extensively hydrolyzed formula
+[2025-10-04T14:36:20.070Z] [DEBUG] Processing chunk 4/5: Discussion...
+[2025-10-04T14:36:20.307Z] [DEBUG] Raw tagging response: {
+  "tags": ["findings_conclusion"],
+  "authors": null,
+  "date": null
+}
+[2025-10-04T14:36:20.308Z] [DEBUG] Chunk 4 tagged with: findings_conclusion
+[2025-10-04T14:36:20.308Z] [DEBUG] Processing chunk 5/5: Table II. Detailed laboratory and imaging summary ...
+[2025-10-04T14:36:20.579Z] [DEBUG] Raw tagging response: {"tags":["findings_conclusion"],"authors":null,"date":null}
+[2025-10-04T14:36:20.580Z] [DEBUG] Chunk 5 tagged with: findings_conclusion
+[2025-10-04T14:36:20.580Z] [SUCCESS] Tagged 5 chunks
+[2025-10-04T14:36:20.580Z] [INFO] Tag distribution:
+  Data: {
+  "Case series comparing NEC vs FPIES in NICU neonates": 1,
+  "Retrospective chart review of 5 atypical NEC cases": 1,
+  "FPIES likely underdiagnosed among preterm infants; similar presentation but different management": 1,
+  "2018; J Pediatr publication": 1,
+  "retrospective chart review of 56 NEC infants 2014-2017": 1,
+  "identification of 5 atypical nonsurgical NEC cases with eosinophilia and feed-related symptom fluctuation": 1,
+  "clinical presentation, laboratory and imaging findings detailed in tables": 1,
+  "Division of Pediatric Gastroenterology & Neonatology, University of Florida, 2018": 1,
+  "Case series of 5 pre-term infants initially mis-labeled as necrotizing enterocolitis (NEC) but later recognized as food protein-induced enterocolitis syndrome (FPIES)": 1,
+  "Retrospective chart review comparing clinical/imaging/laboratory features of FPIES vs classic NEC": 1,
+  "Recurrent feeding intolerance, hematochezia, and pneumatosis after cow’s-milk formula; resolution on extensively hydrolyzed casein formula": 1,
+  "FPIES can mimic NEC; absence of free air, portal venous gas, positive cultures or elevated CRP helps differentiate; consider extensively hydrolyzed formula": 1,
+  "findings_conclusion": 2
+}
+[2025-10-04T14:36:20.582Z] [INFO] Document metadata:
+  Data: {
+  "authors": "Mary W. Lenfestey, Diomel de la Cruz, Josef Neu",
+  "date": "2018"
+}
+================================================================================
+[2025-10-04T14:36:20.582Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:36:20.583Z] [INFO] Adding 5 chunks
+[2025-10-04T14:36:20.583Z] [DEBUG] Generating embedding for chunk 1/5
+[2025-10-04T14:36:20.584Z] [DEBUG] Generating embedding for chunk 2/5
+[2025-10-04T14:36:20.584Z] [DEBUG] Generating embedding for chunk 3/5
+[2025-10-04T14:36:20.584Z] [DEBUG] Generating embedding for chunk 4/5
+[2025-10-04T14:36:20.585Z] [DEBUG] Generating embedding for chunk 5/5
+[2025-10-04T14:36:20.585Z] [SUCCESS] Added 5 chunks with embeddings
+================================================================================
+[2025-10-04T14:36:20.586Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:36:20.588Z] [DEBUG] BM25 initialized with 5 documents
+[2025-10-04T14:36:20.588Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T14:36:20.588Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T14:36:20.589Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T14:36:20.589Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:36:20.589Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:36:20.590Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:36:20.590Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:36:20.590Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:20.590Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:36:20.591Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:20.592Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:20.592Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:20.864Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk contains only methodology and institutional affiliation, with no author names listed.)
+[2025-10-04T14:36:21.166Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - HIGH (The chunk explicitly lists all three authors—Mary W. Lenfestey, Diomel de la Cruz, and Josef Neu—right after the title.)
+[2025-10-04T14:36:21.410Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains clinical case details but does not mention any author names.)
+[2025-10-04T14:36:21.678Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a data table about lab and imaging results and contains no author information.)
+[2025-10-04T14:36:21.928Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains no author names or by-line information.)
+[2025-10-04T14:36:21.928Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:36:21.928Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:36:22.207Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "authors "title of paper" site:arxiv.org OR site:researchgate.net OR site:semanticscholar.org filetype:pdf"
+[2025-10-04T14:36:22.208Z] [INFO] Iteration 2: Searching with query: "authors "title of paper" site:arxiv.org OR site:researchgate.net OR site:semanticscholar.org filetype:pdf"
+[2025-10-04T14:36:22.209Z] [DEBUG] Hybrid search: query="authors "title of paper" site:arxiv.org OR site:researchgate.net OR site:semanticscholar.org filetype:pdf", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:22.209Z] [DEBUG] Semantic search: query="authors "title of paper" site:arxiv.org OR site:researchgate.net OR site:semanticscholar.org filetype:pdf", topK=10, filter=none
+[2025-10-04T14:36:22.210Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:22.213Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:22.214Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:22.587Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk contains only methodology and institutional affiliation, with no author names listed.)
+[2025-10-04T14:36:23.206Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains only clinical case details and does not mention any author names.)
+[2025-10-04T14:36:23.446Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains no author names or by-line information.)
+[2025-10-04T14:36:23.854Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a data table about lab/imaging results and contains no author information.)
+[2025-10-04T14:36:23.854Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:36:23.854Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:36:23.855Z] [INFO] Final query: "authors "title of paper" site:arxiv.org OR site:researchgate.net OR site:semanticscholar.org filetype:pdf"
+[2025-10-04T14:36:23.855Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:36:23.855Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T14:36:23.855Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:36:23.856Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T14:36:23.856Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:36:23.856Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:36:23.856Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:23.857Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:36:23.857Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:23.858Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:23.858Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:24.116Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a data table about lab results and contains no publication date or year.)
+[2025-10-04T14:36:24.407Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - HIGH (The parenthetical citation “(J Pediatr 2018;200:270-3)” gives the publication year (2018) directly.)
+[2025-10-04T14:36:24.730Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains only clinical case details and no publication date or year.)
+[2025-10-04T14:36:24.994Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk discusses clinical overlap between FPIES and NEC but contains no publication date or year.)
+[2025-10-04T14:36:25.260Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk contains no publication date or year information.)
+[2025-10-04T14:36:25.260Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:36:25.260Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:36:25.467Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "publication date year when was this paper published"
+[2025-10-04T14:36:25.468Z] [INFO] Iteration 2: Searching with query: "publication date year when was this paper published"
+[2025-10-04T14:36:25.469Z] [DEBUG] Hybrid search: query="publication date year when was this paper published", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:25.470Z] [DEBUG] Semantic search: query="publication date year when was this paper published", topK=10, filter=none
+[2025-10-04T14:36:25.472Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:25.473Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:25.474Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:25.744Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a data table about lab and imaging results and contains no publication date or year.)
+[2025-10-04T14:36:26.016Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains only clinical case details and does not mention any publication date or year.)
+[2025-10-04T14:36:26.274Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk discusses clinical overlap between FPIES and NEC but contains no publication date or year.)
+[2025-10-04T14:36:26.822Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk contains no publication date or year information.)
+[2025-10-04T14:36:26.823Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:36:26.824Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:36:26.825Z] [INFO] Final query: "publication date year when was this paper published"
+[2025-10-04T14:36:26.825Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:36:26.826Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T14:36:26.827Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:36:26.828Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:36:26.829Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:36:26.830Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:36:26.830Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:26.831Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:36:26.831Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:26.833Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:26.833Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:27.140Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a data table of lab/imaging results for individual cases and provides no information about the document type.)
+[2025-10-04T14:36:27.494Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - HIGH (The title and opening text explicitly label the work as “a Neonatal Intensive Care Unit Case Series,” which directly answers the query about document type.)
+[2025-10-04T14:36:27.858Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a clinical vignette or case description, but it does not explicitly label or identify the type of document it belongs to.)
+[2025-10-04T14:36:28.149Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk is a fragment of a discussion section and contains no explicit statement of document type.)
+[2025-10-04T14:36:28.450Z] [INFO]   [ACCEPT] Methods... - HIGH (The explicit description of a retrospective chart review of 56 infants clearly signals this is a clinical research article.)
+[2025-10-04T14:36:28.451Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T14:36:28.451Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:36:30.020Z] [DEBUG] Query rewritten: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc." -> "What is the document type of this paper: case study, clinical trial, randomized controlled trial, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?"
+[2025-10-04T14:36:30.020Z] [INFO] Iteration 2: Searching with query: "What is the document type of this paper: case study, clinical trial, randomized controlled trial, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?"
+[2025-10-04T14:36:30.021Z] [DEBUG] Hybrid search: query="What is the document type of this paper: case study, clinical trial, randomized controlled trial, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:30.021Z] [DEBUG] Semantic search: query="What is the document type of this paper: case study, clinical trial, randomized controlled trial, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?", topK=10, filter=none
+[2025-10-04T14:36:30.021Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:30.024Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:30.024Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:33.858Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a data table of lab/imaging results and contains no information about the document type.)
+[2025-10-04T14:36:36.380Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a clinical vignette/case description and does not state or imply the document type requested in the query.)
+[2025-10-04T14:36:39.116Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk is a fragment of a discussion section and contains no explicit statement of document type.)
+[2025-10-04T14:36:39.117Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T14:36:39.117Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:36:39.117Z] [INFO] Final query: "What is the document type of this paper: case study, clinical trial, randomized controlled trial, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?"
+[2025-10-04T14:36:39.118Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T14:36:39.118Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T14:36:39.119Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:36:39.119Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:36:39.120Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:36:39.120Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:36:39.120Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:39.120Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:36:39.120Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:39.121Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:39.121Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:41.646Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - HIGH (The chunk contains the paper’s title, authors, journal citation, and the opening sentences that state the problem (NEC misdiagnosis) and the paper’s aim (to highlight food protein-induced enterocolitis as an alternative diagnosis), which collectively serve as the abstract/main purpose/overview.)
+[2025-10-04T14:36:43.131Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk is from the Discussion section and discusses diagnostic challenges of FPIES, not the paper’s abstract, purpose, or overall overview.)
+[2025-10-04T14:36:45.485Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a detailed clinical vignette and contains no abstract, purpose statement, or overview of the paper.)
+[2025-10-04T14:36:46.954Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a fragment of a data table with lab values and lacks any abstract, purpose, or overview statement.)
+[2025-10-04T14:36:49.294Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk describes the study’s methodology and patient selection criteria, not the abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:36:49.294Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:36:49.295Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:36:49.556Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "Retrieve the paper’s abstract, explicitly state its primary research purpose, and provide a concise overview of its methodology, key findings, and contributions."
+[2025-10-04T14:36:49.556Z] [INFO] Iteration 2: Searching with query: "Retrieve the paper’s abstract, explicitly state its primary research purpose, and provide a concise overview of its methodology, key findings, and contributions."
+[2025-10-04T14:36:49.556Z] [DEBUG] Hybrid search: query="Retrieve the paper’s abstract, explicitly state its primary research purpose, and provide a concise overview of its methodology, key findings, and contributions.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:49.556Z] [DEBUG] Semantic search: query="Retrieve the paper’s abstract, explicitly state its primary research purpose, and provide a concise overview of its methodology, key findings, and contributions.", topK=10, filter=none
+[2025-10-04T14:36:49.557Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:49.558Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:49.558Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:36:51.903Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a detailed clinical case report and does not provide the paper’s abstract, main purpose, or overall overview.)
+[2025-10-04T14:36:55.695Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a fragment of a data table with lab values and lacks any abstract, purpose, or overview statement.)
+[2025-10-04T14:36:57.098Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk is from the Discussion section and does not provide the abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:36:59.479Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk describes the study’s methodology and patient selection criteria, not the abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:36:59.479Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:36:59.480Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:36:59.480Z] [INFO] Final query: "Retrieve the paper’s abstract, explicitly state its primary research purpose, and provide a concise overview of its methodology, key findings, and contributions."
+[2025-10-04T14:36:59.480Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:36:59.480Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T14:36:59.481Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:36:59.481Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:36:59.481Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:36:59.481Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:36:59.481Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:36:59.482Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:36:59.482Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:36:59.482Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:36:59.482Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:37:00.855Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The table only lists raw laboratory and imaging results without describing any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:03.287Z] [INFO]   [ACCEPT] Methods... - HIGH (The chunk explicitly states that a “chart review” was conducted, describes data-collection variables, and distinguishes surgical vs. nonsurgical cases, directly addressing the query’s request for research methods and study design.)
+[2025-10-04T14:37:05.620Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a clinical case description and does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:07.039Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (The excerpt only introduces the clinical problem and background; it does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:08.412Z] [DEBUG]   [REJECT] Discussion... - Rejected (The excerpt discusses clinical overlap between FPIES and NEC but does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:08.412Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:37:08.413Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:37:09.790Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in this study?"
+[2025-10-04T14:37:09.791Z] [INFO] Iteration 2: Searching with query: "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in this study?"
+[2025-10-04T14:37:09.791Z] [DEBUG] Hybrid search: query="What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in this study?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:37:09.792Z] [DEBUG] Semantic search: query="What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in this study?", topK=10, filter=none
+[2025-10-04T14:37:09.793Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:37:09.797Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:37:09.797Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:37:11.176Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The table only lists raw laboratory and imaging results, not the study’s research methods, design, or analytical approaches.)
+[2025-10-04T14:37:13.542Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk describes a patient’s clinical course but does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:15.994Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (The excerpt only introduces the clinical problem and background; it does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:18.794Z] [DEBUG]   [REJECT] Discussion... - Rejected (The excerpt discusses clinical overlap between FPIES and NEC but does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T14:37:18.795Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:37:18.795Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:37:18.795Z] [INFO] Final query: "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in this study?"
+[2025-10-04T14:37:18.795Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:37:18.796Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T14:37:18.796Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:37:18.797Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:37:18.797Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:37:18.797Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:37:18.797Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:37:18.797Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:37:18.797Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:37:18.798Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:37:18.798Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:37:21.202Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - MEDIUM (The chunk summarizes the study’s purpose and main takeaway—that some NEC cases may actually be food protein-induced enterocolitis—so it conveys a key finding, albeit briefly.)
+[2025-10-04T14:37:23.653Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a narrative case description; it does not summarize any key findings, results, or conclusions.)
+[2025-10-04T14:37:25.092Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk describes the study’s methods and patient selection criteria, not its key findings, results, or conclusions.)
+[2025-10-04T14:37:26.588Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk introduces a hypothesis about FPIES mimicking NEC but presents no data, results, or conclusions that answer the query.)
+[2025-10-04T14:37:27.931Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a raw data table with no interpretive statements about findings, results, or conclusions.)
+[2025-10-04T14:37:27.931Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:37:27.931Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:37:29.196Z] [DEBUG] Query rewritten: "What are the key findings, results, and conclusions?" -> "What are the specific key findings, quantitative results, and final conclusions reported in the document?"
+[2025-10-04T14:37:29.197Z] [INFO] Iteration 2: Searching with query: "What are the specific key findings, quantitative results, and final conclusions reported in the document?"
+[2025-10-04T14:37:29.197Z] [DEBUG] Hybrid search: query="What are the specific key findings, quantitative results, and final conclusions reported in the document?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:37:29.198Z] [DEBUG] Semantic search: query="What are the specific key findings, quantitative results, and final conclusions reported in the document?", topK=10, filter=none
+[2025-10-04T14:37:29.198Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:37:29.200Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:37:29.200Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:37:33.013Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk is a narrative case description; it does not summarize any key findings, results, or conclusions.)
+[2025-10-04T14:37:34.400Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk introduces a hypothesis about FPIES mimicking NEC but presents no data, results, or conclusions that answer the query.)
+[2025-10-04T14:37:36.880Z] [DEBUG]   [REJECT] Methods... - Rejected (The text only describes the study’s methods and patient selection criteria, not any findings, results, or conclusions.)
+[2025-10-04T14:37:38.221Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk is a raw data table with no interpretive statements about findings, results, or conclusions.)
+[2025-10-04T14:37:38.221Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:37:38.222Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:37:38.222Z] [INFO] Final query: "What are the specific key findings, quantitative results, and final conclusions reported in the document?"
+[2025-10-04T14:37:38.222Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:37:38.223Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T14:37:59.802Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T14:37:59.803Z] [DEBUG] {
+  "authors": "Mary W. Lenfestey, Diomel de la Cruz, Josef Neu",
+  "date": "2018",
+  "documentType": "case series",
+  "summary": "This case series examines 5 atypical neonatal cases initially diagnosed with necrotizing enterocolitis (NEC) but more consistent with food protein-induced enterocolitis (FPIES), suggesting FPIES may be underdiagnosed in NICU settings.",
+  "methods": "Retrospective chart review of 56 infants diagnosed with NEC in a NICU from 2014–2017; 5 nonsurgical patients with atypical features (age of onset, eosinophilia, recurrent episodes, feed-related symptom timing) were selected for detailed case analysis.",
+  "findings": "Five infants lacked classic NEC features such as bowel perforation or need for surgery; their symptom patterns aligned more closely with FPIES, highlighting diagnostic overlap and the potential for misclassification between NEC and FPIES in preterm infants."
+}
+[2025-10-04T14:37:59.803Z] [SUCCESS] Successfully parsed JSON response
+[2025-10-04T14:37:59.803Z] [SUCCESS] Document extraction complete
+[2025-10-04T14:37:59.803Z] [INFO] Extraction statistics:
+  Data: {
+  "authorsChunks": 1,
+  "dateChunks": 1,
+  "documentTypeChunks": 2,
+  "summaryChunks": 1,
+  "methodsChunks": 1,
+  "findingsChunks": 1,
+  "totalIterations": 12
+}
+================================================================================
+[2025-10-04T14:37:59.804Z] [INFO] Pipeline Complete
+================================================================================
+[2025-10-04T14:37:59.804Z] [SUCCESS] Total execution time: 123.84s
+[2025-10-04T14:37:59.804Z] [INFO] Extraction result:
+  Data: {
+  "authors": "Mary W. Lenfestey, Diomel de la Cruz, Josef Neu",
+  "date": "2018",
+  "documentType": "case series",
+  "summary": "This case series examines 5 atypical neonatal cases initially diagnosed with necrotizing enterocolitis (NEC) but more consistent with food protein-induced enterocolitis (FPIES), suggesting FPIES may be underdiagnosed in NICU settings.",
+  "methods": "Retrospective chart review of 56 infants diagnosed with NEC in a NICU from 2014–2017; 5 nonsurgical patients with atypical features (age of onset, eosinophilia, recurrent episodes, feed-related symptom timing) were selected for detailed case analysis.",
+  "findings": "Five infants lacked classic NEC features such as bowel perforation or need for surgery; their symptom patterns aligned more closely with FPIES, highlighting diagnostic overlap and the potential for misclassification between NEC and FPIES in preterm infants."
+}
+[2025-10-04T14:37:59.805Z] [INFO] Log file: logs\rag-2025-10-04T14-35-55-712Z.log
+================================================================================
+[2025-10-04T14:37:59.805Z] [INFO] EXTRACTION RESULTS
+================================================================================
+================================================================================
+[2025-10-04T14:37:59.806Z] [INFO] Saving extraction results to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759588679806.json
+[2025-10-04T14:37:59.807Z] [SUCCESS] Results saved to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759588679806.json
+[2025-10-04T14:37:59.807Z] [SUCCESS] Pipeline completed successfully

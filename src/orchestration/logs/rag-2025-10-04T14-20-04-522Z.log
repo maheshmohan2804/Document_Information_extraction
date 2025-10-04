@@ -1,0 +1,1599 @@
+[2025-10-04T14:20:04.525Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T14-20-04-522Z.log
+================================================================================
+[2025-10-04T14:20:04.701Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:20:04.715Z] [INFO] Adding 4 chunks
+[2025-10-04T14:20:04.717Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:20:04.722Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:20:04.729Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:20:04.732Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:20:04.739Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:20:04.748Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T14:20:04.753Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T14:20:04.758Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:04.770Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:04.772Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:04.777Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:04.780Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.785Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:04.790Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.793Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.794Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.795Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.797Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.799Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.801Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.802Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.804Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:04.806Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.807Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.808Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.809Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=10, filter=none
+[2025-10-04T14:20:04.810Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.812Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.813Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.814Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.815Z] [DEBUG]   [REJECT] Results... - Rejected (Unknown)
+[2025-10-04T14:20:04.816Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.818Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.819Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.820Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:04.821Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.822Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:04.823Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.825Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.826Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:04.827Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.829Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:04.831Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T14:20:04.837Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:04.839Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:04.839Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:04.841Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:04.842Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.843Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:04.845Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.846Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.847Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.848Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.849Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.851Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.852Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.853Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.855Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:04.857Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.858Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.859Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.860Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=10, filter=none
+[2025-10-04T14:20:04.862Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.871Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.874Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.876Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.877Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.878Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.879Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.881Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.882Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:04.886Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.887Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:04.889Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.892Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.893Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:04.894Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.896Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:04.901Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T14:20:04.904Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:04.908Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:04.909Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:04.912Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:04.913Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.914Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:04.916Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.917Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.919Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.920Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.921Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.922Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.923Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.924Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.925Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:04.926Z] [DEBUG] Query rewritten: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc." -> "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.927Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.928Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.929Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=10, filter=none
+[2025-10-04T14:20:04.931Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.933Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.934Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.935Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.937Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.937Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.939Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.940Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.940Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:04.941Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.943Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:04.944Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.945Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.946Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:04.947Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.948Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:04.949Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T14:20:04.951Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:04.954Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:04.955Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:04.957Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:04.958Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.960Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:04.961Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.962Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.964Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.965Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.966Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.967Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.968Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.969Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.970Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:04.971Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.972Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.973Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.975Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=10, filter=none
+[2025-10-04T14:20:04.976Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.977Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.978Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:04.979Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.980Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.981Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.983Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:04.984Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:04.985Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:04.986Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:04.987Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:04.989Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:04.990Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:04.991Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:04.993Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:04.994Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:04.994Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T14:20:04.996Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.000Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.001Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.004Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.013Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.015Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.016Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.018Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.019Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.021Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.022Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.023Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.025Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.026Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.027Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.029Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:05.030Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:05.031Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.033Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.034Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.036Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.037Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.038Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.039Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.040Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.041Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.042Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.043Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.044Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.045Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.046Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.047Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.048Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.049Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:05.050Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.051Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T14:20:05.053Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.055Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.056Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.057Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.058Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.059Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.060Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.061Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.062Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.063Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.064Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.065Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.067Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.068Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.069Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.070Z] [DEBUG] Query rewritten: "What are the key findings, results, and conclusions?" -> "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:05.071Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:05.072Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.073Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Directly relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.075Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.076Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.077Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.078Z] [DEBUG]   [REJECT] Title... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.078Z] [DEBUG]   [REJECT] Results... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.080Z] [DEBUG]   [REJECT] Methods... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.081Z] [DEBUG]   [REJECT] Abstract... - Rejected (Directly relevant.)
+[2025-10-04T14:20:05.082Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.083Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.084Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.085Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.086Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.087Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.088Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.089Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Directly relevant."
+[2025-10-04T14:20:05.090Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.091Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T14:20:05.093Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T14:20:05.094Z] [DEBUG] RELEVANCE: HIGH
+REASON: Directly relevant.
+[2025-10-04T14:20:05.096Z] [ERROR] Failed to parse JSON response, using defaults
+  Data: {}
+  Stack: SyntaxError: Unexpected token 'R', "RELEVANCE:"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:157:25)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:111:22)
+[2025-10-04T14:20:05.118Z] [DEBUG] Attempted to parse:
+  Data: RELEVANCE: HIGH
+REASON: Directly relevant.
+[2025-10-04T14:20:05.120Z] [SUCCESS] Document extraction complete
+[2025-10-04T14:20:05.121Z] [INFO] Extraction statistics:
+  Data: {
+  "authorsChunks": 4,
+  "dateChunks": 4,
+  "documentTypeChunks": 4,
+  "summaryChunks": 4,
+  "methodsChunks": 4,
+  "findingsChunks": 4,
+  "totalIterations": 12
+}
+================================================================================
+[2025-10-04T14:20:05.135Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:20:05.137Z] [INFO] Adding 4 chunks
+[2025-10-04T14:20:05.138Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:20:05.139Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:20:05.140Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:20:05.141Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:20:05.142Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:20:05.145Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T14:20:05.154Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T14:20:05.157Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.161Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.163Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.167Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.169Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.171Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:05.174Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.176Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.177Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.178Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.179Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.180Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.180Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.181Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.182Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.183Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.184Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.185Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.186Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.187Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.188Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.189Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.190Z] [DEBUG]   [REJECT] Title... - Rejected (Unknown)
+[2025-10-04T14:20:05.190Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.191Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.192Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.192Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.193Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.194Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.195Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:05.195Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.196Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.198Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.198Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.199Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.200Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T14:20:05.202Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.204Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.205Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.207Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.208Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.209Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.210Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.211Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.212Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.212Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.213Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.214Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.214Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.215Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.216Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.216Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.217Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.218Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.219Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.219Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.220Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.221Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.221Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.222Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.222Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.223Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.223Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.224Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.224Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.225Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.226Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.226Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.227Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.227Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.228Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.228Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T14:20:05.230Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.231Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.232Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.234Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.234Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.235Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:05.236Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.237Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.241Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.242Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.242Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.243Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.243Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.243Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.244Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.244Z] [DEBUG] Query rewritten: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc." -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.245Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.245Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.246Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.247Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.248Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.249Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.249Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.250Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.251Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.252Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.252Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.253Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.253Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.254Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:05.255Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.256Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.256Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.257Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.257Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.258Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T14:20:05.259Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.260Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.260Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.262Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.263Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.263Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.265Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.266Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.267Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.268Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.269Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.270Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.271Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.272Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.272Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.273Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.274Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.275Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.276Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.277Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.278Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.278Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.279Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.281Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.282Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.283Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.284Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.286Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.287Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.288Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.288Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.289Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.290Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.291Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.292Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.293Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T14:20:05.294Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.296Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.296Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.299Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.300Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.301Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.302Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.303Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.304Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.305Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.306Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.307Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.307Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.308Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.309Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.311Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.312Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.313Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.314Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.315Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.317Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.318Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.319Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.320Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.321Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.322Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.323Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.324Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.324Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.325Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.326Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.327Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.328Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.330Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.331Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.332Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T14:20:05.334Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.336Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.337Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.339Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.340Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.341Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.342Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.343Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.344Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.345Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.346Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.347Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.349Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.350Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.351Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.352Z] [DEBUG] Query rewritten: "What are the key findings, results, and conclusions?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.353Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.354Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.355Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.356Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.357Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.357Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.358Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.359Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.361Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.361Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.362Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.363Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.363Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.364Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.365Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.366Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.368Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.369Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.370Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.371Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T14:20:05.373Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T14:20:05.373Z] [DEBUG] RELEVANCE: HIGH
+REASON: Relevant.
+[2025-10-04T14:20:05.374Z] [ERROR] Failed to parse JSON response, using defaults
+  Data: {}
+  Stack: SyntaxError: Unexpected token 'R', "RELEVANCE:"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:157:25)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:185:22)
+[2025-10-04T14:20:05.375Z] [DEBUG] Attempted to parse:
+  Data: RELEVANCE: HIGH
+REASON: Relevant.
+[2025-10-04T14:20:05.376Z] [SUCCESS] Document extraction complete
+[2025-10-04T14:20:05.377Z] [INFO] Extraction statistics:
+  Data: {
+  "authorsChunks": 4,
+  "dateChunks": 4,
+  "documentTypeChunks": 4,
+  "summaryChunks": 4,
+  "methodsChunks": 4,
+  "findingsChunks": 4,
+  "totalIterations": 12
+}
+================================================================================
+[2025-10-04T14:20:05.383Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:20:05.387Z] [INFO] Adding 4 chunks
+[2025-10-04T14:20:05.389Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:20:05.390Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:20:05.390Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:20:05.392Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:20:05.393Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:20:05.395Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T14:20:05.398Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T14:20:05.400Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.402Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.403Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.405Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.406Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.407Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:05.408Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.410Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.410Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.411Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.411Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.411Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.412Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.412Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.413Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.414Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.415Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.416Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.417Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.418Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.419Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.419Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.420Z] [DEBUG]   [REJECT] Title... - Rejected (Unknown)
+[2025-10-04T14:20:05.421Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.421Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.422Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.422Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.423Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.423Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.424Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:05.425Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.425Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.426Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.427Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.427Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.428Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T14:20:05.429Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.430Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.431Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.433Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.434Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.435Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.436Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.437Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.449Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.450Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.451Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.451Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.452Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.453Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.453Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.454Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.455Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.455Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.456Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.457Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.457Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.458Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.459Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.459Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.460Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.461Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.461Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.462Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.464Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.466Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.468Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.470Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.470Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.471Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.472Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.472Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T14:20:05.474Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.475Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.477Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.479Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.480Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.481Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:05.482Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.483Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.484Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.485Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.486Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.487Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.487Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.488Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.489Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.489Z] [DEBUG] Query rewritten: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc." -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.490Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.491Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.491Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.492Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.493Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.494Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.494Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.495Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.496Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.497Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.497Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.498Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.499Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.500Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:05.501Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.502Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.502Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.503Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.504Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.505Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T14:20:05.506Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.508Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.508Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.510Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.511Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.512Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.512Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.513Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.515Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.515Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.516Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.517Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.518Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.518Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.519Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.520Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.520Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.521Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.522Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.523Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.523Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.524Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.525Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.525Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.526Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.527Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.527Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.528Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.529Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.532Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.533Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.534Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.535Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.536Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.537Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.537Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T14:20:05.542Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.543Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.544Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.546Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.548Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.549Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.550Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.551Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.552Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.553Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.553Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.554Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.555Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.556Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.556Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.557Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.558Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.558Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.559Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.560Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.562Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.564Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.566Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.566Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.567Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.568Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.568Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.570Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.571Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.572Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.572Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.573Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.574Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.574Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.575Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.576Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T14:20:05.577Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.578Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.579Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.582Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.583Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.584Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.585Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.586Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.587Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.589Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.590Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.591Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.592Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.594Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.595Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.595Z] [DEBUG] Query rewritten: "What are the key findings, results, and conclusions?" -> "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.596Z] [INFO] Iteration 2: Searching with query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.597Z] [DEBUG] Hybrid search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.602Z] [DEBUG] Semantic search: query="RELEVANCE: HIGH
+REASON: Relevant.", topK=10, filter=none
+[2025-10-04T14:20:05.603Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.604Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.605Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.606Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.607Z] [DEBUG]   [REJECT] Results... - Rejected (Relevant.)
+[2025-10-04T14:20:05.608Z] [DEBUG]   [REJECT] Abstract... - Rejected (Relevant.)
+[2025-10-04T14:20:05.608Z] [DEBUG]   [REJECT] Methods... - Rejected (Relevant.)
+[2025-10-04T14:20:05.609Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:20:05.610Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:20:05.610Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.611Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.612Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.612Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.613Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.614Z] [INFO] Final query: "RELEVANCE: HIGH
+REASON: Relevant."
+[2025-10-04T14:20:05.614Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.615Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T14:20:05.617Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T14:20:05.618Z] [DEBUG] RELEVANCE: HIGH
+REASON: Relevant.
+[2025-10-04T14:20:05.619Z] [ERROR] Failed to parse JSON response, using defaults
+  Data: {}
+  Stack: SyntaxError: Unexpected token 'R', "RELEVANCE:"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:157:25)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:255:22)
+[2025-10-04T14:20:05.620Z] [DEBUG] Attempted to parse:
+  Data: RELEVANCE: HIGH
+REASON: Relevant.
+[2025-10-04T14:20:05.622Z] [SUCCESS] Document extraction complete
+[2025-10-04T14:20:05.623Z] [INFO] Extraction statistics:
+  Data: {
+  "authorsChunks": 4,
+  "dateChunks": 4,
+  "documentTypeChunks": 4,
+  "summaryChunks": 4,
+  "methodsChunks": 4,
+  "findingsChunks": 4,
+  "totalIterations": 12
+}
+================================================================================
+[2025-10-04T14:20:05.627Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:20:05.628Z] [INFO] Adding 4 chunks
+[2025-10-04T14:20:05.629Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:20:05.631Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:20:05.633Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:20:05.635Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:20:05.637Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:20:05.640Z] [INFO] Answering Custom Query
+================================================================================
+[2025-10-04T14:20:05.642Z] [INFO] Query: "What was the accuracy?"
+================================================================================
+[2025-10-04T14:20:05.644Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.646Z] [INFO] Query: "What was the accuracy?"
+[2025-10-04T14:20:05.648Z] [INFO] Max iterations: 3, Top-K: 5
+[2025-10-04T14:20:05.650Z] [INFO] Iteration 1: Searching with query: "What was the accuracy?"
+[2025-10-04T14:20:05.651Z] [DEBUG] Hybrid search: query="What was the accuracy?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.653Z] [DEBUG] Semantic search: query="What was the accuracy?", topK=10, filter=none
+[2025-10-04T14:20:05.654Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.655Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.656Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.656Z] [DEBUG]   [REJECT] Abstract... - Rejected (Answers the query.)
+[2025-10-04T14:20:05.657Z] [DEBUG]   [REJECT] Title... - Rejected (Relevant.)
+[2025-10-04T14:20:05.657Z] [DEBUG]   [REJECT] Results... - Rejected (Unknown)
+[2025-10-04T14:20:05.658Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:44:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:210:21)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+[2025-10-04T14:20:05.661Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.662Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:20:05.662Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:20:05.663Z] [ERROR] Error rewriting query
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at rewriteQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:100:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:185:22)
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:210:21)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+[2025-10-04T14:20:05.665Z] [INFO] Iteration 2: Searching with query: "What was the accuracy?"
+[2025-10-04T14:20:05.666Z] [DEBUG] Hybrid search: query="What was the accuracy?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.667Z] [DEBUG] Semantic search: query="What was the accuracy?", topK=10, filter=none
+[2025-10-04T14:20:05.668Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.669Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.670Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.670Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:44:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:210:21)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+[2025-10-04T14:20:05.672Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.673Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:44:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:210:21)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+[2025-10-04T14:20:05.674Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.675Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:44:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:210:21)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+[2025-10-04T14:20:05.677Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.678Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:44:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:210:21)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+[2025-10-04T14:20:05.680Z] [INFO] Found 3 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.681Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.682Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.683Z] [INFO] Final query: "What was the accuracy?"
+[2025-10-04T14:20:05.683Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T14:20:05.684Z] [INFO] Generating answer with LLM...
+[2025-10-04T14:20:05.686Z] [ERROR] Error generating answer
+  Data: {}
+  Stack: TypeError: Cannot read properties of undefined (reading 'choices')
+    at answerQuery (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:246:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:299:22)
+================================================================================
+[2025-10-04T14:20:05.690Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:20:05.693Z] [INFO] Adding 4 chunks
+[2025-10-04T14:20:05.694Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:20:05.695Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:20:05.697Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:20:05.698Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:20:05.700Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:20:05.703Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T14:20:05.705Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T14:20:05.706Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.708Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.709Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.711Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.713Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.714Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:20:05.715Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.716Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.717Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.718Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.721Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.721Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.722Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.723Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.724Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.724Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.725Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.726Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.726Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.727Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.727Z] [INFO] Final query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:20:05.728Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:20:05.728Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T14:20:05.729Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.730Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.731Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.732Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.732Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.733Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.733Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.734Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.735Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.735Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.736Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.737Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.738Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.739Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.740Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.740Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.742Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.742Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.743Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.743Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.744Z] [INFO] Final query: "What is the publication date or year of this paper?"
+[2025-10-04T14:20:05.744Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:20:05.745Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T14:20:05.746Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.747Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.747Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.748Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.749Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.749Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:20:05.750Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.751Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.751Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.752Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.753Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.754Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.756Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.756Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.757Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.758Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.759Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.759Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.760Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.760Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.761Z] [INFO] Final query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:20:05.761Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:20:05.762Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T14:20:05.763Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.763Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.764Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.765Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.765Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.766Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:20:05.766Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.767Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.767Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.768Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.769Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.769Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.773Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.773Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.774Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.775Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.776Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.776Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.776Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.777Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.777Z] [INFO] Final query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:20:05.778Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:20:05.778Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T14:20:05.780Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.781Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.781Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.782Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.783Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.783Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:20:05.784Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.784Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.785Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.785Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.786Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.787Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.789Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.789Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.790Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.791Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.792Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.793Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.793Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.793Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.794Z] [INFO] Final query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:20:05.794Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:20:05.795Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T14:20:05.795Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:20:05.796Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.797Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:20:05.798Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.799Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:20:05.800Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:20:05.800Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:20:05.801Z] [DEBUG] Hybrid search returned 4 results
+[2025-10-04T14:20:05.802Z] [INFO] Grading 4 chunks...
+[2025-10-04T14:20:05.802Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.803Z] [INFO]   [ACCEPT] Results... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.804Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.805Z] [INFO]   [ACCEPT] Abstract... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.805Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.806Z] [INFO]   [ACCEPT] Title... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.806Z] [ERROR] Error grading chunk relevance
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.807Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:20:05.808Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:20:05.808Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:20:05.809Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:20:05.809Z] [INFO] Final query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:20:05.810Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:20:05.810Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T14:20:05.812Z] [ERROR] Error during final extraction
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\extraction.test.ts:313:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)

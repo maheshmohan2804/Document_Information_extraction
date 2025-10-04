@@ -1,0 +1,8 @@
+{
+  "authors": "Not found",
+  "date": "Not found",
+  "documentType": "research article",
+  "summary": "This preprint investigates the gut microbiota, microbiome, and fecal metabolome of preterm infants with suspected necrotizing enterocolitis (NEC‑1) compared to healthy controls over the first two months of life. The study identifies early microbial and metabolic shifts associated with NEC‑1 and highlights maternal and neonatal factors that influence these changes.",
+  "methods": "The study recruited preterm infants classified as NEC‑1 and healthy controls, collecting fecal samples at 1–10, 11–20, 21–30, and >30 days of life. High‑throughput 16S rRNA sequencing generated ~68,669 reads per sample, processed with 131 bioinformatic filters, and analyzed for taxonomic composition (LEfSe, Past 3.23) and predicted functional pathways (PICRUSt). Fecal metabolomics was performed by NMR and analyzed with MetaboAnalyst 4.0. Statistical comparisons used two‑way ANOVA with Benjamini–Krieger–Yekutieli correction, Mann‑Whitney tests, and Fisher’s exact test for categorical data.",
+  "findings": "NEC‑1 infants showed a divergence in gut microbiota taxonomy and function by day 10 and a distinct fecal metabolome by the second month, with altered amino‑acid pathways (serine, leucine). The NEC‑1 microbiome was more sensitive to maternal and neonatal factors such as mode of delivery, birth weight, and antibiotic exposure. The authors suggest increasing early enteral nutrition and limiting antibiotics to mitigate NEC‑1 progression."
+}

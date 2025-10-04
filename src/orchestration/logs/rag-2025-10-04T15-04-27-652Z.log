@@ -1,0 +1,395 @@
+[2025-10-04T15:04:27.653Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T15-04-27-652Z.log
+[2025-10-04T15:04:27.869Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T15:04:27.870Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T15:04:27.870Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "ssrn-3578738.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "moonshotai/kimi-k2-instruct-0905",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T15:04:27.872Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T15:04:27.872Z] [INFO] File: ssrn-3578738.pdf
+[2025-10-04T15:04:27.872Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T15:04:27.874Z] [INFO] Uploading and processing PDF...
+[2025-10-04T15:08:20.944Z] [SUCCESS] Conversion complete.
+[2025-10-04T15:08:20.949Z] [INFO] Markdown length: 72318 chars
+[2025-10-04T15:08:20.949Z] [INFO] HTML length: 60205 chars
+[2025-10-04T15:08:20.949Z] [INFO] Pages: 37
+================================================================================
+[2025-10-04T15:08:20.950Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T15:08:20.950Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T15:08:20.951Z] [DEBUG] Extracted 3 tables from markdown
+[2025-10-04T15:08:20.951Z] [INFO] Created 1 raw chunks from headers
+[2025-10-04T15:08:20.952Z] [SUCCESS] Chunking complete: 1 total chunks
+[2025-10-04T15:08:20.952Z] [INFO] Size distribution: Small=0, Medium=0, Large=1, Tables=1
+[2025-10-04T15:08:20.952Z] [WARN] Warning: 1 chunks still exceed max size (likely tables)
+[2025-10-04T15:08:20.952Z] [WARN] No chunks from markdown. Trying HTML...
+================================================================================
+[2025-10-04T15:08:20.952Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T15:08:20.953Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T15:08:20.953Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T15:08:20.953Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T15:08:20.954Z] [SUCCESS] Created 8 chunks using recursive strategy
+[2025-10-04T15:08:20.954Z] [SUCCESS] Created 8 chunks from HTML
+================================================================================
+[2025-10-04T15:08:20.955Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T15:08:20.955Z] [INFO] Processing 8 chunks
+[2025-10-04T15:08:20.958Z] [DEBUG] Processing chunk 1/8 (metadata extraction): Chunk 1...
+[2025-10-04T15:08:21.422Z] [DEBUG] Raw metadata extraction response: {"tags": ["necrotizing enterocolitis", "intestinal microbiology", "microbiome", "infant gut", "metabolomics"], "authors": "Matteo", "date": null}
+[2025-10-04T15:08:21.423Z] [INFO] Found authors: Matteo
+[2025-10-04T15:08:21.423Z] [DEBUG] Chunk 1 tagged with: necrotizing enterocolitis, intestinal microbiology, microbiome, infant gut, metabolomics
+[2025-10-04T15:08:21.423Z] [DEBUG] Processing chunk 2/8 (metadata extraction): Chunk 2...
+[2025-10-04T15:08:21.840Z] [DEBUG] Raw metadata extraction response: {
+  "tags": ["Necrotizing enterocolitis", "NEC-1", "gut microbiota dysbiosis", "fecal metabolome", "preterm infants", "amino-acid metabolism", "enteral nutrition", "antibiotic therapy"],
+  "authors": 
+[2025-10-04T15:08:21.840Z] [DEBUG] Chunk 2 tagged with: Necrotizing enterocolitis, NEC-1, gut microbiota dysbiosis, fecal metabolome, preterm infants, amino-acid metabolism, enteral nutrition, antibiotic therapy
+[2025-10-04T15:08:21.841Z] [DEBUG] Processing chunk 3/8 (metadata extraction): Chunk 3...
+[2025-10-04T15:08:22.310Z] [DEBUG] Raw metadata extraction response: {"tags":["gut microbiota","metabolome","necrotizing enterocolitis","preterm infants","bioinformatics","LEfSe","PICRUSt","MicrobiomeAnalyst","MetaboAnalyst","diversity indices","PAST software","GraphPa
+[2025-10-04T15:08:22.311Z] [DEBUG] Chunk 3 tagged with: gut microbiota, metabolome, necrotizing enterocolitis, preterm infants, bioinformatics, LEfSe, PICRUSt, MicrobiomeAnalyst, MetaboAnalyst, diversity indices, PAST software, GraphPad Prism, two-way ANOVA, Mann-Whitney test, False Discovery Rate
+[2025-10-04T15:08:22.311Z] [DEBUG] Processing chunk 4/8: Chunk 4...
+[2025-10-04T15:08:22.525Z] [DEBUG] Raw tagging response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T15:08:22.526Z] [DEBUG] Chunk 4 tagged with: <findings_conclusion>
+[2025-10-04T15:08:22.526Z] [DEBUG] Processing chunk 5/8: Chunk 5...
+[2025-10-04T15:08:22.809Z] [DEBUG] Raw tagging response: {"tags": ["research_methods", "findings_conclusion"], "authors": "C.B., D.D., O.D., S.B., E.O., M.S.", "date": null}
+[2025-10-04T15:08:22.810Z] [DEBUG] Chunk 5 tagged with: research_methods, findings_conclusion
+[2025-10-04T15:08:22.810Z] [DEBUG] Processing chunk 6/8: Chunk 6...
+[2025-10-04T15:08:23.017Z] [DEBUG] Raw tagging response: {"tags": ["<metadata>"], "authors": null, "date": null}
+[2025-10-04T15:08:23.017Z] [DEBUG] Chunk 6 tagged with: <metadata>
+[2025-10-04T15:08:23.018Z] [DEBUG] Processing chunk 7/8: Chunk 7...
+[2025-10-04T15:08:23.275Z] [DEBUG] Raw tagging response: {"tags":["research_methods","findings_conclusion"],"authors":null,"date":null}
+[2025-10-04T15:08:23.276Z] [DEBUG] Chunk 7 tagged with: research_methods, findings_conclusion
+[2025-10-04T15:08:23.276Z] [DEBUG] Processing chunk 8/8: Chunk 8...
+[2025-10-04T15:08:23.573Z] [DEBUG] Raw tagging response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T15:08:23.573Z] [DEBUG] Chunk 8 tagged with: <findings_conclusion>
+[2025-10-04T15:08:23.574Z] [SUCCESS] Tagged 8 chunks
+[2025-10-04T15:08:23.574Z] [INFO] Tag distribution:
+  Data: {
+  "necrotizing enterocolitis": 2,
+  "intestinal microbiology": 1,
+  "microbiome": 1,
+  "infant gut": 1,
+  "metabolomics": 1,
+  "Necrotizing enterocolitis": 1,
+  "NEC-1": 1,
+  "gut microbiota dysbiosis": 1,
+  "fecal metabolome": 1,
+  "preterm infants": 2,
+  "amino-acid metabolism": 1,
+  "enteral nutrition": 1,
+  "antibiotic therapy": 1,
+  "gut microbiota": 1,
+  "metabolome": 1,
+  "bioinformatics": 1,
+  "LEfSe": 1,
+  "PICRUSt": 1,
+  "MicrobiomeAnalyst": 1,
+  "MetaboAnalyst": 1,
+  "diversity indices": 1,
+  "PAST software": 1,
+  "GraphPad Prism": 1,
+  "two-way ANOVA": 1,
+  "Mann-Whitney test": 1,
+  "False Discovery Rate": 1,
+  "<findings_conclusion>": 2,
+  "research_methods": 2,
+  "findings_conclusion": 2,
+  "<metadata>": 1
+}
+[2025-10-04T15:08:23.584Z] [INFO] Document metadata:
+  Data: {
+  "authors": "Matteo",
+  "date": null
+}
+================================================================================
+[2025-10-04T15:08:23.587Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T15:08:23.588Z] [INFO] Adding 8 chunks
+[2025-10-04T15:08:23.589Z] [DEBUG] Generating embedding for chunk 1/8
+[2025-10-04T15:08:23.592Z] [DEBUG] Generating embedding for chunk 2/8
+[2025-10-04T15:08:23.594Z] [DEBUG] Generating embedding for chunk 3/8
+[2025-10-04T15:08:23.596Z] [DEBUG] Generating embedding for chunk 4/8
+[2025-10-04T15:08:23.597Z] [DEBUG] Generating embedding for chunk 5/8
+[2025-10-04T15:08:23.598Z] [DEBUG] Generating embedding for chunk 6/8
+[2025-10-04T15:08:23.598Z] [DEBUG] Generating embedding for chunk 7/8
+[2025-10-04T15:08:23.599Z] [DEBUG] Generating embedding for chunk 8/8
+[2025-10-04T15:08:23.599Z] [SUCCESS] Added 8 chunks with embeddings
+================================================================================
+[2025-10-04T15:08:23.600Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T15:08:23.609Z] [DEBUG] BM25 initialized with 8 documents
+[2025-10-04T15:08:23.609Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T15:08:23.610Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T15:08:23.610Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T15:08:23.610Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T15:08:23.610Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T15:08:23.611Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T15:08:23.611Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T15:08:23.611Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:23.611Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T15:08:23.614Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:23.616Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:23.616Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:08:23.859Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk contains acknowledgments and supplementary figure captions, but no author names.)
+[2025-10-04T15:08:24.219Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boilerplate and styling rules, with no author names or paper metadata.)
+[2025-10-04T15:08:24.507Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk discusses microbiome and metabolomic findings in NEC-1 infants but contains no author names.)
+[2025-10-04T15:08:24.760Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk discusses the study’s findings and context but contains no author names.)
+[2025-10-04T15:08:24.994Z] [DEBUG]   [REJECT] Chunk 8... - Rejected (The chunk describes experimental results and figures but contains no author names.)
+[2025-10-04T15:08:24.995Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T15:08:24.995Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T15:08:25.186Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "authors of the paper titled [insert exact paper title here]"
+[2025-10-04T15:08:25.186Z] [INFO] Iteration 2: Searching with query: "authors of the paper titled [insert exact paper title here]"
+[2025-10-04T15:08:25.187Z] [DEBUG] Hybrid search: query="authors of the paper titled [insert exact paper title here]", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:25.187Z] [DEBUG] Semantic search: query="authors of the paper titled [insert exact paper title here]", topK=10, filter=none
+[2025-10-04T15:08:25.187Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:25.189Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:25.189Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:08:25.446Z] [DEBUG]   [REJECT] Chunk 8... - Rejected (The chunk contains only technical descriptions of metabolomic data and plots, with no mention of any authors.)
+[2025-10-04T15:08:25.776Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML styling and structural markup with no author information.)
+[2025-10-04T15:08:26.051Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk contains only figure captions and acknowledgments, with no author names listed.)
+[2025-10-04T15:08:28.434Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk contains only methodological details and citations, with no author names listed.)
+[2025-10-04T15:08:30.757Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk contains only figure legends and statistical details, with no mention of any author names.)
+[2025-10-04T15:08:30.757Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T15:08:30.757Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T15:08:30.757Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:30.757Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T15:08:30.758Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:30.759Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:30.759Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T15:08:30.759Z] [INFO] Final query: "authors of the paper titled [insert exact paper title here]"
+[2025-10-04T15:08:30.760Z] [INFO] Iterations: 2, Relevant chunks: 5
+[2025-10-04T15:08:30.760Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T15:08:30.760Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T15:08:30.760Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T15:08:30.760Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T15:08:30.760Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T15:08:30.760Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:30.760Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T15:08:30.761Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:30.762Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:30.762Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:08:33.088Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk discusses the study’s findings on NEC-1 but contains no publication date or year.)
+[2025-10-04T15:08:36.452Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk contains methodological details and ends with “Preprint not peer reviewed,” but it never states the actual publication date or year.)
+[2025-10-04T15:08:38.820Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk contains only figure captions and acknowledgments, with no mention of a publication date or year.)
+[2025-10-04T15:08:41.198Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk contains only figure legends and statistical details with no mention of any publication date or year.)
+[2025-10-04T15:08:43.575Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk contains only experimental results and methods, with no mention of any publication date or year.)
+[2025-10-04T15:08:43.575Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T15:08:43.575Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T15:08:43.731Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "publication date year of this paper"
+[2025-10-04T15:08:43.731Z] [INFO] Iteration 2: Searching with query: "publication date year of this paper"
+[2025-10-04T15:08:43.732Z] [DEBUG] Hybrid search: query="publication date year of this paper", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:43.732Z] [DEBUG] Semantic search: query="publication date year of this paper", topK=10, filter=none
+[2025-10-04T15:08:43.732Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:43.733Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:43.733Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:08:46.028Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk discusses NEC and microbiota but contains no publication date or year.)
+[2025-10-04T15:08:49.449Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk contains only figure captions and acknowledgments, with no mention of a publication date or year.)
+[2025-10-04T15:08:51.792Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk contains only methodological details and figure captions with no mention of any publication date or year.)
+[2025-10-04T15:08:54.090Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk contains experimental results and methodology details but does not mention any publication date or year.)
+[2025-10-04T15:08:56.446Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk contains no publication date or year.)
+[2025-10-04T15:08:56.446Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T15:08:56.447Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T15:08:56.447Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:56.447Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T15:08:56.447Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:56.449Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:56.449Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T15:08:56.449Z] [INFO] Final query: "publication date year of this paper"
+[2025-10-04T15:08:56.449Z] [INFO] Iterations: 2, Relevant chunks: 5
+[2025-10-04T15:08:56.449Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T15:08:56.450Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T15:08:56.450Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T15:08:56.450Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T15:08:56.450Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T15:08:56.450Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:08:56.450Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T15:08:56.450Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:08:56.453Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:08:56.453Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:08:58.807Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk only contains HTML boilerplate and CSS styling with no document-type information.)
+[2025-10-04T15:09:01.151Z] [INFO]   [ACCEPT] Chunk 5... - HIGH (The phrase “Preprint not peer reviewed” explicitly identifies the document type as a preprint.)
+[2025-10-04T15:09:04.454Z] [INFO]   [ACCEPT] Chunk 2... - HIGH (The chunk explicitly states “Preprint not peer reviewed,” which directly identifies the document type as a preprint.)
+[2025-10-04T15:09:06.893Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk only lists bioinformatics tools and methods, giving no indication of the document’s overall type.)
+[2025-10-04T15:09:09.303Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The excerpt describes experimental methods and findings but gives no indication of the document’s overall type (e.g., case study, clinical trial, review).)
+[2025-10-04T15:09:09.303Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T15:09:09.303Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T15:09:09.600Z] [DEBUG] Query rewritten: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc." -> "What is the document type of this paper: case study, clinical trial, RCT, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?"
+[2025-10-04T15:09:09.600Z] [INFO] Iteration 2: Searching with query: "What is the document type of this paper: case study, clinical trial, RCT, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?"
+[2025-10-04T15:09:09.600Z] [DEBUG] Hybrid search: query="What is the document type of this paper: case study, clinical trial, RCT, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:09:09.601Z] [DEBUG] Semantic search: query="What is the document type of this paper: case study, clinical trial, RCT, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?", topK=10, filter=none
+[2025-10-04T15:09:09.601Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:09:09.605Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:09:09.606Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:09:13.050Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only shows supplementary figures and acknowledgments, but the explicit “Preprint not peer reviewed” label directly indicates the document type.)
+[2025-10-04T15:09:15.505Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only generic HTML boiler-plate and styling rules, with no information about the document’s scholarly type.)
+[2025-10-04T15:09:21.285Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk only lists technical bioinformatics steps and ends with “Preprint not peer reviewed,” giving no indication of the overall document type.)
+[2025-10-04T15:09:23.668Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk contains only figure legends and statistical details, giving no indication of the document’s overall type.)
+[2025-10-04T15:09:23.669Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T15:09:23.669Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T15:09:23.669Z] [INFO] Final query: "What is the document type of this paper: case study, clinical trial, RCT, cohort study, cross-sectional survey, systematic review, meta-analysis, narrative review, research article, technical report, workshop paper, or other?"
+[2025-10-04T15:09:23.669Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T15:09:23.670Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T15:09:23.670Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T15:09:23.670Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T15:09:23.670Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T15:09:23.671Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T15:09:23.671Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:09:23.671Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T15:09:23.671Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:09:23.673Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:09:23.678Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:09:26.057Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boiler-plate and styling metadata, with no abstract, purpose, or overview content from the paper.)
+[2025-10-04T15:09:28.466Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk lists technical bioinformatics tools and procedures, not the paper’s abstract, purpose, or overview.)
+[2025-10-04T15:09:30.781Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only lists supplementary figures and acknowledgments, providing no abstract, purpose, or overview of the paper.)
+[2025-10-04T15:09:34.147Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk only shows detailed statistical results and figure captions without stating the paper’s abstract, purpose, or overview.)
+[2025-10-04T15:09:36.558Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (It summarizes the study’s focus on gut-microbiota dysbiosis and metabolome changes in suspected NEC-1, which conveys part of the paper’s purpose, but it omits the formal abstract and overarching overview.)
+[2025-10-04T15:09:36.558Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T15:09:36.559Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T15:09:36.810Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "Retrieve the paper’s abstract, explicitly state its main objective or research question, and provide a concise overview of its methodology, key findings, and conclusions."
+[2025-10-04T15:09:36.810Z] [INFO] Iteration 2: Searching with query: "Retrieve the paper’s abstract, explicitly state its main objective or research question, and provide a concise overview of its methodology, key findings, and conclusions."
+[2025-10-04T15:09:36.810Z] [DEBUG] Hybrid search: query="Retrieve the paper’s abstract, explicitly state its main objective or research question, and provide a concise overview of its methodology, key findings, and conclusions.", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:09:36.811Z] [DEBUG] Semantic search: query="Retrieve the paper’s abstract, explicitly state its main objective or research question, and provide a concise overview of its methodology, key findings, and conclusions.", topK=10, filter=none
+[2025-10-04T15:09:36.811Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:09:36.814Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:09:36.814Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:09:39.208Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boiler-plate and styling rules, with no paper content such as abstract, purpose, or overview.)
+[2025-10-04T15:09:44.964Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk presents detailed microbiome and metabolomic findings but does not state the paper’s abstract, main purpose, or overall overview.)
+[2025-10-04T15:09:47.277Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only lists supplementary figures and acknowledgments, providing no abstract, purpose, or overview of the paper.)
+[2025-10-04T15:09:50.764Z] [DEBUG]   [REJECT] Chunk 6... - Rejected (The chunk contains only bibliographic citations and blank placeholders, none of which supply the paper’s abstract, purpose, or overview.)
+[2025-10-04T15:09:50.765Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T15:09:50.765Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T15:09:50.766Z] [INFO] Final query: "Retrieve the paper’s abstract, explicitly state its main objective or research question, and provide a concise overview of its methodology, key findings, and conclusions."
+[2025-10-04T15:09:50.766Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T15:09:50.767Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T15:09:50.768Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T15:09:50.769Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T15:09:50.769Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T15:09:50.770Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T15:09:50.770Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:09:50.770Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T15:09:50.770Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:09:50.772Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:09:50.772Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:09:53.141Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The text discusses findings about gut microbiota and metabolites in NEC-1 but never mentions the research methods, study design, or analytical approaches used.)
+[2025-10-04T15:09:55.691Z] [INFO]   [ACCEPT] Chunk 3... - HIGH (The chunk explicitly lists the analytical approaches (LEfSe, PICRUSt, MicrobiomeAnalyst, diversity indices in Past 3.23) used to process and interpret the sequencing data.)
+[2025-10-04T15:09:58.079Z] [INFO]   [ACCEPT] Chunk 7... - MEDIUM (The chunk explicitly names statistical methods (two-way ANOVA, Benjamini-Krieger-Yekutieli FDR correction) and analytical approaches (PCA, LDA) used in the study.)
+[2025-10-04T15:10:01.576Z] [DEBUG]   [REJECT] Chunk 6... - Rejected (The chunk contains only citation fragments and placeholder text, with no information about research methods, study design, or analytical approaches.)
+[2025-10-04T15:10:03.969Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boiler-plate and styling rules, with no information about research methods, study design, or analytical approaches.)
+[2025-10-04T15:10:03.969Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T15:10:03.970Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T15:10:04.404Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?"
+[2025-10-04T15:10:04.405Z] [INFO] Iteration 2: Searching with query: "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?"
+[2025-10-04T15:10:04.405Z] [DEBUG] Hybrid search: query="What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:10:04.405Z] [DEBUG] Semantic search: query="What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?", topK=10, filter=none
+[2025-10-04T15:10:04.405Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:10:04.411Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:10:04.411Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:10:07.815Z] [DEBUG]   [REJECT] Chunk 6... - Rejected (The chunk contains only citations and page placeholders with no information about research methods, study design, or analytical approaches.)
+[2025-10-04T15:10:10.261Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk discusses findings about gut microbiota and metabolites in NEC-1 but never mentions the research methods, study design, or analytical approaches used.)
+[2025-10-04T15:10:16.030Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only lists supplementary figures and acknowledgments without describing any research methods, study design, or analytical approaches.)
+[2025-10-04T15:10:18.378Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boilerplate and styling rules, with no mention of research methods, study design, or analytical approaches.)
+[2025-10-04T15:10:18.379Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T15:10:18.379Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T15:10:18.379Z] [INFO] Final query: "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?"
+[2025-10-04T15:10:18.379Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T15:10:18.379Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T15:10:18.380Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T15:10:18.380Z] [INFO] Query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T15:10:18.380Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T15:10:18.381Z] [INFO] Iteration 1: Searching with query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T15:10:18.381Z] [DEBUG] Hybrid search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:10:18.381Z] [DEBUG] Semantic search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=10, filter=none
+[2025-10-04T15:10:18.381Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:10:18.383Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:10:18.383Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:10:20.828Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk only lists technical methods and software used for analysis, without presenting any findings, results, or conclusions.)
+[2025-10-04T15:10:23.246Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (It reports specific intra-group results (taxonomic, metabolomic, enrichment findings) that constitute part of the paper’s overall results, though it omits broader conclusions.)
+[2025-10-04T15:10:25.560Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only lists supplementary figure captions without presenting any findings, data, or conclusions.)
+[2025-10-04T15:10:28.884Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk mentions figures and statistical results but does not present the actual key findings, discussions, or conclusions requested in the query.)
+[2025-10-04T15:10:31.269Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boiler-plate and styling rules, with no actual findings, results, tables, graphs, or conclusions.)
+[2025-10-04T15:10:31.270Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T15:10:31.270Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T15:10:31.520Z] [DEBUG] Query rewritten: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?" -> "Extract and list every numbered key finding, discussion paragraph, overall result, table/graph result, and conclusion exactly as written in the document."
+[2025-10-04T15:10:31.521Z] [INFO] Iteration 2: Searching with query: "Extract and list every numbered key finding, discussion paragraph, overall result, table/graph result, and conclusion exactly as written in the document."
+[2025-10-04T15:10:31.521Z] [DEBUG] Hybrid search: query="Extract and list every numbered key finding, discussion paragraph, overall result, table/graph result, and conclusion exactly as written in the document.", topK=5, alpha=0.5, filter=none
+[2025-10-04T15:10:31.522Z] [DEBUG] Semantic search: query="Extract and list every numbered key finding, discussion paragraph, overall result, table/graph result, and conclusion exactly as written in the document.", topK=10, filter=none
+[2025-10-04T15:10:31.523Z] [DEBUG] Semantic search returned 8 results
+[2025-10-04T15:10:31.533Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T15:10:31.533Z] [INFO] Grading 5 chunks...
+[2025-10-04T15:10:34.929Z] [DEBUG]   [REJECT] Chunk 7... - Rejected (The chunk mentions figures and statistical results but does not summarize or interpret the key findings, discussions, or conclusions requested in the query.)
+[2025-10-04T15:10:37.277Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk contains only HTML boiler-plate and styling rules, with no actual findings, results, tables, graphs, or conclusions.)
+[2025-10-04T15:10:39.652Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk only states the study’s aim and gap; it contains no findings, results, tables, graphs, or conclusions.)
+[2025-10-04T15:10:41.990Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only lists supplementary figure captions without presenting any findings, data, or conclusions.)
+[2025-10-04T15:10:44.318Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk only lists technical methods and software used, not the findings, results, or conclusions requested.)
+[2025-10-04T15:10:44.318Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T15:10:44.319Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T15:10:44.319Z] [INFO] Final query: "Extract and list every numbered key finding, discussion paragraph, overall result, table/graph result, and conclusion exactly as written in the document."
+[2025-10-04T15:10:44.319Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T15:10:44.319Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T15:11:15.618Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T15:11:15.618Z] [DEBUG] {
+  "authors": "C. Brehin, D. D., O. D., S. B., E. O., M. Serino",
+  "date": "preprint",
+  "documentType": "preprint research article",
+  "summary": "This preprint investigates gut microbiota dysbiosis and fecal metabolome changes in suspected necrotizing enterocolitis (NEC-1) preterm infants compared to healthy controls over the first two months of life. It identifies early divergence in microbiota taxonomy and function and metabolomic shifts, particularly in amino-acid metabolism, and links these to clinical factors such as reduced enteral nutrition.",
+  "methods": "• Study design: prospective longitudinal cohort study\n• Data sources: fecal samples and clinical data from Purpan Hospital neonatal units\n• Sample size: not explicitly stated; divided into four age groups (1–10 d, 11–20 d, 21–30 d, >30 d)\n• Analytical methods: 16S rRNA sequencing (mean 68,669 reads/sample), PICRUSt for functional prediction, LEfSe for taxonomic analysis, MetaboAnalyst 4.0 for metabolomic enrichment, two-way ANOVA with FDR correction and Mann–Whitney tests for statistics",
+  "findings": "• NEC-1 infants showed reduced enteral nutrition volume at day 7 vs healthy infants\n• Gut microbiota taxonomy and function began diverging by 10 days of life in NEC-1; fecal metabolome divergence peaked at 2 months\n• Amino-acid metabolism (serine, leucine) was the most affected pathway; NEC-1 metabolites (ethanol, serine) linked to homocysteine degradation and phosphatidylethanolamine biosynthesis\n• NEC-1 microbiome was more sensitive than healthy to childbirth mode, low birth weight and gestational age\n• Implication: increasing early enteral nutrition and limiting antibiotics may mitigate NEC-1 progression"
+}
+[2025-10-04T15:11:15.619Z] [SUCCESS] Successfully parsed JSON response
+[2025-10-04T15:11:15.619Z] [SUCCESS] Document extraction complete
+[2025-10-04T15:11:15.619Z] [INFO] Extraction statistics:
+  Data: {
+  "authorsChunks": 5,
+  "dateChunks": 5,
+  "documentTypeChunks": 2,
+  "summaryChunks": 1,
+  "methodsChunks": 2,
+  "findingsChunks": 1,
+  "totalIterations": 12
+}
+================================================================================
+[2025-10-04T15:11:15.620Z] [INFO] Pipeline Complete
+================================================================================
+[2025-10-04T15:11:15.620Z] [SUCCESS] Total execution time: 407.75s
+[2025-10-04T15:11:15.620Z] [INFO] Extraction result:
+  Data: {
+  "authors": "C. Brehin, D. D., O. D., S. B., E. O., M. Serino",
+  "date": "preprint",
+  "documentType": "preprint research article",
+  "summary": "This preprint investigates gut microbiota dysbiosis and fecal metabolome changes in suspected necrotizing enterocolitis (NEC-1) preterm infants compared to healthy controls over the first two months of life. It identifies early divergence in microbiota taxonomy and function and metabolomic shifts, particularly in amino-acid metabolism, and links these to clinical factors such as reduced enteral nutrition.",
+  "methods": "• Study design: prospective longitudinal cohort study\n• Data sources: fecal samples and clinical data from Purpan Hospital neonatal units\n• Sample size: not explicitly stated; divided into four age groups (1–10 d, 11–20 d, 21–30 d, >30 d)\n• Analytical methods: 16S rRNA sequencing (mean 68,669 reads/sample), PICRUSt for functional prediction, LEfSe for taxonomic analysis, MetaboAnalyst 4.0 for metabolomic enrichment, two-way ANOVA with FDR correction and Mann–Whitney tests for statistics",
+  "findings": "• NEC-1 infants showed reduced enteral nutrition volume at day 7 vs healthy infants\n• Gut microbiota taxonomy and function began diverging by 10 days of life in NEC-1; fecal metabolome divergence peaked at 2 months\n• Amino-acid metabolism (serine, leucine) was the most affected pathway; NEC-1 metabolites (ethanol, serine) linked to homocysteine degradation and phosphatidylethanolamine biosynthesis\n• NEC-1 microbiome was more sensitive than healthy to childbirth mode, low birth weight and gestational age\n• Implication: increasing early enteral nutrition and limiting antibiotics may mitigate NEC-1 progression"
+}
+[2025-10-04T15:11:15.621Z] [INFO] Log file: logs\rag-2025-10-04T15-04-27-652Z.log
+================================================================================
+[2025-10-04T15:11:15.621Z] [INFO] EXTRACTION RESULTS
+================================================================================
+================================================================================
+[2025-10-04T15:11:15.623Z] [INFO] Saving extraction results to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759590675622.json
+[2025-10-04T15:11:15.624Z] [SUCCESS] Results saved to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759590675622.json
+[2025-10-04T15:11:15.624Z] [SUCCESS] Pipeline completed successfully

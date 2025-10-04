@@ -1,0 +1,312 @@
+[2025-10-04T14:00:47.366Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T14-00-47-365Z.log
+================================================================================
+[2025-10-04T14:00:47.431Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.433Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.435Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.436Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.437Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.439Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.441Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.443Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.444Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.445Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.446Z] [DEBUG] Hybrid search: query="deep learning neural networks", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.449Z] [DEBUG] Semantic search: query="deep learning neural networks", topK=6, filter=none
+[2025-10-04T14:00:47.451Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.453Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.456Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.460Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.461Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.462Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.462Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.463Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.464Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.465Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.466Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.467Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.467Z] [DEBUG] Hybrid search: query="machine learning", topK=2, alpha=0.5, filter=none
+[2025-10-04T14:00:47.468Z] [DEBUG] Semantic search: query="machine learning", topK=4, filter=none
+[2025-10-04T14:00:47.469Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.470Z] [DEBUG] Hybrid search returned 2 results
+================================================================================
+[2025-10-04T14:00:47.472Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.475Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.476Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.477Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.479Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.480Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.482Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.483Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.484Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.484Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.485Z] [DEBUG] Hybrid search: query="deep learning", topK=3, alpha=0, filter=none
+[2025-10-04T14:00:47.485Z] [DEBUG] Semantic search: query="deep learning", topK=6, filter=none
+[2025-10-04T14:00:47.487Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.488Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.490Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.492Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.493Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.494Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.495Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.496Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.497Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.499Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.499Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.500Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.501Z] [DEBUG] Hybrid search: query="neural networks", topK=3, alpha=1, filter=none
+[2025-10-04T14:00:47.501Z] [DEBUG] Semantic search: query="neural networks", topK=6, filter=none
+[2025-10-04T14:00:47.503Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.504Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.508Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.518Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.519Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.520Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.521Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.522Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.524Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.526Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.528Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.528Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.529Z] [DEBUG] Hybrid search: query="machine learning", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.530Z] [DEBUG] Semantic search: query="machine learning", topK=6, filter=none
+[2025-10-04T14:00:47.531Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.533Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.535Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.537Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.538Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.540Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.542Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.544Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.545Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.548Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.549Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.550Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.551Z] [DEBUG] Hybrid search: query="methods", topK=5, alpha=0.5, filter=<research_methods>
+[2025-10-04T14:00:47.552Z] [DEBUG] Semantic search: query="methods", topK=10, filter=<research_methods>
+[2025-10-04T14:00:47.554Z] [DEBUG] Semantic search returned 1 results
+[2025-10-04T14:00:47.556Z] [DEBUG] Hybrid search returned 1 results
+================================================================================
+[2025-10-04T14:00:47.559Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.562Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.563Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.564Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.566Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.567Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.568Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.571Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.572Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.573Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.574Z] [DEBUG] Hybrid search: query="learning", topK=5, alpha=0.5, filter=<summary>
+[2025-10-04T14:00:47.576Z] [DEBUG] Semantic search: query="learning", topK=10, filter=<summary>
+[2025-10-04T14:00:47.578Z] [DEBUG] Semantic search returned 1 results
+[2025-10-04T14:00:47.579Z] [DEBUG] Hybrid search returned 1 results
+================================================================================
+[2025-10-04T14:00:47.582Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.585Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.587Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.589Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.591Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.593Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.594Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.596Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.597Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.604Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.605Z] [DEBUG] Hybrid search: query="test", topK=5, alpha=0.5, filter=<nonexistent_tag>
+[2025-10-04T14:00:47.606Z] [DEBUG] Semantic search: query="test", topK=10, filter=<nonexistent_tag>
+[2025-10-04T14:00:47.607Z] [DEBUG] Semantic search returned 0 results
+[2025-10-04T14:00:47.609Z] [DEBUG] Hybrid search returned 0 results
+================================================================================
+[2025-10-04T14:00:47.611Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.613Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.614Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.615Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.616Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.617Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.618Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.620Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.621Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.621Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.622Z] [DEBUG] Hybrid search: query="deep learning", topK=4, alpha=0.5, filter=none
+[2025-10-04T14:00:47.623Z] [DEBUG] Semantic search: query="deep learning", topK=8, filter=none
+[2025-10-04T14:00:47.624Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.625Z] [DEBUG] Hybrid search returned 4 results
+================================================================================
+[2025-10-04T14:00:47.628Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.630Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.631Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.632Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.633Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.634Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.635Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.636Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.637Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.638Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.638Z] [DEBUG] Hybrid search: query="machine learning", topK=4, alpha=0.5, filter=none
+[2025-10-04T14:00:47.641Z] [DEBUG] Semantic search: query="machine learning", topK=8, filter=none
+[2025-10-04T14:00:47.643Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.644Z] [DEBUG] Hybrid search returned 4 results
+================================================================================
+[2025-10-04T14:00:47.647Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.649Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.650Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.651Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.652Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.653Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.653Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.655Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.655Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.656Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.657Z] [DEBUG] Hybrid search: query="convolutional neural networks", topK=4, alpha=0, filter=none
+[2025-10-04T14:00:47.658Z] [DEBUG] Semantic search: query="convolutional neural networks", topK=8, filter=none
+[2025-10-04T14:00:47.659Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.660Z] [DEBUG] Hybrid search returned 4 results
+================================================================================
+[2025-10-04T14:00:47.666Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.667Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.668Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.669Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.670Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.670Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.671Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.672Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.673Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.674Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.674Z] [DEBUG] Hybrid search: query="the and or", topK=3, alpha=0, filter=none
+[2025-10-04T14:00:47.675Z] [DEBUG] Semantic search: query="the and or", topK=6, filter=none
+[2025-10-04T14:00:47.676Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.677Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.680Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.682Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.683Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.683Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.684Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.685Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.686Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.687Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.688Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.688Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.689Z] [DEBUG] Hybrid search: query="", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.689Z] [DEBUG] Semantic search: query="", topK=6, filter=none
+[2025-10-04T14:00:47.691Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.692Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.693Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.695Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.696Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.697Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.698Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.699Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.699Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.701Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.701Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.702Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.702Z] [DEBUG] Hybrid search: query="quantum physics biochemistry", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.703Z] [DEBUG] Semantic search: query="quantum physics biochemistry", topK=6, filter=none
+[2025-10-04T14:00:47.704Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.705Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.707Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.709Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.710Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.711Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.712Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.712Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.713Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.714Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.715Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.716Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.716Z] [DEBUG] Hybrid search: query="test-query_with#special$chars", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.717Z] [DEBUG] Semantic search: query="test-query_with#special$chars", topK=6, filter=none
+[2025-10-04T14:00:47.718Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.719Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.722Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.724Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.725Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.726Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.727Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.728Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.729Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.730Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.730Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.731Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.731Z] [DEBUG] Hybrid search: query="machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning ", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.732Z] [DEBUG] Semantic search: query="machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning machine learning ", topK=6, filter=none
+[2025-10-04T14:00:47.733Z] [DEBUG] Semantic search returned 4 results
+[2025-10-04T14:00:47.734Z] [DEBUG] Hybrid search returned 3 results
+================================================================================
+[2025-10-04T14:00:47.736Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:00:47.737Z] [INFO] Adding 4 chunks
+[2025-10-04T14:00:47.738Z] [DEBUG] Generating embedding for chunk 1/4
+[2025-10-04T14:00:47.738Z] [DEBUG] Generating embedding for chunk 2/4
+[2025-10-04T14:00:47.739Z] [DEBUG] Generating embedding for chunk 3/4
+[2025-10-04T14:00:47.740Z] [DEBUG] Generating embedding for chunk 4/4
+[2025-10-04T14:00:47.741Z] [SUCCESS] Added 4 chunks with embeddings
+================================================================================
+[2025-10-04T14:00:47.742Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.743Z] [DEBUG] BM25 initialized with 4 documents
+[2025-10-04T14:00:47.743Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T14:00:47.745Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:00:47.747Z] [DEBUG] BM25 initialized with 0 documents
+[2025-10-04T14:00:47.748Z] [SUCCESS] Hybrid search initialized
+[2025-10-04T14:00:47.749Z] [DEBUG] Hybrid search: query="test query", topK=3, alpha=0.5, filter=none
+[2025-10-04T14:00:47.749Z] [DEBUG] Semantic search: query="test query", topK=6, filter=none
+[2025-10-04T14:00:47.750Z] [DEBUG] Semantic search returned 0 results
+[2025-10-04T14:00:47.751Z] [DEBUG] Hybrid search returned 0 results

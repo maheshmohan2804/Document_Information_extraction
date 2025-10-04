@@ -1,0 +1,67 @@
+[2025-10-04T13:34:04.279Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T13-34-04-277Z.log
+================================================================================
+[2025-10-04T13:34:04.403Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.408Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T13:34:04.410Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.413Z] [INFO] Created 1 raw chunks from headers
+[2025-10-04T13:34:04.422Z] [SUCCESS] Chunking complete: 1 total chunks
+[2025-10-04T13:34:04.425Z] [INFO] Size distribution: Small=1, Medium=0, Large=0, Tables=0
+================================================================================
+[2025-10-04T13:34:04.459Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.463Z] [INFO] Config: min=100, max=8000, overlap=50
+[2025-10-04T13:34:04.465Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.467Z] [INFO] Created 0 raw chunks from headers
+[2025-10-04T13:34:04.469Z] [SUCCESS] Chunking complete: 0 total chunks
+[2025-10-04T13:34:04.472Z] [INFO] Size distribution: Small=0, Medium=0, Large=0, Tables=0
+================================================================================
+[2025-10-04T13:34:04.478Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.492Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T13:34:04.494Z] [DEBUG] Extracted 1 tables from markdown
+[2025-10-04T13:34:04.496Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T13:34:04.498Z] [SUCCESS] Created 1 chunks using recursive strategy
+================================================================================
+[2025-10-04T13:34:04.504Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.508Z] [INFO] Config: min=1000, max=5000, overlap=200
+[2025-10-04T13:34:04.510Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.513Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T13:34:04.522Z] [SUCCESS] Created 3 chunks using recursive strategy
+================================================================================
+[2025-10-04T13:34:04.527Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.531Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T13:34:04.534Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.537Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T13:34:04.539Z] [SUCCESS] Created 2 chunks using recursive strategy
+================================================================================
+[2025-10-04T13:34:04.545Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.550Z] [INFO] Config: min=1000, max=5000, overlap=500
+[2025-10-04T13:34:04.552Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.554Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T13:34:04.558Z] [SUCCESS] Created 4 chunks using recursive strategy
+================================================================================
+[2025-10-04T13:34:04.562Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.565Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T13:34:04.568Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.570Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T13:34:04.572Z] [SUCCESS] Created 1 chunks using recursive strategy
+================================================================================
+[2025-10-04T13:34:04.578Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.590Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T13:34:04.591Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.593Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T13:34:04.594Z] [SUCCESS] Created 1 chunks using recursive strategy
+================================================================================
+[2025-10-04T13:34:04.598Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T13:34:04.602Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T13:34:04.603Z] [DEBUG] Extracted 0 tables from markdown
+[2025-10-04T13:34:04.605Z] [INFO] Created 0 raw chunks from headers
+[2025-10-04T13:34:04.607Z] [SUCCESS] Chunking complete: 0 total chunks
+[2025-10-04T13:34:04.609Z] [INFO] Size distribution: Small=0, Medium=0, Large=0, Tables=0

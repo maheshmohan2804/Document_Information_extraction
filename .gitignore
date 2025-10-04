@@ -16,6 +16,7 @@ dist/
 # Jupyter
 .ipynb_checkpoints/
 
+
 # OS
 .DS_Store
 Thumbs.db

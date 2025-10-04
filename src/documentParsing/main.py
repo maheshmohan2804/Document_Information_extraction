@@ -29,6 +29,7 @@ def get_converter(config: ProcessingConfig):
         raise HTTPException(status_code=500, detail="GROQ_API_KEY not set")
     
     prompt = config.prompt or (
+        "If you the image has text, extract the text first. "
         "Describe the figure concisely and accurately, including axes/units if visible. "
         "If the image is a flowchart, describe the steps in order. "
         "If the image is a diagram, describe the components and their relationships. "
@@ -101,17 +102,19 @@ async def process_pdf(
         converter = get_converter(config)
         result = converter.convert(tmp_path)
         doc = result.document
-        
-        # Extract document content as markdown
+
+        # Extract document content as both markdown and HTML
         markdown_content = doc.export_to_markdown()
-        
+        html_content = doc.export_to_html()
+
         # Clean up temporary file
         os.unlink(tmp_path)
-        
+
         return JSONResponse({
             "status": "success",
             "filename": file.filename,
             "content": markdown_content,
+            "html_content": html_content,
             "metadata": {
                 "num_pages": len(doc.pages) if hasattr(doc, 'pages') else None,
             }

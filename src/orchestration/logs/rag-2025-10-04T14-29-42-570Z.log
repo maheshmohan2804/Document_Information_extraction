@@ -1,0 +1,465 @@
+[2025-10-04T14:29:42.571Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T14-29-42-570Z.log
+[2025-10-04T14:29:42.771Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T14:29:42.772Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T14:29:42.773Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "PIIS0022347618306024.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "openai/gpt-oss-20b",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T14:29:42.774Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T14:29:42.775Z] [INFO] File: PIIS0022347618306024.pdf
+[2025-10-04T14:29:42.775Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T14:29:42.777Z] [INFO] Uploading and processing PDF...
+[2025-10-04T14:30:08.360Z] [SUCCESS] Conversion complete.
+[2025-10-04T14:30:08.360Z] [INFO] Markdown length: 27370 chars
+[2025-10-04T14:30:08.361Z] [INFO] HTML length: 26943 chars
+[2025-10-04T14:30:08.361Z] [INFO] Pages: 4
+================================================================================
+[2025-10-04T14:30:08.361Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T14:30:08.362Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T14:30:08.362Z] [DEBUG] Extracted 2 tables from markdown
+[2025-10-04T14:30:08.363Z] [INFO] Created 5 raw chunks from headers
+[2025-10-04T14:30:08.363Z] [SUCCESS] Chunking complete: 5 total chunks
+[2025-10-04T14:30:08.363Z] [INFO] Size distribution: Small=1, Medium=3, Large=1, Tables=2
+[2025-10-04T14:30:08.363Z] [WARN] Warning: 1 chunks still exceed max size (likely tables)
+[2025-10-04T14:30:08.363Z] [SUCCESS] Created 5 chunks from markdown
+================================================================================
+[2025-10-04T14:30:08.364Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:30:08.364Z] [INFO] Processing 5 chunks
+[2025-10-04T14:30:08.364Z] [DEBUG] Processing chunk 1/5 (metadata extraction): Food Protein-Induced Enterocolitis Instead of Necr...
+[2025-10-04T14:30:09.116Z] [DEBUG] Raw metadata extraction response: {"tags":["<summary>","<research_methods>","<findings_conclusion>","<metadata>"],"authors":"Mary W. Lenfestey, Diomel de la Cruz, Josef Neu","date":"2018
+[2025-10-04T14:30:09.117Z] [DEBUG] JSON parse failed for chunk 1, adding without tags
+[2025-10-04T14:30:09.117Z] [DEBUG] Processing chunk 2/5 (metadata extraction): Methods...
+[2025-10-04T14:30:09.771Z] [DEBUG] Raw metadata extraction response: 
+[2025-10-04T14:30:09.772Z] [DEBUG] JSON parse failed for chunk 2, adding without tags
+[2025-10-04T14:30:09.772Z] [DEBUG] Processing chunk 3/5 (metadata extraction): Case A...
+[2025-10-04T14:30:10.327Z] [DEBUG] Raw metadata extraction response: {"tags":["<summary>","<research_methods>","<findings_conclusion>","<metadata>"],"authors":null,"date":null}
+[2025-10-04T14:30:10.328Z] [DEBUG] Chunk 3 tagged with: <summary>, <research_methods>, <findings_conclusion>, <metadata>
+[2025-10-04T14:30:10.328Z] [DEBUG] Processing chunk 4/5: Discussion...
+[2025-10-04T14:30:10.733Z] [DEBUG] Raw tagging response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T14:30:10.733Z] [DEBUG] Chunk 4 tagged with: <findings_conclusion>
+[2025-10-04T14:30:10.734Z] [DEBUG] Processing chunk 5/5: Table II. Detailed laboratory and imaging summary ...
+[2025-10-04T14:30:11.195Z] [DEBUG] Raw tagging response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T14:30:11.195Z] [DEBUG] Chunk 5 tagged with: <findings_conclusion>
+[2025-10-04T14:30:11.196Z] [SUCCESS] Tagged 5 chunks
+[2025-10-04T14:30:11.196Z] [INFO] Tag distribution:
+  Data: {
+  "<summary>": 1,
+  "<research_methods>": 1,
+  "<findings_conclusion>": 3,
+  "<metadata>": 1
+}
+[2025-10-04T14:30:11.197Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}
+================================================================================
+[2025-10-04T14:30:11.198Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T14:30:11.198Z] [INFO] Adding 5 chunks
+[2025-10-04T14:30:11.198Z] [DEBUG] Generating embedding for chunk 1/5
+[2025-10-04T14:30:11.199Z] [DEBUG] Generating embedding for chunk 2/5
+[2025-10-04T14:30:11.199Z] [DEBUG] Generating embedding for chunk 3/5
+[2025-10-04T14:30:11.200Z] [DEBUG] Generating embedding for chunk 4/5
+[2025-10-04T14:30:11.200Z] [DEBUG] Generating embedding for chunk 5/5
+[2025-10-04T14:30:11.200Z] [SUCCESS] Added 5 chunks with embeddings
+================================================================================
+[2025-10-04T14:30:11.201Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T14:30:11.203Z] [DEBUG] BM25 initialized with 5 documents
+[2025-10-04T14:30:11.203Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T14:30:11.204Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T14:30:11.204Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T14:30:11.204Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:30:11.205Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:30:11.205Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:30:11.205Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:30:11.205Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:30:11.206Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:30:11.206Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:30:11.208Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:30:11.208Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:30:11.570Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk contains only a Methods section and does not list any author names.)
+[2025-10-04T14:30:11.985Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - HIGH (The chunk lists the paper’s authors—Mary W. Lenfestey, Diomel de la Cruz, and Josef Neu—directly answering the query.)
+[2025-10-04T14:30:12.341Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains a clinical case description but no author information.)
+[2025-10-04T14:30:12.689Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk contains laboratory data, not author information.)
+[2025-10-04T14:30:13.047Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains discussion content but does not list or mention any author names.)
+[2025-10-04T14:30:13.048Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:30:13.048Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:30:13.415Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "Who are the authors of this paper? List all author names."
+[2025-10-04T14:30:13.415Z] [INFO] Iteration 2: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:30:13.415Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:30:13.416Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T14:30:13.416Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:30:13.417Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:30:13.417Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:30:13.785Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk contains only a methods description and does not list any author names.)
+[2025-10-04T14:30:14.561Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains a clinical case description but does not mention any author names or provide any information about the paper’s authors.)
+[2025-10-04T14:30:14.922Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk contains laboratory data tables, not author information.)
+[2025-10-04T14:30:17.519Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains discussion content but does not list or mention any author names.)
+[2025-10-04T14:30:17.519Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:30:17.519Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:30:17.520Z] [INFO] Final query: "Who are the authors of this paper? List all author names."
+[2025-10-04T14:30:17.520Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:30:17.520Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T14:30:17.520Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:30:17.521Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T14:30:17.521Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:30:17.521Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:30:17.521Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:30:17.521Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:30:17.522Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:30:17.522Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:30:17.522Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:30:21.044Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk contains only laboratory and imaging data; it does not mention the publication date or year of the paper.)
+[2025-10-04T14:30:24.528Z] [INFO]   [ACCEPT] Food Protein-Induced Enterocolitis Instead of Necr... - HIGH (The chunk explicitly cites the paper as “J Pediatr 2018;200:270-3,” indicating its publication year is 2018.)
+[2025-10-04T14:30:28.035Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains a clinical case description but does not mention any publication date or year.)
+[2025-10-04T14:30:30.495Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains discussion content but no mention of the paper’s publication date or year.)
+[2025-10-04T14:30:33.073Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk only describes study methods and dates of patient data (2014‑2017) and does not mention the paper’s publication date or year.)
+[2025-10-04T14:30:33.073Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:30:33.073Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:30:35.507Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "What is the publication date or year of this paper?"
+[2025-10-04T14:30:35.507Z] [INFO] Iteration 2: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T14:30:35.507Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:30:35.508Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T14:30:35.509Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:30:35.510Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:30:35.510Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:30:37.967Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk contains only laboratory and imaging data; it does not mention the publication date or year of the paper.)
+[2025-10-04T14:30:45.146Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains a clinical case description but does not mention any publication date or year.)
+[2025-10-04T14:30:47.624Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains discussion content but no mention of the paper’s publication date or year.)
+[2025-10-04T14:30:51.243Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk only describes study methods and dates of patient data (2014‑2017) and does not provide the paper’s publication date or year.)
+[2025-10-04T14:30:51.244Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:30:51.244Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:30:51.244Z] [INFO] Final query: "What is the publication date or year of this paper?"
+[2025-10-04T14:30:51.244Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:30:51.245Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T14:30:51.245Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:30:51.245Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:30:51.245Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:30:51.245Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:30:51.245Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:30:51.245Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:30:51.246Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:30:51.246Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:30:51.246Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:30:54.739Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (Unknown)
+[2025-10-04T14:30:58.222Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:31:02.839Z] [INFO]   [ACCEPT] Case A... - HIGH (The chunk presents a detailed patient case narrative,)
+[2025-10-04T14:31:05.343Z] [DEBUG]   [REJECT] Discussion... - Rejected (Unknown)
+[2025-10-04T14:31:08.928Z] [INFO]   [ACCEPT] Methods... - HIGH (The chunk contains a detailed Methods section describing)
+[2025-10-04T14:31:08.928Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T14:31:08.928Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:31:11.461Z] [DEBUG] Query rewritten: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc." -> "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:31:11.462Z] [INFO] Iteration 2: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:31:11.463Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:31:11.464Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T14:31:11.465Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:31:11.469Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:31:11.469Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:31:14.940Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (Unknown)
+[2025-10-04T14:31:18.493Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:31:25.455Z] [DEBUG]   [REJECT] Discussion... - Rejected (Unknown)
+[2025-10-04T14:31:28.933Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T14:31:28.933Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:31:28.933Z] [INFO] Final query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T14:31:28.934Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T14:31:28.934Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T14:31:28.934Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:31:28.934Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:31:28.935Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:31:28.935Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:31:28.935Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:31:28.935Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:31:28.935Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:31:28.936Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:31:28.936Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:31:32.399Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:31:35.955Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk contains a discussion point about FPIES and NEC, but does not provide the abstract, main purpose, or overall overview of the paper.)
+[2025-10-04T14:31:39.434Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains a single patient case description, not an abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:31:42.869Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk contains a detailed lab/imaging table, not the abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:31:46.340Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk only describes the study’s methods and patient selection, not the abstract, main purpose, or overall overview of the paper.)
+[2025-10-04T14:31:46.340Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:31:46.340Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:31:47.768Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:31:47.769Z] [INFO] Iteration 2: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:31:47.770Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:31:47.771Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:31:47.771Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:31:47.774Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:31:47.775Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:31:51.390Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:31:54.866Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk is a discussion excerpt about FPIES and NEC, not the abstract, main purpose, or overall overview of the paper.)
+[2025-10-04T14:31:58.331Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk contains a single patient case description, not an abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:32:01.779Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk contains a detailed lab/imaging table, not the abstract, main purpose, or overview of the paper.)
+[2025-10-04T14:32:05.255Z] [DEBUG]   [REJECT] Methods... - Rejected (The chunk only describes the study’s methods and patient selection, not the abstract, main purpose, or overall overview of the paper.)
+[2025-10-04T14:32:05.256Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T14:32:05.256Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T14:32:05.256Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:32:05.256Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T14:32:05.257Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:32:05.258Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:32:05.258Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:32:05.258Z] [INFO] Final query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T14:32:05.258Z] [INFO] Iterations: 2, Relevant chunks: 5
+[2025-10-04T14:32:05.258Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T14:32:05.259Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:32:05.259Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:32:05.259Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:32:05.259Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:32:05.260Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:32:05.260Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:32:05.260Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:32:05.260Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:32:05.260Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:32:08.709Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The table lists patient lab and imaging results but does not describe the research methods, study design, or analytical approaches used in the study.)
+[2025-10-04T14:32:12.180Z] [INFO]   [ACCEPT] Methods... - HIGH (The chunk explicitly describes the study design (chart review of 56 infants), the research methods (data collection on clinical presentation, imaging, lab findings, surgical intervention)
+[2025-10-04T14:32:15.630Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk describes a single patient case and clinical course, with no mention of research methods, study design, or analytical approaches.)
+[2025-10-04T14:32:19.203Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:32:21.751Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk only discusses clinical observations and diagnostic challenges; it does not describe any research methods, study design, or analytical approaches.)
+[2025-10-04T14:32:21.752Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T14:32:21.752Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T14:32:23.174Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:32:23.175Z] [INFO] Iteration 2: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:32:23.175Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:32:23.175Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T14:32:23.175Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:32:23.176Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:32:23.176Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:32:26.716Z] [DEBUG]   [REJECT] Table II. Detailed laboratory and imaging summary ... - Rejected (The chunk only lists patient lab and imaging data, not the research methods, study design, or analytical approaches used in the study.)
+[2025-10-04T14:32:33.661Z] [DEBUG]   [REJECT] Case A... - Rejected (The chunk describes a single patient case and clinical events, with no mention of research methods, study design, or analytical approaches.)
+[2025-10-04T14:32:37.162Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:32:40.645Z] [DEBUG]   [REJECT] Discussion... - Rejected (The chunk discusses clinical observations and challenges in diagnosis, but does not describe any research methods, study design, or analytical approaches.)
+[2025-10-04T14:32:40.646Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T14:32:40.646Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:32:40.647Z] [INFO] Final query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T14:32:40.648Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T14:32:40.648Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T14:32:40.650Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T14:32:40.651Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:32:40.651Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T14:32:40.652Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:32:40.653Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T14:32:40.653Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T14:32:40.654Z] [DEBUG] Semantic search returned 5 results
+[2025-10-04T14:32:40.656Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T14:32:40.657Z] [INFO] Grading 5 chunks...
+[2025-10-04T14:33:40.956Z] [DEBUG]   [REJECT] Food Protein-Induced Enterocolitis Instead of Necr... - Rejected (Unknown)
+[2025-10-04T14:33:41.018Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9895654f6fe81b3c-ORD",
+    "connection": "keep-alive",
+    "content-length": "386",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 14:33:41 GMT",
+    "retry-after": "215",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=Y31e1qR7jn5g6mMEQ59DbJXZAJFH.WrBifSXwhMelgI-1759588421-1.0.1.1-Vnj59OBdKpQuWAeQzY1QXqOdpxSvORZ_TCg5j1kgQusW_UcOziO7T_mXh87tF2ZbZlQhxcPu2Oj0cpJ8PNSOjVjmC0zsup76aZ.5n4DBXyc; path=/; expires=Sat, 04-Oct-25 15:03:41 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "8000",
+    "x-ratelimit-remaining-requests": "682",
+    "x-ratelimit-remaining-tokens": "7545",
+    "x-ratelimit-reset-requests": "7h37m54.788s",
+    "x-ratelimit-reset-tokens": "3.406999999s",
+    "x-request-id": "req_01k6qt93djeak9srn9g7b9wac3",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 347. Please try again in 3m34.198999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 347. Please try again in 3m34.198999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T14:33:41.031Z] [INFO]   [ACCEPT] Case A... - MEDIUM (Error during grading)
+[2025-10-04T14:33:41.161Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9895654fd8de1b3c-ORD",
+    "connection": "keep-alive",
+    "content-length": "380",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 14:33:41 GMT",
+    "retry-after": "206",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=jbXA1a.fBH1ghTT9TIXfe8EG0BSeAuaIYU_OeaSL2qw-1759588421-1.0.1.1-_w_mWWz4PoKZ4YfxYMW4QqgmiHsvZU0cGm1L0mFTxborn_H6uumDzdSszQpcxFnB9OQV8XuRfeZTyT1.gk_6hW7DkSj6XYrcPboAGJ5OXeM; path=/; expires=Sat, 04-Oct-25 15:03:41 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "8000",
+    "x-ratelimit-remaining-requests": "682",
+    "x-ratelimit-remaining-tokens": "7555",
+    "x-ratelimit-reset-requests": "7h37m54.718s",
+    "x-ratelimit-reset-tokens": "3.337s",
+    "x-request-id": "req_01k6qt93fqemxbxa3ck04tdkq7",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 327. Please try again in 3m25.489s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 327. Please try again in 3m25.489s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T14:33:41.163Z] [INFO]   [ACCEPT] Methods... - MEDIUM (Error during grading)
+[2025-10-04T14:33:41.218Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98956550aafb1b3c-ORD",
+    "connection": "keep-alive",
+    "content-length": "380",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 14:33:41 GMT",
+    "retry-after": "161",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=mbH1JPRmh4ZcHOT5CdOWFqhbnwWdh1bnf.j3SAmJA4c-1759588421-1.0.1.1-C68XqbVyJBkn0sCaKaX5NqK4g7HuTYUfsD2dGNW2noZE49xl.e8JNIk24pirBpohsZUmLkMgf2X6WRcbo_rfcfg1OgD8CsEgck_jhiVvth0; path=/; expires=Sat, 04-Oct-25 15:03:41 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "8000",
+    "x-ratelimit-remaining-requests": "682",
+    "x-ratelimit-remaining-tokens": "7572",
+    "x-ratelimit-reset-requests": "7h37m54.588s",
+    "x-ratelimit-reset-tokens": "3.207s",
+    "x-request-id": "req_01k6qt93kve32rvmaeav2webde",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 224. Please try again in 2m40.863s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 224. Please try again in 2m40.863s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T14:33:41.221Z] [INFO]   [ACCEPT] Discussion... - MEDIUM (Error during grading)
+[2025-10-04T14:33:41.366Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989565510be71b3c-ORD",
+    "connection": "keep-alive",
+    "content-length": "380",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 14:33:41 GMT",
+    "retry-after": "205",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=nfXzzFUkYZtT7UaIX2UzGQn1iRFbkSNWPQCm2e8HVe4-1759588421-1.0.1.1-vwuFQ7.UefD9BLAqhcG9uLB1X8MjObUG.in2Bg00AR1.tQkiO7D_E6Ct2GM9gzmbu84GWRYUEkPec_wH3WALjM4k1XL8CyddLeINpyUHU7Q; path=/; expires=Sat, 04-Oct-25 15:03:41 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "8000",
+    "x-ratelimit-remaining-requests": "682",
+    "x-ratelimit-remaining-tokens": "7580",
+    "x-ratelimit-reset-requests": "7h37m54.529s",
+    "x-ratelimit-reset-tokens": "3.148s",
+    "x-request-id": "req_01k6qt93nqemyr9zm7waapewqr",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 325. Please try again in 3m24.436s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200148, Requested 325. Please try again in 3m24.436s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T14:33:41.368Z] [INFO]   [ACCEPT] Table II. Detailed laboratory and imaging summary ... - MEDIUM (Error during grading)
+[2025-10-04T14:33:41.368Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T14:33:41.369Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T14:33:41.369Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T14:33:41.369Z] [INFO] Final query: "What are the key findings, results, and conclusions?"
+[2025-10-04T14:33:41.369Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T14:33:41.369Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T14:33:41.444Z] [ERROR] Error during final extraction

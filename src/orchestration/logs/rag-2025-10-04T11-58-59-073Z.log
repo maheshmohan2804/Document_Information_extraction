@@ -1,0 +1,280 @@
+[2025-10-04T11:58:59.074Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T11-58-59-073Z.log
+[2025-10-04T11:58:59.280Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T11:58:59.281Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T11:58:59.281Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "s12887-020-02231-5.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "openai/gpt-oss-120b",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T11:58:59.282Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T11:58:59.283Z] [INFO] File: s12887-020-02231-5.pdf
+[2025-10-04T11:58:59.283Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T11:58:59.296Z] [INFO] Uploading and processing PDF...
+[2025-10-04T12:00:27.321Z] [SUCCESS] Conversion complete.
+[2025-10-04T12:00:27.322Z] [INFO] Markdown length: 81646 chars
+[2025-10-04T12:00:27.322Z] [INFO] HTML length: 70940 chars
+[2025-10-04T12:00:27.322Z] [INFO] Pages: 15
+================================================================================
+[2025-10-04T12:00:27.323Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T12:00:27.323Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T12:00:27.324Z] [DEBUG] Extracted 6 tables from markdown
+[2025-10-04T12:00:27.324Z] [INFO] Created 30 raw chunks from headers
+[2025-10-04T12:00:27.325Z] [SUCCESS] Chunking complete: 13 total chunks
+[2025-10-04T12:00:27.325Z] [INFO] Size distribution: Small=1, Medium=10, Large=2, Tables=3
+[2025-10-04T12:00:27.325Z] [WARN] Warning: 2 chunks still exceed max size (likely tables)
+[2025-10-04T12:00:27.325Z] [SUCCESS] Created 13 chunks from markdown
+================================================================================
+[2025-10-04T12:00:27.326Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T12:00:27.326Z] [INFO] Processing 13 chunks
+[2025-10-04T12:00:27.327Z] [DEBUG] Processing chunk 1/13: Global incidence of Necrotizing Enterocolitis: a s...
+[2025-10-04T12:00:28.092Z] [DEBUG] Chunk 1 tagged with: 
+[2025-10-04T12:00:28.092Z] [DEBUG] Processing chunk 2/13: Background...
+[2025-10-04T12:00:28.629Z] [DEBUG] Chunk 2 tagged with: <summary>
+[2025-10-04T12:00:28.630Z] [DEBUG] Processing chunk 3/13: Methods + Eligibility criteria...
+[2025-10-04T12:00:29.390Z] [DEBUG] Chunk 3 tagged with: <research_methods>
+[2025-10-04T12:00:29.391Z] [DEBUG] Processing chunk 4/13: Population and outcome + Search data bases + Searc...
+[2025-10-04T12:00:30.064Z] [DEBUG] Chunk 4 tagged with: <research_methods>
+[2025-10-04T12:00:30.064Z] [DEBUG] Processing chunk 5/13: Study selection + Data extraction...
+[2025-10-04T12:00:30.753Z] [INFO] Found authors: AA, NI
+[2025-10-04T12:00:30.754Z] [DEBUG] Chunk 5 tagged with: <research_methods>
+[2025-10-04T12:00:30.754Z] [DEBUG] Processing chunk 6/13: Risk of Bias assessment + Data synthesis...
+[2025-10-04T12:00:31.311Z] [DEBUG] Chunk 6 tagged with: <research_methods>
+[2025-10-04T12:00:31.311Z] [DEBUG] Processing chunk 7/13: Study characteristics...
+[2025-10-04T12:00:31.998Z] [DEBUG] Chunk 7 tagged with: <research_methods>, <findings_conclusion>
+[2025-10-04T12:00:31.999Z] [DEBUG] Processing chunk 8/13: Qualitative review...
+[2025-10-04T12:00:32.645Z] [DEBUG] Chunk 8 tagged with: findings_conclusion
+[2025-10-04T12:00:32.645Z] [DEBUG] Processing chunk 9/13: Assessment of risk of Bias + Quantitative analysis...
+[2025-10-04T12:00:33.281Z] [DEBUG] Chunk 9 tagged with: <findings_conclusion>, <research_methods>
+[2025-10-04T12:00:33.281Z] [DEBUG] Processing chunk 10/13: Subgroup analysis + Meta-regression...
+[2025-10-04T12:00:33.768Z] [DEBUG] Chunk 10 tagged with: <findings_conclusion>
+[2025-10-04T12:00:33.768Z] [DEBUG] Processing chunk 11/13: Discussion...
+[2025-10-04T12:00:34.354Z] [DEBUG] Chunk 11 tagged with: <findings_conclusion>
+[2025-10-04T12:00:34.355Z] [DEBUG] Processing chunk 12/13: Conclusions + Supplementary information + Abbrevia...
+[2025-10-04T12:00:34.960Z] [DEBUG] Chunk 12 tagged with: <findings_conclusion>, <metadata>
+[2025-10-04T12:00:34.960Z] [DEBUG] Processing chunk 13/13: Availability of data and materials + Ethics approv...
+[2025-10-04T12:00:38.740Z] [DEBUG] Chunk 13 tagged with: 
+[2025-10-04T12:00:38.741Z] [SUCCESS] Tagged 13 chunks
+[2025-10-04T12:00:38.742Z] [INFO] Tag distribution:
+  Data: {
+  "<summary>": 1,
+  "<research_methods>": 6,
+  "<findings_conclusion>": 5,
+  "findings_conclusion": 1,
+  "<metadata>": 1
+}
+[2025-10-04T12:00:38.745Z] [INFO] Document metadata:
+  Data: {
+  "authors": "AA, NI",
+  "date": null
+}
+================================================================================
+[2025-10-04T12:00:38.747Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T12:00:38.749Z] [INFO] Adding 13 chunks
+[2025-10-04T12:00:38.749Z] [DEBUG] Generating embedding for chunk 1/13
+[2025-10-04T12:00:38.749Z] [DEBUG] Generating embedding for chunk 2/13
+[2025-10-04T12:00:38.750Z] [DEBUG] Generating embedding for chunk 3/13
+[2025-10-04T12:00:38.750Z] [DEBUG] Generating embedding for chunk 4/13
+[2025-10-04T12:00:38.751Z] [DEBUG] Generating embedding for chunk 5/13
+[2025-10-04T12:00:38.751Z] [DEBUG] Generating embedding for chunk 6/13
+[2025-10-04T12:00:38.751Z] [DEBUG] Generating embedding for chunk 7/13
+[2025-10-04T12:00:38.753Z] [DEBUG] Generating embedding for chunk 8/13
+[2025-10-04T12:00:38.754Z] [DEBUG] Generating embedding for chunk 9/13
+[2025-10-04T12:00:38.754Z] [DEBUG] Generating embedding for chunk 10/13
+[2025-10-04T12:00:38.755Z] [DEBUG] Generating embedding for chunk 11/13
+[2025-10-04T12:00:38.755Z] [DEBUG] Generating embedding for chunk 12/13
+[2025-10-04T12:00:38.755Z] [DEBUG] Generating embedding for chunk 13/13
+[2025-10-04T12:00:38.755Z] [SUCCESS] Added 13 chunks with embeddings
+================================================================================
+[2025-10-04T12:00:38.756Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T12:00:38.761Z] [DEBUG] BM25 initialized with 13 documents
+[2025-10-04T12:00:38.762Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T12:00:38.762Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T12:00:38.762Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T12:00:38.763Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T12:00:38.763Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T12:00:38.763Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T12:00:38.764Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T12:00:38.764Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T12:00:38.764Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T12:00:38.766Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T12:00:38.769Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T12:00:38.769Z] [INFO] Grading 5 chunks...
+[2025-10-04T12:00:42.414Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - HIGH (The chunk is the abstract of a)
+[2025-10-04T12:00:46.195Z] [INFO]   [ACCEPT] Conclusions + Supplementary information + Abbrevia... - HIGH (Unknown)
+[2025-10-04T12:00:49.866Z] [INFO]   [ACCEPT] Methods + Eligibility criteria... - HIGH (The excerpt describes systematic review methods, eligibility criteria, and PRISMA guidelines, directly indicating the document is a review)
+[2025-10-04T12:00:53.516Z] [INFO]   [ACCEPT] Population and outcome + Search data bases + Searc... - HIGH (The excerpt)
+[2025-10-04T12:00:57.182Z] [INFO]   [ACCEPT] Study selection + Data extraction... - HIGH (The passage describes systematic review methods)
+[2025-10-04T12:00:57.183Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T12:00:57.184Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T12:00:57.184Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T12:00:57.185Z] [INFO] Final query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T12:00:57.186Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T12:00:57.186Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T12:00:57.187Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T12:00:57.189Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T12:00:57.189Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T12:00:57.190Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T12:00:57.190Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T12:00:57.191Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T12:00:57.192Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T12:00:57.193Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T12:00:57.193Z] [INFO] Grading 5 chunks...
+[2025-10-04T12:01:00.847Z] [DEBUG]   [REJECT] Conclusions + Supplementary information + Abbrevia... - Rejected (The chunk only includes conclusions, supplementary info, and abbreviations, without the abstract, purpose, or overview of the paper.)
+[2025-10-04T12:01:04.543Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - HIGH (The chunk provides the paper’s title,)
+[2025-10-04T12:01:08.190Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T12:01:11.856Z] [DEBUG]   [REJECT] Discussion... - Rejected (Unknown)
+[2025-10-04T12:01:15.485Z] [DEBUG]   [REJECT] Background... - Rejected (Unknown)
+[2025-10-04T12:01:15.486Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T12:01:15.486Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T12:01:17.045Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T12:01:17.046Z] [INFO] Iteration 2: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T12:01:17.047Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T12:01:17.048Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T12:01:17.048Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T12:01:17.054Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T12:01:17.055Z] [INFO] Grading 5 chunks...
+[2025-10-04T12:01:20.954Z] [DEBUG]   [REJECT] Conclusions + Supplementary information + Abbrevia... - Rejected (Unknown)
+[2025-10-04T12:01:28.239Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T12:01:31.878Z] [DEBUG]   [REJECT] Discussion... - Rejected (Unknown)
+[2025-10-04T12:01:35.512Z] [DEBUG]   [REJECT] Background... - Rejected (Unknown)
+[2025-10-04T12:01:35.512Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T12:01:35.512Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T12:01:35.512Z] [INFO] Final query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T12:01:35.513Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T12:01:35.513Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T12:01:35.513Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T12:01:35.514Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T12:01:35.514Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T12:01:35.514Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T12:01:35.514Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T12:01:35.514Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T12:01:35.514Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T12:01:35.515Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T12:01:35.516Z] [INFO] Grading 5 chunks...
+[2025-10-04T12:01:38.307Z] [INFO]   [ACCEPT] Methods + Eligibility criteria... - MEDIUM ()
+[2025-10-04T12:01:41.944Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - HIGH (The chunk explicitly details the study design (systematic review)
+[2025-10-04T12:01:45.692Z] [DEBUG]   [REJECT] Population and outcome + Search data bases + Searc... - Rejected (Unknown)
+[2025-10-04T12:01:49.344Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T12:01:54.240Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - HIGH (The excerpt details the study’s methodological assessment, design elements (sample selection, data collection), and analytical approaches (random‑effects model, heterogeneity testing, quality‑adjusted QEM).)
+[2025-10-04T12:01:54.241Z] [INFO] Found 3 relevant chunks (Total: 3)
+[2025-10-04T12:01:54.241Z] [SUCCESS] SUCCESS: Found 3 relevant chunks!
+[2025-10-04T12:01:54.242Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T12:01:54.243Z] [INFO] Final query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T12:01:54.243Z] [INFO] Iterations: 1, Relevant chunks: 3
+[2025-10-04T12:01:54.244Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T12:01:54.245Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T12:01:54.246Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T12:01:54.247Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T12:01:54.248Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T12:01:54.249Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T12:01:54.249Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T12:01:54.250Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T12:01:54.252Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T12:01:54.253Z] [INFO] Grading 5 chunks...
+[2025-10-04T12:01:57.967Z] [DEBUG]   [REJECT] Assessment of risk of Bias + Quantitative analysis... - Rejected (Unknown)
+[2025-10-04T12:02:01.614Z] [DEBUG]   [REJECT] Global incidence of Necrotizing Enterocolitis: a s... - Rejected (Unknown)
+[2025-10-04T12:02:05.357Z] [INFO]   [ACCEPT] Conclusions + Supplementary information + Abbrevia... - HIGH (The chunk contains the study’s conclusions and key quantitative findings, directly answering the query about results and conclusions.)
+[2025-10-04T12:02:07.998Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (The chunk describes methodological details (bias assessment and data synthesis) rather than the study’s key findings, results)
+[2025-10-04T12:02:11.652Z] [DEBUG]   [REJECT] Methods + Eligibility criteria... - Rejected (The chunk only details the review’s methods and eligibility criteria, without presenting any findings, results, or conclusions.)
+[2025-10-04T12:02:11.653Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T12:02:11.653Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T12:02:13.281Z] [DEBUG] Query rewritten: "What are the key findings, results, and conclusions?" -> "What are the key findings, results, and conclusions?"
+[2025-10-04T12:02:13.281Z] [INFO] Iteration 2: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T12:02:13.281Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T12:02:13.281Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T12:02:13.282Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T12:02:13.283Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T12:02:13.283Z] [INFO] Grading 5 chunks...
+[2025-10-04T12:02:16.914Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - HIGH (The chunk presents core results (incidence estimates, heterogeneity statistics) and conclusions about study quality and analysis methods, directly addressing key findings.)
+[2025-10-04T12:02:20.591Z] [DEBUG]   [REJECT] Global incidence of Necrotizing Enterocolitis: a s... - Rejected (Unknown)
+[2025-10-04T12:02:27.842Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (The chunk describes methodological details (bias assessment and data synthesis) rather than the study’s key findings, results)
+[2025-10-04T12:02:31.416Z] [DEBUG]   [REJECT] Methods + Eligibility criteria... - Rejected (The chunk only details the review’s methods and eligibility criteria, without presenting any findings, results, or conclusions.)
+[2025-10-04T12:02:31.416Z] [INFO] Found 1 relevant chunks (Total: 2)
+[2025-10-04T12:02:31.417Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T12:02:31.417Z] [INFO] Final query: "What are the key findings, results, and conclusions?"
+[2025-10-04T12:02:31.417Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T12:02:31.418Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T12:02:55.923Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T12:02:55.923Z] [DEBUG] Document Information  
+Author(s): AA, NI  
+Date: 2020 (year of publication; exact date not provided)  
+Document Type: Systematic review and meta‑analysis (research article)  
+
+Document Summary  
+This study systematically reviewed cohort and population‑based reports of necrotizing enterocolitis (NEC) among very low birth weight (VLBW) infants to estimate the global incidence. By pooling data from 27 studies encompassing over half a million newborns, the authors found that approximately seven percent of VLBW infants develop NEC, with notable heterogeneity across regions and an apparent increase in incidence over time.  
+
+Research Methods  
+- Design: Systematic review and meta‑analysis following PRISMA guidelines.  
+- Data Sources: PubMed, MEDLINE, Cochrane Library, EMBASE, and grey‑literature sources.  
+- Eligibility: Cohort or population‑based studies (prospective or retrospective) reporting the number or incidence of confirmed NEC in preterm or VLBW infants with a clear denominator. Excluded were randomized trials, case series without denominators, and studies focusing on selected sub‑populations where overall incidence could not be extracted.  
+- Study Selection: 27 eligible studies were identified after comprehensive searching and screening.  
+- Sample Size: Combined total of 574,692 VLBW infants; 39,965 cases of NEC were reported.  
+- Quality Assessment: Conducted using Hoy et al. criteria; 17 of 27 studies scored ≥8/10, indicating low risk of bias.  
+- Statistical Analyses:  
+  * Primary pooling performed with a Random Effects Model (REM) due to extreme heterogeneity (I² = 100%, Cochrane Q = 7473, p < 0.0001).  
+  * Sensitivity analysis using a bias‑adjusted Quality Effect Model (QEM).  
+  * Subgroup analyses by geographic region and country income level.  
+  * Meta‑regression to explore sources of heterogeneity, including publication year as a covariate.  
+  * Publication bias assessed with Hunter’s modified funnel plot appropriate for incidence data.  
+
+Key Findings and Conclusions  
+- Pooled incidence of NEC among VLBW infants was 7.0 % (95 % CI 6.0–8.0 %) using REM; QEM yielded a comparable estimate of 6.0 % (95 % CI 4.0–9.0 %).  
+- No evidence of publication bias was detected in funnel‑plot analyses.  
+- Incidence estimates were broadly similar across regions, though some differences emerged between high‑ and low‑income countries.  
+- Meta‑regression demonstrated a statistically significant upward trend in NEC incidence over calendar years, suggesting a possible increase over time.  
+- The very high heterogeneity (I² = 100 %) indicates substantial variability likely driven by differences in clinical practices, health‑system factors, and methodological approaches among the included studies.  
+- Conclusions: Roughly one in fourteen VLBW infants admitted to NICUs worldwide will develop NEC, but the wide variation underscores the need for high‑quality, standardized incidence studies—especially from low‑ and middle‑income settings—to better understand and ultimately reduce the burden of this disease.
+[2025-10-04T12:02:55.923Z] [SUCCESS] Document extraction complete
+[2025-10-04T12:02:55.924Z] [INFO] Extraction statistics:
+  Data: {
+  "documentTypeChunks": 5,
+  "summaryChunks": 1,
+  "methodsChunks": 3,
+  "findingsChunks": 2,
+  "totalIterations": 6
+}
+================================================================================
+[2025-10-04T12:02:55.924Z] [INFO] Pipeline Complete
+================================================================================
+[2025-10-04T12:02:55.924Z] [SUCCESS] Total execution time: 236.64s
+[2025-10-04T12:02:55.924Z] [INFO] Extraction result:
+  Data: {
+  "authors": "AA, NI",
+  "date": "Not found",
+  "documentType": "Not extracted",
+  "summary": "Not extracted",
+  "methods": "Not extracted",
+  "findings": "Not extracted"
+}
+[2025-10-04T12:02:55.925Z] [INFO] Log file: logs\rag-2025-10-04T11-58-59-073Z.log
+================================================================================
+[2025-10-04T12:02:55.925Z] [INFO] EXTRACTION RESULTS
+================================================================================
+================================================================================
+[2025-10-04T12:02:55.926Z] [INFO] Saving extraction results to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759579375926.json
+[2025-10-04T12:02:55.927Z] [SUCCESS] Results saved to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759579375926.json
+[2025-10-04T12:02:55.927Z] [SUCCESS] Pipeline completed successfully

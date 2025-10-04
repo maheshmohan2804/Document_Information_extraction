@@ -1,0 +1,56 @@
+[2025-10-04T13:51:14.511Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T13-51-14-509Z.log
+================================================================================
+[2025-10-04T13:51:14.630Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T13:51:14.636Z] [INFO] Adding 3 chunks
+[2025-10-04T13:51:14.640Z] [DEBUG] Generating embedding for chunk 1/3
+[2025-10-04T13:51:14.643Z] [DEBUG] Generating embedding for chunk 2/3
+[2025-10-04T13:51:14.652Z] [DEBUG] Generating embedding for chunk 3/3
+[2025-10-04T13:51:14.655Z] [SUCCESS] Added 3 chunks with embeddings
+================================================================================
+[2025-10-04T13:51:14.663Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T13:51:14.668Z] [INFO] Adding 0 chunks
+[2025-10-04T13:51:14.670Z] [SUCCESS] Added 0 chunks with embeddings
+================================================================================
+[2025-10-04T13:51:14.675Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T13:51:14.679Z] [INFO] Adding 3 chunks
+[2025-10-04T13:51:14.681Z] [DEBUG] Generating embedding for chunk 1/3
+[2025-10-04T13:51:14.683Z] [DEBUG] Generating embedding for chunk 2/3
+[2025-10-04T13:51:14.685Z] [DEBUG] Generating embedding for chunk 3/3
+[2025-10-04T13:51:14.689Z] [SUCCESS] Added 3 chunks with embeddings
+[2025-10-04T13:51:14.692Z] [DEBUG] Semantic search: query="machine learning neural networks", topK=2, filter=none
+[2025-10-04T13:51:14.695Z] [DEBUG] Semantic search returned 2 results
+================================================================================
+[2025-10-04T13:51:14.701Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T13:51:14.705Z] [INFO] Adding 3 chunks
+[2025-10-04T13:51:14.707Z] [DEBUG] Generating embedding for chunk 1/3
+[2025-10-04T13:51:14.709Z] [DEBUG] Generating embedding for chunk 2/3
+[2025-10-04T13:51:14.711Z] [DEBUG] Generating embedding for chunk 3/3
+[2025-10-04T13:51:14.714Z] [SUCCESS] Added 3 chunks with embeddings
+[2025-10-04T13:51:14.717Z] [DEBUG] Semantic search: query="methods", topK=5, filter=<research_methods>
+[2025-10-04T13:51:14.721Z] [DEBUG] Semantic search returned 1 results
+================================================================================
+[2025-10-04T13:51:14.731Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T13:51:14.735Z] [INFO] Adding 3 chunks
+[2025-10-04T13:51:14.737Z] [DEBUG] Generating embedding for chunk 1/3
+[2025-10-04T13:51:14.739Z] [DEBUG] Generating embedding for chunk 2/3
+[2025-10-04T13:51:14.742Z] [DEBUG] Generating embedding for chunk 3/3
+[2025-10-04T13:51:14.751Z] [SUCCESS] Added 3 chunks with embeddings
+[2025-10-04T13:51:14.754Z] [DEBUG] Semantic search: query="machine learning", topK=3, filter=none
+[2025-10-04T13:51:14.756Z] [DEBUG] Semantic search returned 3 results
+[2025-10-04T13:51:14.773Z] [DEBUG] Semantic search: query="test query", topK=5, filter=none
+[2025-10-04T13:51:14.775Z] [DEBUG] Semantic search returned 0 results
+================================================================================
+[2025-10-04T13:51:14.782Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T13:51:14.786Z] [INFO] Adding 3 chunks
+[2025-10-04T13:51:14.790Z] [DEBUG] Generating embedding for chunk 1/3
+[2025-10-04T13:51:14.793Z] [DEBUG] Generating embedding for chunk 2/3
+[2025-10-04T13:51:14.797Z] [DEBUG] Generating embedding for chunk 3/3
+[2025-10-04T13:51:14.799Z] [SUCCESS] Added 3 chunks with embeddings
+[2025-10-04T13:51:14.803Z] [DEBUG] Semantic search: query="", topK=3, filter=none
+[2025-10-04T13:51:14.804Z] [DEBUG] Semantic search returned 3 results

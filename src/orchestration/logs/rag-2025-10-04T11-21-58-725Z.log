@@ -1,0 +1,233 @@
+[2025-10-04T11:21:58.726Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T11-21-58-725Z.log
+================================================================================
+[2025-10-04T11:21:58.931Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T11:21:58.931Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "s12887-020-02231-5.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "openai/gpt-oss-120b",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T11:21:58.932Z] [INFO] PDF to Markdown Conversion
+================================================================================
+[2025-10-04T11:21:58.933Z] [INFO] File: s12887-020-02231-5.pdf
+[2025-10-04T11:21:58.933Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T11:21:58.935Z] [INFO] Uploading and processing PDF...
+[2025-10-04T11:23:23.432Z] [SUCCESS] Conversion complete. Markdown length: 83642 chars
+[2025-10-04T11:23:23.433Z] [INFO] Pages: 15
+================================================================================
+[2025-10-04T11:23:23.433Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T11:23:23.433Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T11:23:23.434Z] [DEBUG] Extracted 6 tables from markdown
+[2025-10-04T11:23:23.434Z] [INFO] Created 30 raw chunks from headers
+[2025-10-04T11:23:23.435Z] [SUCCESS] Chunking complete: 13 total chunks
+[2025-10-04T11:23:23.435Z] [INFO] Size distribution: Small=1, Medium=10, Large=2, Tables=3
+[2025-10-04T11:23:23.435Z] [WARN] Warning: 2 chunks still exceed max size (likely tables)
+================================================================================
+[2025-10-04T11:23:23.435Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T11:23:23.436Z] [INFO] Processing 13 chunks
+[2025-10-04T11:23:23.436Z] [DEBUG] Processing chunk 1/13: Global incidence of Necrotizing Enterocolitis: a s...
+[2025-10-04T11:23:24.282Z] [DEBUG] Chunk 1 tagged with: 
+[2025-10-04T11:23:24.283Z] [DEBUG] Processing chunk 2/13: Background...
+[2025-10-04T11:23:24.762Z] [DEBUG] Chunk 2 tagged with: summary
+[2025-10-04T11:23:24.763Z] [DEBUG] Processing chunk 3/13: Methods + Eligibility criteria...
+[2025-10-04T11:23:25.392Z] [DEBUG] Chunk 3 tagged with: <research_methods>
+[2025-10-04T11:23:25.392Z] [DEBUG] Processing chunk 4/13: Population and outcome + Search data bases + Searc...
+[2025-10-04T11:23:26.065Z] [DEBUG] Chunk 4 tagged with: <research_methods>
+[2025-10-04T11:23:26.065Z] [DEBUG] Processing chunk 5/13: Study selection + Data extraction...
+[2025-10-04T11:23:26.715Z] [DEBUG] Chunk 5 tagged with: <research_methods>
+[2025-10-04T11:23:26.715Z] [DEBUG] Processing chunk 6/13: Risk of Bias assessment + Data synthesis...
+[2025-10-04T11:23:27.376Z] [DEBUG] Chunk 6 tagged with: <research_methods>
+[2025-10-04T11:23:27.377Z] [DEBUG] Processing chunk 7/13: Study characteristics...
+[2025-10-04T11:23:28.195Z] [DEBUG] Chunk 7 tagged with: 
+[2025-10-04T11:23:28.195Z] [DEBUG] Processing chunk 8/13: Qualitative review...
+[2025-10-04T11:23:29.010Z] [DEBUG] Chunk 8 tagged with: 
+[2025-10-04T11:23:29.010Z] [DEBUG] Processing chunk 9/13: Assessment of risk of Bias + Quantitative analysis...
+[2025-10-04T11:23:29.655Z] [DEBUG] Chunk 9 tagged with: <research_methods>, <findings_conclusion>
+[2025-10-04T11:23:29.655Z] [DEBUG] Processing chunk 10/13: Subgroup analysis + Meta-regression...
+[2025-10-04T11:23:30.173Z] [DEBUG] Chunk 10 tagged with: <findings_conclusion>
+[2025-10-04T11:23:30.173Z] [DEBUG] Processing chunk 11/13: Discussion...
+[2025-10-04T11:23:30.946Z] [DEBUG] Chunk 11 tagged with: 
+[2025-10-04T11:23:30.946Z] [DEBUG] Processing chunk 12/13: Conclusions + Supplementary information + Abbrevia...
+[2025-10-04T11:23:31.584Z] [INFO] Found authors: AA, LT, NI
+[2025-10-04T11:23:31.585Z] [DEBUG] Chunk 12 tagged with: <findings_conclusion>, <metadata>
+[2025-10-04T11:23:31.586Z] [DEBUG] Processing chunk 13/13: Availability of data and materials + Ethics approv...
+[2025-10-04T11:23:33.517Z] [DEBUG] Chunk 13 tagged with: 
+[2025-10-04T11:23:33.519Z] [SUCCESS] Tagged 13 chunks
+[2025-10-04T11:23:33.519Z] [INFO] Tag distribution:
+  Data: {
+  "summary": 1,
+  "<research_methods>": 5,
+  "<findings_conclusion>": 3,
+  "<metadata>": 1
+}
+[2025-10-04T11:23:33.521Z] [INFO] Document metadata:
+  Data: {
+  "authors": "AA, LT, NI",
+  "date": null
+}
+================================================================================
+[2025-10-04T11:23:33.521Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T11:23:33.522Z] [INFO] Adding 13 chunks
+[2025-10-04T11:23:33.522Z] [DEBUG] Generating embedding for chunk 1/13
+[2025-10-04T11:23:33.522Z] [DEBUG] Generating embedding for chunk 2/13
+[2025-10-04T11:23:33.523Z] [DEBUG] Generating embedding for chunk 3/13
+[2025-10-04T11:23:33.523Z] [DEBUG] Generating embedding for chunk 4/13
+[2025-10-04T11:23:33.523Z] [DEBUG] Generating embedding for chunk 5/13
+[2025-10-04T11:23:33.523Z] [DEBUG] Generating embedding for chunk 6/13
+[2025-10-04T11:23:33.524Z] [DEBUG] Generating embedding for chunk 7/13
+[2025-10-04T11:23:33.525Z] [DEBUG] Generating embedding for chunk 8/13
+[2025-10-04T11:23:33.526Z] [DEBUG] Generating embedding for chunk 9/13
+[2025-10-04T11:23:33.526Z] [DEBUG] Generating embedding for chunk 10/13
+[2025-10-04T11:23:33.526Z] [DEBUG] Generating embedding for chunk 11/13
+[2025-10-04T11:23:33.527Z] [DEBUG] Generating embedding for chunk 12/13
+[2025-10-04T11:23:33.527Z] [DEBUG] Generating embedding for chunk 13/13
+[2025-10-04T11:23:33.527Z] [SUCCESS] Added 13 chunks with embeddings
+================================================================================
+[2025-10-04T11:23:33.528Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T11:23:33.532Z] [DEBUG] BM25 initialized with 13 documents
+[2025-10-04T11:23:33.532Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T11:23:33.533Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T11:23:33.533Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T11:23:33.533Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T11:23:33.533Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:23:33.534Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T11:23:33.534Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:23:33.534Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:23:33.534Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T11:23:33.535Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:23:33.537Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:23:33.537Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:23:37.244Z] [DEBUG]   [REJECT] Conclusions + Supplementary information + Abbrevia... - Rejected (Unknown)
+[2025-10-04T11:23:40.985Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - HIGH (Unknown)
+[2025-10-04T11:23:44.654Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T11:23:48.436Z] [DEBUG]   [REJECT] Assessment of risk of Bias + Quantitative analysis... - Rejected (The chunk details risk‑of‑bias assessment and quantitative incidence results, which do not address the paper’s abstract, main purpose, or overall overview.)
+[2025-10-04T11:23:52.130Z] [DEBUG]   [REJECT] Background... - Rejected (Unknown)
+[2025-10-04T11:23:52.131Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T11:23:52.132Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T11:23:53.690Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:23:53.691Z] [INFO] Iteration 2: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:23:53.692Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:23:53.693Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T11:23:53.695Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:23:53.699Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:23:53.700Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:23:57.384Z] [DEBUG]   [REJECT] Conclusions + Supplementary information + Abbrevia... - Rejected (The chunk only provides conclusions, supplementary info, and abbreviations, without the abstract, purpose, or overview of the paper.)
+[2025-10-04T11:24:04.849Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T11:24:08.844Z] [DEBUG]   [REJECT] Assessment of risk of Bias + Quantitative analysis... - Rejected (The chunk details risk‑of‑bias assessment and incidence analysis, which does not address the paper’s abstract, main purpose, or overall overview.)
+[2025-10-04T11:24:12.797Z] [DEBUG]   [REJECT] Background... - Rejected (Unknown)
+[2025-10-04T11:24:12.797Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T11:24:12.797Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T11:24:12.797Z] [INFO] Final query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:24:12.797Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T11:24:12.798Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T11:24:12.798Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T11:24:12.798Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T11:24:12.798Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T11:24:12.799Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T11:24:12.799Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:24:12.799Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T11:24:12.799Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:24:12.800Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:24:12.800Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:24:15.570Z] [INFO]   [ACCEPT] Methods + Eligibility criteria... - MEDIUM (The chunk outlines the systematic review methodology, inclusion criteria, and)
+[2025-10-04T11:24:19.217Z] [DEBUG]   [REJECT] Global incidence of Necrotizing Enterocolitis: a s... - Rejected (Unknown)
+[2025-10-04T11:24:23.507Z] [DEBUG]   [REJECT] Population and outcome + Search data bases + Searc... - Rejected (Unknown)
+[2025-10-04T11:24:27.217Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - HIGH (The excerpt details the study)
+[2025-10-04T11:24:30.956Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T11:24:30.956Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T11:24:30.956Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T11:24:32.476Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "What research methods, study design, and analytical approaches were employed in the study?"
+[2025-10-04T11:24:32.477Z] [INFO] Iteration 2: Searching with query: "What research methods, study design, and analytical approaches were employed in the study?"
+[2025-10-04T11:24:32.477Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were employed in the study?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:24:32.478Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were employed in the study?", topK=10, filter=none
+[2025-10-04T11:24:32.478Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:24:32.482Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:24:32.482Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:24:38.871Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (Unknown)
+[2025-10-04T11:24:42.670Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - HIGH (The chunk explicitly details the study design ()
+[2025-10-04T11:24:46.635Z] [DEBUG]   [REJECT] Study selection + Data extraction... - Rejected (Unknown)
+[2025-10-04T11:24:50.722Z] [INFO]   [ACCEPT] Population and outcome + Search data bases + Searc... - MEDIUM (The excerpt describes the study’s)
+[2025-10-04T11:24:50.723Z] [INFO] Found 2 relevant chunks (Total: 4)
+[2025-10-04T11:24:50.723Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T11:24:50.723Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T11:24:50.724Z] [INFO] Final query: "What research methods, study design, and analytical approaches were employed in the study?"
+[2025-10-04T11:24:50.724Z] [INFO] Iterations: 2, Relevant chunks: 4
+[2025-10-04T11:24:50.724Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T11:24:50.724Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T11:24:50.725Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:24:50.725Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T11:24:50.725Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:24:50.725Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:24:50.725Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T11:24:50.725Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:24:50.727Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:24:50.727Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:24:54.413Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - HIGH (The chunk presents core results (incidence estimates, heterogeneity statistics) and methodological conclusions, directly addressing the query for key findings and conclusions.)
+[2025-10-04T11:24:58.105Z] [INFO]   [ACCEPT] Conclusions + Supplementary information + Abbrevia... - HIGH (The chunk provides the study’s conclusions and key findings about NEC incidence, directly addressing the query)
+[2025-10-04T11:25:01.911Z] [DEBUG]   [REJECT] Global incidence of Necrotizing Enterocolitis: a s... - Rejected (Unknown)
+[2025-10-04T11:25:05.566Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (The chunk describes methodological details (bias assessment and data synthesis) rather than the study’s key findings, results,)
+[2025-10-04T11:25:08.244Z] [DEBUG]   [REJECT] Methods + Eligibility criteria... - Rejected (The chunk only outlines the review’s methods and eligibility criteria, without presenting any findings, results, or conclusions.)
+[2025-10-04T11:25:08.245Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T11:25:08.245Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T11:25:09.781Z] [DEBUG] Query rewritten: "What are the key findings, results, and conclusions?" -> "What are the key findings, results, and conclusions?"
+[2025-10-04T11:25:09.782Z] [INFO] Iteration 2: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:25:09.782Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:25:09.782Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T11:25:09.782Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:25:09.783Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:25:09.783Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:25:21.614Z] [DEBUG]   [REJECT] Global incidence of Necrotizing Enterocolitis: a s... - Rejected (Unknown)
+[2025-10-04T11:25:25.408Z] [DEBUG]   [REJECT] Risk of Bias assessment + Data synthesis... - Rejected (The chunk describes methodological details (bias assessment and data synthesis) rather than the study’s key findings, results)
+[2025-10-04T11:25:28.546Z] [DEBUG]   [REJECT] Methods + Eligibility criteria... - Rejected (The chunk only details the review’s methods and eligibility criteria, without presenting any findings, results, or conclusions.)
+[2025-10-04T11:25:28.546Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T11:25:28.546Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T11:25:28.547Z] [INFO] Final query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:25:28.547Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T11:25:28.547Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T11:25:47.202Z] [SUCCESS] Document extraction complete
+[2025-10-04T11:25:47.202Z] [INFO] Extraction statistics:
+  Data: {
+  "summaryChunks": 1,
+  "methodsChunks": 4,
+  "findingsChunks": 2,
+  "totalIterations": 6
+}
+================================================================================
+[2025-10-04T11:25:47.214Z] [INFO] Pipeline Complete
+================================================================================
+[2025-10-04T11:25:47.214Z] [SUCCESS] Total execution time: 228.27s
+[2025-10-04T11:25:47.215Z] [INFO] Extraction result:
+  Data: {
+  "authors": "AA, LT, NI",
+  "date": "Not found",
+  "summary": "This systematic review and meta‑analysis pooled data from 27 cohort studies (total = 574 692 very‑low‑birth‑weight infants) to estimate the worldwide incidence of necrotizing enterocolitis (NEC). The authors found that roughly **7 % of VLBW infants develop NEC**, with considerable heterogeneity across studies and a modest upward trend in reported incidence over time. The work underscores the need for higher‑quality, population‑based incidence studies—especially from low‑ and middle‑income countries—to better inform prevention strategies.\n\n---",
+  "methods": "| Aspect | Details |\n|--------|---------|\n| **Study design** | Systematic review and meta‑analysis of observational cohort (prospective or retrospective) and population‑based registry studies. |\n| **Guidelines followed** | PRISMA (Preferred Reporting Items for Systematic Reviews and Meta‑Analyses). |\n| **Eligibility criteria** | • Cohort or population‑based studies reporting **incidence** of confirmed NEC in preterm or VLBW infants with a clear denominator.<br>• Excluded: RCTs, case series without denominator, studies focusing on sub‑populations where incidence could not be extracted, and studies with ambiguous NEC case definitions. |\n| **Data sources** | PubMed, MEDLINE, Cochrane Library, EMBASE, and grey‑literature sources. |\n| **Search period** | Not specified in the excerpt (search conducted up to the year of publication, 2020). |\n| **Study selection** | 27 eligible studies identified after screening. |\n| **Sample size** | **Total infants:** 574 692 VLBW neonates.<br>**NEC cases:** 39 965. |\n| **Risk‑of‑bias assessment** | Hoy et al. (2012) prevalence‑study quality tool; 17 of 27 studies scored ≥ 8/10 (low risk of bias). |\n| **Statistical analysis** | • Primary pooled estimate: **Random‑Effects Model (REM)** (DerSimonian‑Laird).<br>• Sensitivity/quality‑adjusted estimate: **Quality Effect Model (QEM)**.<br>• Heterogeneity: I² statistic, Cochrane Q‑test (I² = 100 %; Q = 7473; p < 0.0001).<br>• Subgroup analyses & meta‑regression (examined region, income level, publication year).<br>• Publication bias: Hunter’s modified funnel plot for incidence data. |\n| **Software** | Not reported in the excerpt (commonly RevMan, Stata, or R meta‑packages). |\n\n---",
+  "findings": "| Finding | Details |\n|---------|---------|\n| **Overall pooled incidence of NEC** | **7.0 %** (95 % CI = 6.0 %–8.0 %) using REM.<br>Quality‑adjusted QEM estimate: **6.0 %** (95 % CI = 4.0 %–9.0 %). |\n| **Statistical significance** | Heterogeneity highly significant (I² = 100 %; Q = 7473; p < 0.0001).<br>Meta‑regression showed a **significant increase in reported NEC incidence over calendar year** (p‑value not provided but described as statistically significant). |\n| **Regional / income‑level variation** | Incidence appeared broadly similar across regions, but **some differences were noted between high‑ and low‑income countries** (exact figures not given). |\n| **Publication bias** | Funnel‑plot inspection indicated **no evidence of publication bias**. |\n| **Risk‑of‑bias summary** | Majority of studies rated low risk; however, only ~50 % employed random sampling, contributing to methodological heterogeneity. |\n| **Conclusions** | • Approximately **1 in 14 VLBW infants** (≈ 7 %) in NICUs develop NEC.<br>• Reported incidence varies widely, reflecting clinical, health‑system, and methodological differences.<br>• The upward temporal trend suggests either a true rise or improved detection/reporting. |\n| **Implications** | • Provides a baseline global incidence for benchmarking future prevention trials and quality‑improvement initiatives.<br>• Highlights the urgent need for **large, high‑quality, population‑based incidence studies**, especially from low‑ and middle‑income settings, to identify contextual risk factors and guide resource allocation. |\n\n--- \n\n**Take‑away:** This meta‑analysis establishes that NEC remains a common and serious complication among very‑low‑birth‑weight infants worldwide, affecting roughly **7 %"
+}
+[2025-10-04T11:25:47.216Z] [INFO] Log file: logs\rag-2025-10-04T11-21-58-725Z.log
+================================================================================
+[2025-10-04T11:25:47.217Z] [INFO] EXTRACTION RESULTS
+================================================================================
+================================================================================
+[2025-10-04T11:25:47.219Z] [INFO] Saving extraction results to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759577147219.json
+[2025-10-04T11:25:47.221Z] [SUCCESS] Results saved to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\output\extraction-1759577147219.json
+[2025-10-04T11:25:47.221Z] [SUCCESS] Pipeline completed successfully

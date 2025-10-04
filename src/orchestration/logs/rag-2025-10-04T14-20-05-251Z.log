@@ -1,0 +1,150 @@
+[2025-10-04T14:20:05.253Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T14-20-05-251Z.log
+================================================================================
+[2025-10-04T14:20:05.365Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.370Z] [INFO] Processing 3 chunks
+[2025-10-04T14:20:05.375Z] [DEBUG] Processing chunk 1/3 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.376Z] [DEBUG] Raw metadata extraction response: {"tags":["<summary>"],"authors":"John Doe, Jane Smith","date":"2024"}
+[2025-10-04T14:20:05.377Z] [INFO] Found authors: John Doe, Jane Smith
+[2025-10-04T14:20:05.378Z] [INFO] Found date: 2024
+[2025-10-04T14:20:05.379Z] [DEBUG] Chunk 1 tagged with: <summary>
+[2025-10-04T14:20:05.380Z] [DEBUG] Processing chunk 2/3 (metadata extraction): Methods...
+[2025-10-04T14:20:05.382Z] [DEBUG] Raw metadata extraction response: {"tags":["<research_methods>"],"authors":null,"date":null}
+[2025-10-04T14:20:05.383Z] [DEBUG] Chunk 2 tagged with: <research_methods>
+[2025-10-04T14:20:05.384Z] [DEBUG] Processing chunk 3/3 (metadata extraction): Results...
+[2025-10-04T14:20:05.386Z] [DEBUG] Raw metadata extraction response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T14:20:05.387Z] [DEBUG] Chunk 3 tagged with: <findings_conclusion>
+[2025-10-04T14:20:05.388Z] [SUCCESS] Tagged 3 chunks
+[2025-10-04T14:20:05.389Z] [INFO] Tag distribution:
+  Data: {
+  "<summary>": 1,
+  "<research_methods>": 1,
+  "<findings_conclusion>": 1
+}
+[2025-10-04T14:20:05.391Z] [INFO] Document metadata:
+  Data: {
+  "authors": "John Doe, Jane Smith",
+  "date": "2024"
+}
+================================================================================
+[2025-10-04T14:20:05.397Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.401Z] [INFO] Processing 1 chunks
+[2025-10-04T14:20:05.403Z] [DEBUG] Processing chunk 1/1 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.405Z] [DEBUG] Raw metadata extraction response: ```json
+{"tags": ["<summary>"], "authors": null, "date": null}
+```
+[2025-10-04T14:20:05.405Z] [DEBUG] Chunk 1 tagged with: <summary>
+[2025-10-04T14:20:05.406Z] [SUCCESS] Tagged 1 chunks
+[2025-10-04T14:20:05.407Z] [INFO] Tag distribution:
+  Data: {
+  "<summary>": 1
+}
+[2025-10-04T14:20:05.408Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}
+================================================================================
+[2025-10-04T14:20:05.411Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.415Z] [INFO] Processing 1 chunks
+[2025-10-04T14:20:05.417Z] [DEBUG] Processing chunk 1/1 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.419Z] [DEBUG] Raw metadata extraction response: TAGS: <summary>, <metadata>
+AUTHORS: Alice Johnson
+DATE: 2023-05
+[2025-10-04T14:20:05.420Z] [DEBUG] JSON parse failed for chunk 1, adding without tags
+[2025-10-04T14:20:05.421Z] [SUCCESS] Tagged 1 chunks
+[2025-10-04T14:20:05.422Z] [INFO] Tag distribution:
+  Data: {}
+[2025-10-04T14:20:05.423Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}
+================================================================================
+[2025-10-04T14:20:05.451Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.459Z] [INFO] Processing 1 chunks
+[2025-10-04T14:20:05.462Z] [DEBUG] Processing chunk 1/1 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.470Z] [DEBUG] Raw metadata extraction response: TAGS: <research_methods>
+AUTHORS: None
+DATE: None
+[2025-10-04T14:20:05.473Z] [DEBUG] JSON parse failed for chunk 1, adding without tags
+[2025-10-04T14:20:05.475Z] [SUCCESS] Tagged 1 chunks
+[2025-10-04T14:20:05.477Z] [INFO] Tag distribution:
+  Data: {}
+[2025-10-04T14:20:05.485Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}
+================================================================================
+[2025-10-04T14:20:05.498Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.502Z] [INFO] Processing 2 chunks
+[2025-10-04T14:20:05.505Z] [DEBUG] Processing chunk 1/2 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.507Z] [DEBUG] Raw metadata extraction response: {"tags":["<metadata>"],"authors":"First Author","date":"2023"}
+[2025-10-04T14:20:05.508Z] [INFO] Found authors: First Author
+[2025-10-04T14:20:05.509Z] [INFO] Found date: 2023
+[2025-10-04T14:20:05.509Z] [DEBUG] Chunk 1 tagged with: <metadata>
+[2025-10-04T14:20:05.510Z] [DEBUG] Processing chunk 2/2 (metadata extraction): Methods...
+[2025-10-04T14:20:05.511Z] [DEBUG] Raw metadata extraction response: {"tags":[],"authors":"Second Author","date":"2024"}
+[2025-10-04T14:20:05.512Z] [DEBUG] Chunk 2 tagged with: none
+[2025-10-04T14:20:05.513Z] [SUCCESS] Tagged 2 chunks
+[2025-10-04T14:20:05.515Z] [INFO] Tag distribution:
+  Data: {
+  "<metadata>": 1
+}
+[2025-10-04T14:20:05.517Z] [INFO] Document metadata:
+  Data: {
+  "authors": "First Author",
+  "date": "2023"
+}
+================================================================================
+[2025-10-04T14:20:05.524Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.533Z] [INFO] Processing 1 chunks
+[2025-10-04T14:20:05.536Z] [DEBUG] Processing chunk 1/1 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.538Z] [ERROR] Error processing chunk 1
+  Data: {}
+  Stack: Error: API Error
+    at Object.<anonymous> (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\tests\tagging.test.ts:207:54)
+    at Promise.then.completed (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\jest-runner\build\testWorker.js:106:12)
+[2025-10-04T14:20:05.543Z] [SUCCESS] Tagged 1 chunks
+[2025-10-04T14:20:05.544Z] [INFO] Tag distribution:
+  Data: {}
+[2025-10-04T14:20:05.545Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}
+================================================================================
+[2025-10-04T14:20:05.552Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T14:20:05.555Z] [INFO] Processing 1 chunks
+[2025-10-04T14:20:05.558Z] [DEBUG] Processing chunk 1/1 (metadata extraction): Introduction...
+[2025-10-04T14:20:05.560Z] [DEBUG] Raw metadata extraction response: This is not valid JSON {invalid}
+[2025-10-04T14:20:05.561Z] [DEBUG] JSON parse failed for chunk 1, adding without tags
+[2025-10-04T14:20:05.561Z] [SUCCESS] Tagged 1 chunks
+[2025-10-04T14:20:05.563Z] [INFO] Tag distribution:
+  Data: {}
+[2025-10-04T14:20:05.565Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}

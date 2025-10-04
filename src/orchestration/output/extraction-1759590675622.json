@@ -1,0 +1,8 @@
+{
+  "authors": "C. Brehin, D. D., O. D., S. B., E. O., M. Serino",
+  "date": "preprint",
+  "documentType": "preprint research article",
+  "summary": "This preprint investigates gut microbiota dysbiosis and fecal metabolome changes in suspected necrotizing enterocolitis (NEC-1) preterm infants compared to healthy controls over the first two months of life. It identifies early divergence in microbiota taxonomy and function and metabolomic shifts, particularly in amino-acid metabolism, and links these to clinical factors such as reduced enteral nutrition.",
+  "methods": "• Study design: prospective longitudinal cohort study\n• Data sources: fecal samples and clinical data from Purpan Hospital neonatal units\n• Sample size: not explicitly stated; divided into four age groups (1–10 d, 11–20 d, 21–30 d, >30 d)\n• Analytical methods: 16S rRNA sequencing (mean 68,669 reads/sample), PICRUSt for functional prediction, LEfSe for taxonomic analysis, MetaboAnalyst 4.0 for metabolomic enrichment, two-way ANOVA with FDR correction and Mann–Whitney tests for statistics",
+  "findings": "• NEC-1 infants showed reduced enteral nutrition volume at day 7 vs healthy infants\n• Gut microbiota taxonomy and function began diverging by 10 days of life in NEC-1; fecal metabolome divergence peaked at 2 months\n• Amino-acid metabolism (serine, leucine) was the most affected pathway; NEC-1 metabolites (ethanol, serine) linked to homocysteine degradation and phosphatidylethanolamine biosynthesis\n• NEC-1 microbiome was more sensitive than healthy to childbirth mode, low birth weight and gestational age\n• Implication: increasing early enteral nutrition and limiting antibiotics may mitigate NEC-1 progression"
+}

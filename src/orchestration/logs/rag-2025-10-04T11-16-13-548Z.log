@@ -1,0 +1,862 @@
+[2025-10-04T11:16:13.550Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T11-16-13-548Z.log
+================================================================================
+[2025-10-04T11:16:13.753Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T11:16:13.753Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "s12887-020-02231-5.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "llama-3.3-70b-versatile",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T11:16:13.754Z] [INFO] PDF to Markdown Conversion
+================================================================================
+[2025-10-04T11:16:13.755Z] [INFO] File: s12887-020-02231-5.pdf
+[2025-10-04T11:16:13.755Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T11:16:13.757Z] [INFO] Uploading and processing PDF...
+[2025-10-04T11:17:36.342Z] [SUCCESS] Conversion complete. Markdown length: 83211 chars
+[2025-10-04T11:17:36.343Z] [INFO] Pages: 15
+================================================================================
+[2025-10-04T11:17:36.343Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T11:17:36.344Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T11:17:36.344Z] [DEBUG] Extracted 6 tables from markdown
+[2025-10-04T11:17:36.345Z] [INFO] Created 30 raw chunks from headers
+[2025-10-04T11:17:36.345Z] [SUCCESS] Chunking complete: 13 total chunks
+[2025-10-04T11:17:36.345Z] [INFO] Size distribution: Small=1, Medium=10, Large=2, Tables=3
+[2025-10-04T11:17:36.345Z] [WARN] Warning: 2 chunks still exceed max size (likely tables)
+================================================================================
+[2025-10-04T11:17:36.346Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T11:17:36.346Z] [INFO] Processing 13 chunks
+[2025-10-04T11:17:36.347Z] [DEBUG] Processing chunk 1/13: Global incidence of Necrotizing Enterocolitis: a s...
+[2025-10-04T11:17:36.928Z] [INFO] Found authors: Amer Alsaied, Nazmul Islam, Lukman Thalib
+[2025-10-04T11:17:36.929Z] [DEBUG] Chunk 1 tagged with: abstract, introduction, methodology, study design, data collection, results, findings, conclusions
+[2025-10-04T11:17:36.929Z] [DEBUG] Processing chunk 2/13: Background...
+[2025-10-04T11:17:37.427Z] [DEBUG] Chunk 2 tagged with: introduction, background, literature review
+[2025-10-04T11:17:37.427Z] [DEBUG] Processing chunk 3/13: Methods + Eligibility criteria...
+[2025-10-04T11:17:37.794Z] [DEBUG] Chunk 3 tagged with: research_methods, methodology, study design, data collection
+[2025-10-04T11:17:37.794Z] [DEBUG] Processing chunk 4/13: Population and outcome + Search data bases + Searc...
+[2025-10-04T11:17:38.178Z] [INFO] Found date: September 2018, December 2019
+[2025-10-04T11:17:38.178Z] [DEBUG] Chunk 4 tagged with: research_methods, study design, data collection
+[2025-10-04T11:17:38.178Z] [DEBUG] Processing chunk 5/13: Study selection + Data extraction...
+[2025-10-04T11:17:38.537Z] [DEBUG] Chunk 5 tagged with: <research_methods>, <metadata>
+[2025-10-04T11:17:38.538Z] [DEBUG] Processing chunk 6/13: Risk of Bias assessment + Data synthesis...
+[2025-10-04T11:17:39.097Z] [DEBUG] Chunk 6 tagged with: research_methods, methodology, data_collection, findings_conclusion
+[2025-10-04T11:17:39.097Z] [DEBUG] Processing chunk 7/13: Study characteristics...
+[2025-10-04T11:17:39.629Z] [DEBUG] Chunk 7 tagged with: research_methods, study design, data collection
+[2025-10-04T11:17:39.629Z] [DEBUG] Processing chunk 8/13: Qualitative review...
+[2025-10-04T11:17:40.314Z] [DEBUG] Chunk 8 tagged with: <research_methods>, <findings_conclusion>
+[2025-10-04T11:17:40.314Z] [DEBUG] Processing chunk 9/13: Assessment of risk of Bias + Quantitative analysis...
+[2025-10-04T11:17:40.907Z] [DEBUG] Chunk 9 tagged with: <research_methods>, <findings_conclusion>
+[2025-10-04T11:17:40.907Z] [DEBUG] Processing chunk 10/13: Subgroup analysis + Meta-regression...
+[2025-10-04T11:17:41.248Z] [DEBUG] Chunk 10 tagged with: findings_conclusion, research_methods
+[2025-10-04T11:17:41.248Z] [DEBUG] Processing chunk 11/13: Discussion...
+[2025-10-04T11:17:41.616Z] [DEBUG] Chunk 11 tagged with: findings_conclusion, discussion
+[2025-10-04T11:17:41.617Z] [DEBUG] Processing chunk 12/13: Conclusions + Supplementary information + Abbrevia...
+[2025-10-04T11:17:41.975Z] [DEBUG] Chunk 12 tagged with: conclusion, summary
+[2025-10-04T11:17:41.975Z] [DEBUG] Processing chunk 13/13: Availability of data and materials + Ethics approv...
+[2025-10-04T11:17:42.840Z] [DEBUG] Chunk 13 tagged with: metadata, research_methods
+[2025-10-04T11:17:42.840Z] [SUCCESS] Tagged 13 chunks
+[2025-10-04T11:17:42.840Z] [INFO] Tag distribution:
+  Data: {
+  "abstract": 1,
+  "introduction": 2,
+  "methodology": 3,
+  "study design": 4,
+  "data collection": 4,
+  "results": 1,
+  "findings": 1,
+  "conclusions": 1,
+  "background": 1,
+  "literature review": 1,
+  "research_methods": 6,
+  "<research_methods>": 3,
+  "<metadata>": 1,
+  "data_collection": 1,
+  "findings_conclusion": 3,
+  "<findings_conclusion>": 2,
+  "discussion": 1,
+  "conclusion": 1,
+  "summary": 1,
+  "metadata": 1
+}
+[2025-10-04T11:17:42.841Z] [INFO] Document metadata:
+  Data: {
+  "authors": "Amer Alsaied, Nazmul Islam, Lukman Thalib",
+  "date": "September 2018, December 2019"
+}
+================================================================================
+[2025-10-04T11:17:42.842Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T11:17:42.842Z] [INFO] Adding 13 chunks
+[2025-10-04T11:17:42.843Z] [DEBUG] Generating embedding for chunk 1/13
+[2025-10-04T11:17:42.843Z] [DEBUG] Generating embedding for chunk 2/13
+[2025-10-04T11:17:42.843Z] [DEBUG] Generating embedding for chunk 3/13
+[2025-10-04T11:17:42.844Z] [DEBUG] Generating embedding for chunk 4/13
+[2025-10-04T11:17:42.844Z] [DEBUG] Generating embedding for chunk 5/13
+[2025-10-04T11:17:42.844Z] [DEBUG] Generating embedding for chunk 6/13
+[2025-10-04T11:17:42.844Z] [DEBUG] Generating embedding for chunk 7/13
+[2025-10-04T11:17:42.846Z] [DEBUG] Generating embedding for chunk 8/13
+[2025-10-04T11:17:42.847Z] [DEBUG] Generating embedding for chunk 9/13
+[2025-10-04T11:17:42.848Z] [DEBUG] Generating embedding for chunk 10/13
+[2025-10-04T11:17:42.848Z] [DEBUG] Generating embedding for chunk 11/13
+[2025-10-04T11:17:42.848Z] [DEBUG] Generating embedding for chunk 12/13
+[2025-10-04T11:17:42.848Z] [DEBUG] Generating embedding for chunk 13/13
+[2025-10-04T11:17:42.849Z] [SUCCESS] Added 13 chunks with embeddings
+================================================================================
+[2025-10-04T11:17:42.849Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T11:17:42.854Z] [DEBUG] BM25 initialized with 13 documents
+[2025-10-04T11:17:42.855Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T11:17:42.855Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T11:17:42.856Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T11:17:42.856Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T11:17:42.856Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:17:42.856Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T11:17:42.857Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:17:42.857Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:17:42.857Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T11:17:42.859Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:17:42.861Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:17:42.861Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:17:42.918Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9894463fac09617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "245",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=ij__QswzQyoeQIY7hEUy.pASPomolvuqkcMYvU9ifGI-1759576663-1.0.1.1-tt5c1fNLkl_GrVjQgZe0xNkB0uNhVjn5294QyAPTBY140jMMaZeKsxQjW03g_ya3twImFs6CeV7uVYp4weH19cD0jqNukVMyy5M26IZwdiM; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5794",
+    "x-ratelimit-reset-requests": "18m42.313999999s",
+    "x-ratelimit-reset-tokens": "31.03s",
+    "x-request-id": "req_01k6qf28z5f3189k0f4wqkbebp",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.432s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.432s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:42.935Z] [INFO]   [ACCEPT] Conclusions + Supplementary information + Abbrevia... - MEDIUM (Error during grading)
+[2025-10-04T11:17:42.991Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446402c5a617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "245",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=mPJIqpCKtZmcA7mDspXy7wHVh8kvMAHDHsBCLTxvfJM-1759576663-1.0.1.1-f42.zzoV89Nk6zGTokcEvcTLKwSw.j_Q4wGOgNYLPAcEj3RwMKs4GEkur_CRnel4sxrznmq1QiWo6jt9X9T.e3gPtreHe_l.ZaZxRgPd3Og; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5808",
+    "x-ratelimit-reset-requests": "18m42.242999999s",
+    "x-ratelimit-reset-tokens": "30.96s",
+    "x-request-id": "req_01k6qf291ceq6b41j3ts9m00r5",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.362s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.362s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:42.997Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.058Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446408c96617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "245",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=AB.Q8VE8Ewo.xL_pXLNFz1dUybbcYEVu_hd73JmFqco-1759576663-1.0.1.1-tDVvRkxqJpg7_76xd53s1xgyJSTV0SrULerpnLw4LdOAUtn4cv_OGF5NU_ddMSzlldtfFACiCahv_OswcajyAErw1IcO7xGIdHcH091spVA; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5821",
+    "x-ratelimit-reset-requests": "18m42.176s",
+    "x-ratelimit-reset-tokens": "30.892s",
+    "x-request-id": "req_01k6qf293feq6rq5jj8amzybwm",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.293999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.293999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.066Z] [INFO]   [ACCEPT] Risk of Bias assessment + Data synthesis... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.126Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98944640fd0d617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "245",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=7DFQzOeNfpRFkysDZuivQCP.ajVF4xJ97xOTURc2Cn4-1759576663-1.0.1.1-6mkPOUL_65kb1kw1pDIZoghbV_q6qRw3hguqUa36jNgOU.gWGBYCiEtkxbQBJJ7dQctnW1JKa7C7bYLrkSnRVjBpoDFEH.Zj7dA3gjDxMSo; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5835",
+    "x-ratelimit-reset-requests": "18m42.103999999s",
+    "x-ratelimit-reset-tokens": "30.820999999s",
+    "x-request-id": "req_01k6qf295pfpw9nvbap5c036yf",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.223s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.223s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.127Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.190Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446415d54617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "245",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=OI2crO8PP5pbk3UBuGQNBFrNqv5U3JHUVtXnSEk1BrE-1759576663-1.0.1.1-qG8sL_fd99jlXYqt5oVqYYmur5AmI2Dvj51VcmqeGRuPkDwPGliwlq6oJO31rjEI2ZDJCjgjeyS5BXQ1k.OY03phzj8XwWRrGOjs0PA3i7s; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5848",
+    "x-ratelimit-reset-requests": "18m42.042s",
+    "x-ratelimit-reset-tokens": "30.759s",
+    "x-request-id": "req_01k6qf297mfpw9ra49563rh0dw",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.161s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 316. Please try again in 4m4.161s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.192Z] [INFO]   [ACCEPT] Background... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.192Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T11:17:43.192Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T11:17:43.192Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T11:17:43.192Z] [INFO] Final query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T11:17:43.192Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T11:17:43.192Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T11:17:43.193Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T11:17:43.193Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T11:17:43.193Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T11:17:43.193Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T11:17:43.193Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:17:43.193Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T11:17:43.195Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:17:43.196Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:17:43.196Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:17:43.255Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98944641cd95617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "246",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=xZVjhGgOkyH554elrLn7c8z5d1LBxZDBEvzAIYRc48A-1759576663-1.0.1.1-datfSSce18kqRE0tsvT14kyyewOO.K4oetW_QXmeUZs_pk9bhq1GlNyYkyk6d19wL4TLL63PIWEKc02MYiHlr0QXnjHP1oHHsOP3Z8fI1Ck; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5861",
+    "x-ratelimit-reset-requests": "18m41.978s",
+    "x-ratelimit-reset-tokens": "30.695s",
+    "x-request-id": "req_01k6qf299neq79d1m4b1q6fhay",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.825s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.825s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.261Z] [INFO]   [ACCEPT] Methods + Eligibility criteria... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.330Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446423dd6617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "246",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=lx1sVS.k3VxoVspdc0qVs4CA8I8kYupVhe41ivxTLFI-1759576663-1.0.1.1-oaZR1nGFcFdkFjOT60IpS3XWNhnKAxoO..yyW4rUNaMehciv7Ws72YfYRQj2vz7e7R.VkQrfEmEo1g6VkySGXzaMEPK9G7TH6eD18e802cg; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5876",
+    "x-ratelimit-reset-requests": "18m41.899999999s",
+    "x-ratelimit-reset-tokens": "30.616999999s",
+    "x-request-id": "req_01k6qf29c2eq7a9nvaqq5a458v",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.747s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.747s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.331Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.391Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98944642ae14617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "246",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=ktj.NY0E8Ly5MuXKNRu5l6Mn10oiTlLnOaABgY4E0Uo-1759576663-1.0.1.1-EZfz4TIGW_j5xqwErJXQVVkvC8vX403_mI6k9LPdc9Nsbrat1bXVtBit08ehL22oloPtXnIYqL8QsURVNNzByL5VCztbKd1e_D7T69QPTIQ; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5888",
+    "x-ratelimit-reset-requests": "18m41.841999999s",
+    "x-ratelimit-reset-tokens": "30.559s",
+    "x-request-id": "req_01k6qf29dweq7bdq7ygej4cj7j",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.689s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.689s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.396Z] [INFO]   [ACCEPT] Population and outcome + Search data bases + Searc... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.468Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446431e8b617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "246",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=My_BOx_EvcGjmigfD2NoOxpUvWbjDHUtbfXQaOmkpm0-1759576663-1.0.1.1-rHGX6NOa58T5EOxIPDftJi05MhKif9jUcbVZ6J6kkvJzhzpqUC6zvyDnSbp6d0APE.RW3MRPZXF94BNtSIhSabtmZweTQEP6ARysS9XvI0U; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5903",
+    "x-ratelimit-reset-requests": "18m41.769s",
+    "x-ratelimit-reset-tokens": "30.485s",
+    "x-request-id": "req_01k6qf29g6eq7rkkancpzgc2zy",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.615s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.615s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.470Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.614Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446437ed4617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "246",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=LhFJZw5_Vu0nW46K3l0QhfX3JExoBUO7k1tnt5L8y14-1759576663-1.0.1.1-p8pcmRaw9mRmOk1z1DLz5pqWzkNxWptMp0PD2opVGsM965dSZbvePvC22EN0SA6AQrh68.81Wfkc7tgBoOXgkRWWrXM1N0bfyzRI6OpTvn0; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5915",
+    "x-ratelimit-reset-requests": "18m41.706s",
+    "x-ratelimit-reset-tokens": "30.423s",
+    "x-request-id": "req_01k6qf29j4f31t5g6dx65ynwtj",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.552999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 318. Please try again in 4m5.552999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.615Z] [INFO]   [ACCEPT] Risk of Bias assessment + Data synthesis... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.616Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T11:17:43.616Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T11:17:43.616Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T11:17:43.616Z] [INFO] Final query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T11:17:43.616Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T11:17:43.616Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T11:17:43.617Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T11:17:43.617Z] [INFO] Query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:17:43.617Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T11:17:43.617Z] [INFO] Iteration 1: Searching with query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:17:43.617Z] [DEBUG] Hybrid search: query="What are the key findings, results, and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T11:17:43.618Z] [DEBUG] Semantic search: query="What are the key findings, results, and conclusions?", topK=10, filter=none
+[2025-10-04T11:17:43.618Z] [DEBUG] Semantic search returned 10 results
+[2025-10-04T11:17:43.619Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T11:17:43.619Z] [INFO] Grading 5 chunks...
+[2025-10-04T11:17:43.678Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446446f62617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "242",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=Rpf5YekDv_PHhYl8drznVJllmUyYri7VivWGeoBFQvI-1759576663-1.0.1.1-GUkGIbLjHh56lYvx74lz44sNzq2JmD96p_k2RCr5Ht4EoxUinKN7tR9bZoiQ_hfk1dCsKH9ZXnSwwMUyvWISyUDObH3sMJxgQRGbS6cYFz0; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5946",
+    "x-ratelimit-reset-requests": "18m41.552999999s",
+    "x-ratelimit-reset-tokens": "30.27s",
+    "x-request-id": "req_01k6qf29pxf31sgf6xv36dsv56",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 313. Please try again in 4m1.079999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99967, Requested 313. Please try again in 4m1.079999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.680Z] [INFO]   [ACCEPT] Assessment of risk of Bias + Quantitative analysis... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.818Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98944644cf9c617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "242",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=1A93iWL6M1rhFSqLzxCMBHikqfMaotTl.2kn2Vr.AXs-1759576663-1.0.1.1-Rc0T0crfTTMnrk5mmWGD4x0xo2i.yZ6ouS.Bjbug4DzLgffQ7yIEug_rccdoxHUNrAVL_kayLVlpZLgiuXysx6xaKr_Y3PRIoj8PVYh4N5w; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5958",
+    "x-ratelimit-reset-requests": "18m41.492999999s",
+    "x-ratelimit-reset-tokens": "30.21s",
+    "x-request-id": "req_01k6qf29rsf31s2a4cmdhmj34f",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m1.019999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m1.019999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.820Z] [INFO]   [ACCEPT] Conclusions + Supplementary information + Abbrevia... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.887Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98944645a839617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:43 GMT",
+    "retry-after": "241",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=wMGoMw8gpAHYqbhTmXrEqjkEpmMH4gBH2bZhIkkAEMk-1759576663-1.0.1.1-vYj0tJ84Lq32NYr4QdT9mvFjWZOS7cC3bRIc9XS30KW8EVfoqpGSxl6py_wciaCzkcqhg7aek6kJOyL9K.2doWShfn6NVoR2Eiq0LM_.ptE; path=/; expires=Sat, 04-Oct-25 11:47:43 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "5985",
+    "x-ratelimit-reset-requests": "18m41.355999999s",
+    "x-ratelimit-reset-tokens": "30.073s",
+    "x-request-id": "req_01k6qf29x2eq8a566ektyrsw7g",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m0.883s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m0.883s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.889Z] [INFO]   [ACCEPT] Global incidence of Necrotizing Enterocolitis: a s... - MEDIUM (Error during grading)
+[2025-10-04T11:17:43.991Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989446461885617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:44 GMT",
+    "retry-after": "241",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=TTYaGeUkvbbcZMC2DQCBIFYu6pGK4Sey8r0jY_gc2yQ-1759576664-1.0.1.1-JawaFUlDs8xvva9Dt_RNjGUSIhAerREhf3kAiGAjX_Y9CEO3S5uBusFT5S7zeQrXI9RDuNIMij6k9CHx6w4lxYIhLis4kCtNmRqd_wCVSGA; path=/; expires=Sat, 04-Oct-25 11:47:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "6002",
+    "x-ratelimit-reset-requests": "18m41.272s",
+    "x-ratelimit-reset-tokens": "29.988s",
+    "x-request-id": "req_01k6qf29zqeq88y6d5ywvg88gt",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m0.798s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m0.798s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:43.993Z] [INFO]   [ACCEPT] Risk of Bias assessment + Data synthesis... - MEDIUM (Error during grading)
+[2025-10-04T11:17:44.086Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98944646c8e8617c-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 11:17:44 GMT",
+    "retry-after": "241",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=k3DQ9f53Qg6XVebdtAJfYy1gapG2HfW8CJlG5ls4c5g-1759576664-1.0.1.1-AZqH0akzq._Jq5aUa4P2YHqS0R6s5jZUcE2jmapTqip5HEeOBpJUPIcW5bPPPS__x6dWOZED4rvxSOXASUFuSTAyHW704t2wbXmU2_p17PU; path=/; expires=Sat, 04-Oct-25 11:47:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "12000",
+    "x-ratelimit-remaining-requests": "987",
+    "x-ratelimit-remaining-tokens": "6022",
+    "x-ratelimit-reset-requests": "18m41.174s",
+    "x-ratelimit-reset-tokens": "29.89s",
+    "x-request-id": "req_01k6qf2a2sf31tjsnfgrd7fdgh",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m0.699999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 313. Please try again in 4m0.699999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\extraction.ts:35:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\correctiveRAGPipeline.ts:149:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\src\orchestration\src\main.ts:86:24)
+[2025-10-04T11:17:44.088Z] [INFO]   [ACCEPT] Methods + Eligibility criteria... - MEDIUM (Error during grading)
+[2025-10-04T11:17:44.088Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T11:17:44.088Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T11:17:44.088Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T11:17:44.088Z] [INFO] Final query: "What are the key findings, results, and conclusions?"
+[2025-10-04T11:17:44.089Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T11:17:44.089Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T11:17:44.238Z] [ERROR] Error during final extraction
