@@ -1,0 +1,731 @@
+[2025-10-04T19:30:36.953Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T19-30-36-951Z.log
+[2025-10-04T19:30:37.178Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T19:30:37.178Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T19:30:37.179Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "ssrn-4417080.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "groq/compound",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T19:30:37.180Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T19:30:37.181Z] [INFO] File: ssrn-4417080.pdf
+[2025-10-04T19:30:37.181Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T19:30:37.183Z] [INFO] Uploading and processing PDF...
+[2025-10-04T19:31:46.739Z] [SUCCESS] Conversion complete.
+[2025-10-04T19:31:46.739Z] [INFO] Markdown length: 58169 chars
+[2025-10-04T19:31:46.739Z] [INFO] HTML length: 53344 chars
+[2025-10-04T19:31:46.739Z] [INFO] Pages: 21
+================================================================================
+[2025-10-04T19:31:46.740Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T19:31:46.740Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T19:31:46.740Z] [DEBUG] Extracted 5 tables from markdown
+[2025-10-04T19:31:46.740Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T19:31:46.741Z] [SUCCESS] Created 9 chunks using recursive strategy
+[2025-10-04T19:31:46.741Z] [SUCCESS] Created 9 chunks from markdown
+================================================================================
+[2025-10-04T19:31:46.741Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T19:31:46.742Z] [INFO] Processing 9 chunks
+[2025-10-04T19:31:46.742Z] [DEBUG] Processing chunk 1/9 (metadata extraction): Chunk 1...
+[2025-10-04T19:31:48.260Z] [DEBUG] Raw metadata extraction response: {
+  "tags": ["<summary>", "<research_methods>", "<findings_conclusion>", "<metadata>"],
+  "authors": "Mohammad Chehrazi, Julia Lanoue, Kayleigh Ougham, Becky Moss, Sabita Uthaya, Neena Modi",
+  "date"
+[2025-10-04T19:31:48.261Z] [INFO] Found authors: Mohammad Chehrazi, Julia Lanoue, Kayleigh Ougham, Becky Moss, Sabita Uthaya, Neena Modi
+[2025-10-04T19:31:48.262Z] [DEBUG] Chunk 1 tagged with: <summary>, <research_methods>, <findings_conclusion>, <metadata>
+[2025-10-04T19:31:48.262Z] [DEBUG] Processing chunk 2/9 (metadata extraction): Chunk 2...
+[2025-10-04T19:31:54.907Z] [DEBUG] Raw metadata extraction response: {"tags":["preterm infant nutrition","retrospective cohort analysis","no significant difference in NEC outcomes","UK neonatal cohort 2017-2022"],"authors":null,"date":"2022"}
+[2025-10-04T19:31:54.908Z] [INFO] Found date: 2022
+[2025-10-04T19:31:54.908Z] [DEBUG] Chunk 2 tagged with: preterm infant nutrition, retrospective cohort analysis, no significant difference in NEC outcomes, UK neonatal cohort 2017-2022
+[2025-10-04T19:31:54.908Z] [DEBUG] Processing chunk 3/9 (metadata extraction): Chunk 3...
+[2025-10-04T19:31:56.273Z] [DEBUG] Raw metadata extraction response: {
+  "tags": ["summary", "research_methods", "findings_conclusion", "metadata"],
+  "authors": null,
+  "date": "2022"
+}
+[2025-10-04T19:31:56.273Z] [DEBUG] Chunk 3 tagged with: summary, research_methods, findings_conclusion, metadata
+[2025-10-04T19:31:56.273Z] [DEBUG] Processing chunk 4/9: Chunk 4...
+[2025-10-04T19:32:06.325Z] [DEBUG] Raw tagging response: {
+  "tags": ["<summary>", "<findings_conclusion>"],
+  "authors": null,
+  "date": null
+}
+[2025-10-04T19:32:06.325Z] [DEBUG] Chunk 4 tagged with: <summary>, <findings_conclusion>
+[2025-10-04T19:32:06.325Z] [DEBUG] Processing chunk 5/9: Chunk 5...
+[2025-10-04T19:32:19.831Z] [DEBUG] Raw tagging response: {
+  "tags": ["<metadata>", "<research_methods>"],
+  "authors": null,
+  "date": null
+}
+[2025-10-04T19:32:19.831Z] [DEBUG] Chunk 5 tagged with: <metadata>, <research_methods>
+[2025-10-04T19:32:19.831Z] [DEBUG] Processing chunk 6/9: Chunk 6...
+[2025-10-04T19:32:32.079Z] [DEBUG] Raw tagging response: {
+  "tags": ["<findings_conclusion>"],
+  "authors": null,
+  "date": "2018"
+}
+[2025-10-04T19:32:32.079Z] [DEBUG] Chunk 6 tagged with: <findings_conclusion>
+[2025-10-04T19:32:32.079Z] [DEBUG] Processing chunk 7/9: Chunk 7...
+[2025-10-04T19:32:44.683Z] [ERROR] Error tagging chunk
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98971b4bac9c1e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "381",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:32:44 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=hxtP42KPr745C_i4ctgXiul6E_oB174NgO8kemmKF5c-1759606364-1.0.1.1-gHgHRJmZG.HO70WkPBv1T3rHJogfvxtZpPD3VMLT8sX6XMGsc4XKlVykOxhY1wf4kfBBtbglPNlczQ4fjPFYCSXERtCZHVYEcq9Ll3I6YAM; path=/; expires=Sat, 04-Oct-25 20:02:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "235",
+    "x-ratelimit-remaining-tokens": "69288",
+    "x-ratelimit-reset-requests": "1h26m19.395999999s",
+    "x-ratelimit-reset-tokens": "610.285714ms",
+    "x-request-id": "req_01k6rbcjv4fchvd62jttwzs5ey"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6441, Requested 1612. Please try again in 393.5ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6441, Requested 1612. Please try again in 393.5ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagSingleChunk (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:53:22)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:231:39)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:32:44.698Z] [DEBUG] Chunk 7 tagged with: 
+[2025-10-04T19:32:44.698Z] [DEBUG] Processing chunk 8/9: Chunk 8...
+[2025-10-04T19:32:45.973Z] [DEBUG] Raw tagging response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T19:32:45.973Z] [DEBUG] Chunk 8 tagged with: <findings_conclusion>
+[2025-10-04T19:32:45.973Z] [DEBUG] Processing chunk 9/9: Chunk 9...
+[2025-10-04T19:32:57.290Z] [DEBUG] Raw tagging response: {"tags":["<findings_conclusion>"],"authors":null,"date":null}
+[2025-10-04T19:32:57.291Z] [DEBUG] Chunk 9 tagged with: <findings_conclusion>
+[2025-10-04T19:32:57.291Z] [SUCCESS] Tagged 9 chunks
+[2025-10-04T19:32:57.291Z] [INFO] Tag distribution:
+  Data: {
+  "<summary>": 2,
+  "<research_methods>": 2,
+  "<findings_conclusion>": 5,
+  "<metadata>": 2,
+  "preterm infant nutrition": 1,
+  "retrospective cohort analysis": 1,
+  "no significant difference in NEC outcomes": 1,
+  "UK neonatal cohort 2017-2022": 1,
+  "summary": 1,
+  "research_methods": 1,
+  "findings_conclusion": 1,
+  "metadata": 1
+}
+[2025-10-04T19:32:57.292Z] [INFO] Document metadata:
+  Data: {
+  "authors": "Mohammad Chehrazi, Julia Lanoue, Kayleigh Ougham, Becky Moss, Sabita Uthaya, Neena Modi",
+  "date": "2022"
+}
+================================================================================
+[2025-10-04T19:32:57.293Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T19:32:57.293Z] [INFO] Adding 9 chunks
+[2025-10-04T19:32:57.293Z] [DEBUG] Generating embedding for chunk 1/9
+[2025-10-04T19:32:57.294Z] [DEBUG] Generating embedding for chunk 2/9
+[2025-10-04T19:32:57.294Z] [DEBUG] Generating embedding for chunk 3/9
+[2025-10-04T19:32:57.295Z] [DEBUG] Generating embedding for chunk 4/9
+[2025-10-04T19:32:57.296Z] [DEBUG] Generating embedding for chunk 5/9
+[2025-10-04T19:32:57.296Z] [DEBUG] Generating embedding for chunk 6/9
+[2025-10-04T19:32:57.297Z] [DEBUG] Generating embedding for chunk 7/9
+[2025-10-04T19:32:57.297Z] [DEBUG] Generating embedding for chunk 8/9
+[2025-10-04T19:32:57.297Z] [DEBUG] Generating embedding for chunk 9/9
+[2025-10-04T19:32:57.297Z] [SUCCESS] Added 9 chunks with embeddings
+================================================================================
+[2025-10-04T19:32:57.298Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T19:32:57.302Z] [DEBUG] BM25 initialized with 9 documents
+[2025-10-04T19:32:57.302Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T19:32:57.302Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T19:32:57.303Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T19:32:57.303Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T19:32:57.303Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T19:32:57.304Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T19:32:57.304Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T19:32:57.304Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:32:57.304Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T19:32:57.306Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:32:57.308Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:32:57.308Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:33:07.645Z] [INFO]   [ACCEPT] Chunk 5... - HIGH (The chunk contains a contributor statement that explicitly lists the authors (NM, SU, JL, KO, MC, BM) and their contributions.)
+[2025-10-04T19:33:20.486Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk contains only introductory text and does not list any author names.)
+[2025-10-04T19:33:28.363Z] [INFO]   [ACCEPT] Chunk 1... - HIGH (The chunk explicitly lists the author names of the paper, directly answering the query.)
+[2025-10-04T19:33:34.709Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk does not contain any information about the authors of the paper.)
+[2025-10-04T19:33:40.942Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk contains no author names or any information about the paper’s authors, only content about preterm infant feeding.)
+[2025-10-04T19:33:40.942Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T19:33:40.942Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T19:33:45.177Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "List all author names for the specific paper, including its full title, journal name, publication year, and DOI (or other unique identifier) to ensure precise retrieval."
+[2025-10-04T19:33:45.177Z] [INFO] Iteration 2: Searching with query: "List all author names for the specific paper, including its full title, journal name, publication year, and DOI (or other unique identifier) to ensure precise retrieval."
+[2025-10-04T19:33:45.178Z] [DEBUG] Hybrid search: query="List all author names for the specific paper, including its full title, journal name, publication year, and DOI (or other unique identifier) to ensure precise retrieval.", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:33:45.178Z] [DEBUG] Semantic search: query="List all author names for the specific paper, including its full title, journal name, publication year, and DOI (or other unique identifier) to ensure precise retrieval.", topK=10, filter=none
+[2025-10-04T19:33:45.179Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:33:45.182Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:33:45.182Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:34:11.061Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk contains no author names and does not address the query about the paper’s authors.)
+[2025-10-04T19:34:21.630Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk does not contain any author names.)
+[2025-10-04T19:34:28.687Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk does not contain any information about the authors of the paper.)
+[2025-10-04T19:34:28.687Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T19:34:28.687Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T19:34:28.688Z] [INFO] Final query: "List all author names for the specific paper, including its full title, journal name, publication year, and DOI (or other unique identifier) to ensure precise retrieval."
+[2025-10-04T19:34:28.688Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T19:34:28.688Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T19:34:28.688Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T19:34:28.689Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T19:34:28.689Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T19:34:28.689Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T19:34:28.689Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:34:28.689Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T19:34:28.690Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:34:28.691Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:34:28.692Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:34:41.283Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk does not contain the publication date or year of the paper.)
+[2025-10-04T19:34:53.546Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk mentions a preprint status, indicating it is part of the publication process but does not provide a specific publication date or year.)
+[2025-10-04T19:35:04.966Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk does not directly mention the publication date or year of the paper.)
+[2025-10-04T19:35:17.281Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk does not mention the publication date or year.)
+[2025-10-04T19:35:29.542Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk does not contain any information about the publication date or year.)
+[2025-10-04T19:35:29.542Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T19:35:29.542Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T19:35:35.221Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "What is the publication date or year of the paper titled “[paper title]” authored by “[author name]”?"
+[2025-10-04T19:35:35.222Z] [INFO] Iteration 2: Searching with query: "What is the publication date or year of the paper titled “[paper title]” authored by “[author name]”?"
+[2025-10-04T19:35:35.223Z] [DEBUG] Hybrid search: query="What is the publication date or year of the paper titled “[paper title]” authored by “[author name]”?", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:35:35.223Z] [DEBUG] Semantic search: query="What is the publication date or year of the paper titled “[paper title]” authored by “[author name]”?", topK=10, filter=none
+[2025-10-04T19:35:35.224Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:35:35.230Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:35:35.230Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:35:42.080Z] [DEBUG]   [REJECT] Chunk 1... - Rejected (The chunk does not contain any publication date or year information, only noting that it is a preprint.)
+[2025-10-04T19:35:46.413Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk does not provide a specific publication date or year.)
+[2025-10-04T19:35:57.805Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk does not directly mention the publication date or year of the paper.)
+[2025-10-04T19:36:03.039Z] [DEBUG]   [REJECT] Chunk 3... - Rejected (The chunk does not contain any information about the publication date or year.)
+[2025-10-04T19:36:15.876Z] [DEBUG]   [REJECT] Chunk 2... - Rejected (The chunk does not contain any information about the publication date or year.)
+[2025-10-04T19:36:15.877Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T19:36:15.878Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T19:36:15.878Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:36:15.879Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T19:36:15.879Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:36:15.881Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:36:15.881Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T19:36:15.881Z] [INFO] Final query: "What is the publication date or year of the paper titled “[paper title]” authored by “[author name]”?"
+[2025-10-04T19:36:15.882Z] [INFO] Iterations: 2, Relevant chunks: 5
+[2025-10-04T19:36:15.882Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T19:36:15.882Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T19:36:15.882Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T19:36:15.883Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T19:36:15.883Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T19:36:15.883Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:36:15.883Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T19:36:15.883Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:36:15.885Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:36:15.886Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:36:21.266Z] [INFO]   [ACCEPT] Chunk 5... - HIGH (The chunk includes author disclosures, funding information, and contribution statements that are characteristic of a research article.)
+[2025-10-04T19:36:28.358Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (The chunk discusses specific research findings and includes citations, indicating it is an excerpt from a scholarly document (likely a research or review article).)
+[2025-10-04T19:36:34.994Z] [INFO]   [ACCEPT] Chunk 3... - HIGH (The chunk discusses statistical methods, data analysis, and funding disclosures typical of a research article.)
+[2025-10-04T19:36:40.329Z] [INFO]   [ACCEPT] Chunk 1... - HIGH (The chunk is an abstract of a study with detailed methodology and author information, characteristic of a research article or clinical trial.)
+[2025-10-04T19:36:49.990Z] [INFO]   [ACCEPT] Chunk 2... - HIGH (The chunk explicitly mentions a randomised controlled trial and notes it is a preprint, indicating it is a research article (or clinical trial) rather than a review or other document type.)
+[2025-10-04T19:36:49.991Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T19:36:49.991Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T19:36:49.991Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T19:36:49.991Z] [INFO] Final query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T19:36:49.991Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T19:36:49.991Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T19:36:49.992Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T19:36:49.992Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T19:36:49.992Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T19:36:49.992Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T19:36:49.992Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:36:49.992Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T19:36:49.993Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:36:49.994Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:36:49.994Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:36:57.106Z] [INFO]   [ACCEPT] Chunk 1... - HIGH (The chunk includes the paper’s title, author list, and the beginning of the abstract, directly addressing the abstract, purpose, and overview requested.)
+[2025-10-04T19:37:08.101Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk contains disclosures, funding information, and contributor statements, which do not directly address the abstract, main purpose, or overview of the paper.)
+[2025-10-04T19:37:16.002Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The excerpt provides specific study details rather than a broad abstract, purpose, or overview of the paper.)
+[2025-10-04T19:37:22.716Z] [DEBUG]   [REJECT] Chunk 8... - Rejected (The chunk only describes a figure and its visual details, which does not directly address the abstract, main purpose, or overview of the paper.)
+[2025-10-04T19:37:29.193Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (The chunk provides introductory context about the importance of maternal milk and the need for optimal supplementation in very preterm infants, which relates to the paper’s purpose and overview, though it does not contain the full abstract.)
+[2025-10-04T19:37:29.194Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T19:37:29.194Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T19:37:33.576Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "I’m unable to provide the abstract, main purpose, and overview because I don’t have the text or any details about the specific paper you’re referring to. Could you please share the title, authors, or a link to the paper (or paste the relevant sections)? With that information I can extract and summarize the abstract, purpose, and overview for you."
+[2025-10-04T19:37:33.577Z] [INFO] Iteration 2: Searching with query: "I’m unable to provide the abstract, main purpose, and overview because I don’t have the text or any details about the specific paper you’re referring to. Could you please share the title, authors, or a link to the paper (or paste the relevant sections)? With that information I can extract and summarize the abstract, purpose, and overview for you."
+[2025-10-04T19:37:33.577Z] [DEBUG] Hybrid search: query="I’m unable to provide the abstract, main purpose, and overview because I don’t have the text or any details about the specific paper you’re referring to. Could you please share the title, authors, or a link to the paper (or paste the relevant sections)? With that information I can extract and summarize the abstract, purpose, and overview for you.", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:37:33.577Z] [DEBUG] Semantic search: query="I’m unable to provide the abstract, main purpose, and overview because I don’t have the text or any details about the specific paper you’re referring to. Could you please share the title, authors, or a link to the paper (or paste the relevant sections)? With that information I can extract and summarize the abstract, purpose, and overview for you.", topK=10, filter=none
+[2025-10-04T19:37:33.577Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:37:33.582Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:37:33.582Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:37:41.772Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk only contains author contributions, funding disclosures, and data‑sharing statements, which do not address the abstract, main purpose, or overview of the paper.)
+[2025-10-04T19:37:50.473Z] [DEBUG]   [REJECT] Chunk 4... - Rejected (The chunk provides specific research findings rather than a general overview or abstract of a paper.)
+[2025-10-04T19:38:17.426Z] [DEBUG]   [REJECT] Chunk 8... - Rejected (The chunk only describes a specific figure and does not provide information about the abstract, main purpose, or overview of the paper.)
+[2025-10-04T19:38:17.426Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T19:38:17.426Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T19:38:17.426Z] [INFO] Final query: "I’m unable to provide the abstract, main purpose, and overview because I don’t have the text or any details about the specific paper you’re referring to. Could you please share the title, authors, or a link to the paper (or paste the relevant sections)? With that information I can extract and summarize the abstract, purpose, and overview for you."
+[2025-10-04T19:38:17.427Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T19:38:17.427Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T19:38:17.427Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T19:38:17.427Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T19:38:17.428Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T19:38:17.428Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T19:38:17.428Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:38:17.428Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T19:38:17.428Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:38:17.429Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:38:17.429Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:38:50.489Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98972429ca541e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "384",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:38:50 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=.zy9rfJN.q1b92fEplhmEuz.m698XWFxHcLiR0qJWnY-1759606730-1.0.1.1-lQxs6NO6yj3mqNWaqynCZNmdeHs8Be2aceNmHJSU3WSI4XVsBf3PSdCQxuyPTVVvDo0HeBP6szBbhb28B6wpr.VpBEhbxiNUh4VkcTDd0C4; path=/; expires=Sat, 04-Oct-25 20:08:50 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "187",
+    "x-ratelimit-remaining-tokens": "69682",
+    "x-ratelimit-reset-requests": "6h2m41.741s",
+    "x-ratelimit-reset-tokens": "272.571428ms",
+    "x-request-id": "req_01k6rbqnhffwmammacyk3r30c0"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199078, Requested 1268. Please try again in 2m29.293s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199078, Requested 1268. Please try again in 2m29.293s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:38:50.494Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T19:39:28.058Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989724f8d83f1e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "388",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:39:28 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=XP4TpDhIaGfg7P6ydKrK39YJlVycjgpapXvMQHoqWas-1759606768-1.0.1.1-S0_iqAHkne_LqwUCgL11Cs4SrhoWDuoMct_sDus9S2VwDecWwCLXhRVtEYkkFBe19cgTkHKyxOuSGBuZyU5vJ7iQFnQNuMZn8x7HsIMMMFw; path=/; expires=Sat, 04-Oct-25 20:09:28 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "184",
+    "x-ratelimit-remaining-tokens": "69682",
+    "x-ratelimit-reset-requests": "6h19m55.569s",
+    "x-ratelimit-reset-tokens": "272.571428ms",
+    "x-request-id": "req_01k6rbrnwvfwrr726yjaxxe1xg"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198991, Requested 1037. Please try again in 11.917999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198991, Requested 1037. Please try again in 11.917999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:39:28.060Z] [INFO]   [ACCEPT] Chunk 3... - MEDIUM (Error during grading)
+[2025-10-04T19:39:38.641Z] [DEBUG]   [REJECT] Chunk 5... - Rejected (The chunk does not provide detailed information about research methods, study design, or analytical approaches.)
+[2025-10-04T19:40:03.392Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989725f658531e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:40:03 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=ofs24Dd7N.meSKDTrAjKr0pMi_5zpZg9tFVp9Uw311Y-1759606803-1.0.1.1-MlewUgWqTOjvcdz63osvpe9L.34sz9lei1OvFzoHeFk.hwZEwNrDoIdAkZmewG4mVA45ShJ3JCkRMM78b367eTxn.2My9ZJn1lTyETHri0c; path=/; expires=Sat, 04-Oct-25 20:10:03 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "180",
+    "x-ratelimit-remaining-tokens": "69682",
+    "x-ratelimit-reset-requests": "6h43m3.286999999s",
+    "x-ratelimit-reset-tokens": "272.571428ms",
+    "x-request-id": "req_01k6rbsxghe2zaddrckz3vhxtg"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200023, Requested 999. Please try again in 7m21.811999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200023, Requested 999. Please try again in 7m21.811999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:40:03.394Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T19:40:26.868Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9897268689df1e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "389",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:40:26 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=hJVWpBANTsZ16JHuuKMQk7ZEWLtAZ2iUlBgcAfo2f1E-1759606826-1.0.1.1-oKdudpcuOo2FKRTBl6QMvfpW.gDKPVdS3g8faS6RBdqR2eFwe2BsrpecAZhHcUTSenA1pWOlwcRN13IMb7ClZwM3geR5vf8vxCqAGSP2TkE; path=/; expires=Sat, 04-Oct-25 20:10:26 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "177",
+    "x-ratelimit-remaining-tokens": "69682",
+    "x-ratelimit-reset-requests": "7h0m20.180999999s",
+    "x-ratelimit-reset-tokens": "272.571428ms",
+    "x-request-id": "req_01k6rbtm1ceqkvqv0w548s890v"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199974, Requested 961. Please try again in 6m43.676999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199974, Requested 961. Please try again in 6m43.676999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:40:26.870Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T19:40:26.870Z] [INFO] Found 4 relevant chunks (Total: 4)
+[2025-10-04T19:40:26.870Z] [SUCCESS] SUCCESS: Found 4 relevant chunks!
+[2025-10-04T19:40:26.870Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T19:40:26.870Z] [INFO] Final query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T19:40:26.870Z] [INFO] Iterations: 1, Relevant chunks: 4
+[2025-10-04T19:40:26.871Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T19:40:26.871Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T19:40:26.871Z] [INFO] Query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T19:40:26.871Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T19:40:26.871Z] [INFO] Iteration 1: Searching with query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T19:40:26.871Z] [DEBUG] Hybrid search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T19:40:26.872Z] [DEBUG] Semantic search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=10, filter=none
+[2025-10-04T19:40:26.872Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T19:40:26.873Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T19:40:26.873Z] [INFO] Grading 5 chunks...
+[2025-10-04T19:40:55.862Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989727386c431e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "384",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:40:55 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=8okqEv2EZBC6Wv2f21a24l72Nq4XFj_SmXLbZKQsNWk-1759606855-1.0.1.1-uArrKSQgbtDQ4HC1QQYbM2pSkUbfyqz3a9m8doMDt_IUpzaAy1a9i031awoLz9xwbDy5hicY6.XuyxtV5bBmHT4YCIvYbGq7fTMaW_Qk8d8; path=/; expires=Sat, 04-Oct-25 20:10:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "174",
+    "x-ratelimit-remaining-tokens": "69674",
+    "x-ratelimit-reset-requests": "7h17m36.902s",
+    "x-ratelimit-reset-tokens": "279.428571ms",
+    "x-request-id": "req_01k6rbvftxewwrgpxm4wznfzwj"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199907, Requested 1201. Please try again in 7m58.364s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199907, Requested 1201. Please try again in 7m58.364s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:40:55.869Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T19:41:21.631Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989727ea0d741e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "383",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:41:21 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=JcPicF.Oegb19_cDe9Isk6g.qCGXlXI4aITN1_Gvmi8-1759606881-1.0.1.1-d9pHjBJe_FTuIryjInWHtSc.uZvjKJwkDW9Z3dA0Pi1kK14pG9tqmhKCTU2fVqzccdy1h9VzHuKNvMOw86AytLHBph10.fmkAvzM77rDwOk; path=/; expires=Sat, 04-Oct-25 20:11:21 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "171",
+    "x-ratelimit-remaining-tokens": "69674",
+    "x-ratelimit-reset-requests": "7h34m53.352s",
+    "x-ratelimit-reset-tokens": "279.428571ms",
+    "x-request-id": "req_01k6rbwbjteprb3c2d6tfdqy8p"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199847, Requested 1005. Please try again in 6m7.929s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199847, Requested 1005. Please try again in 6m7.929s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:41:21.636Z] [INFO]   [ACCEPT] Chunk 3... - MEDIUM (Error during grading)
+[2025-10-04T19:41:55.877Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "989728b1e9341e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "384",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:41:55 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=z3WSGs7e88.QapatH1ir34NHVCE.HFJ2p79YB5V6TtE-1759606915-1.0.1.1-87WMVwOZlna8i9Iu5gmIVgqEqjiqIFK.7rywALYE9r7XlQtcr7tBFAJPzm3BmQ7gXIZ2kzNb3lC_Ol3mxwsiLOUCC9AM24Vuhvhy9t3V33s; path=/; expires=Sat, 04-Oct-25 20:11:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "168",
+    "x-ratelimit-remaining-tokens": "69674",
+    "x-ratelimit-reset-requests": "7h52m4.119s",
+    "x-ratelimit-reset-tokens": "279.428571ms",
+    "x-request-id": "req_01k6rbxat9et5sxrhv4wh23f62"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199768, Requested 1180. Please try again in 6m49.279s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199768, Requested 1180. Please try again in 6m49.279s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:41:55.883Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T19:42:24.225Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9897293a5e571e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "390",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:42:24 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=hLOkRLY3zbkW5D1ivQMnI9xPGyWKd4cWOnzOXSmVOs4-1759606944-1.0.1.1-uYw2kEQum9QgeVDPHycataEvRyuAmraC2zL52BnWNLrk11egjfAzxfBflhl6a2XhKIJTi01_s33tcMrYHicxpCCwzKeORuZffpoaOCM87ac; path=/; expires=Sat, 04-Oct-25 20:12:24 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "165",
+    "x-ratelimit-remaining-tokens": "69674",
+    "x-ratelimit-reset-requests": "8h9m31.393s",
+    "x-ratelimit-reset-tokens": "279.428571ms",
+    "x-request-id": "req_01k6rby04mevkr5fvsz13w59c8"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199702, Requested 1368. Please try again in 7m42.145999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199702, Requested 1368. Please try again in 7m42.145999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:42:24.227Z] [INFO]   [ACCEPT] Chunk 8... - MEDIUM (Error during grading)
+[2025-10-04T19:42:55.445Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "98972a07b8431e79-ORD",
+    "connection": "keep-alive",
+    "content-length": "384",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 19:42:55 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=7kBKGtFhrO7lCKoU59RkBJPaFwg.Dw.uDc7nhXl.PsI-1759606975-1.0.1.1-etO_7mS4vnJ.YMzXVuRKg3jz1sJQoe1hbYZLSodd4z9ldpqzqFNV8TvdoT24ymlxvL1Rm5NGparusK7V8vUZUfqWn4Lbp4c12MJx_cJNuwA; path=/; expires=Sat, 04-Oct-25 20:12:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "msp",
+    "x-ratelimit-limit-requests": "250",
+    "x-ratelimit-limit-tokens": "70000",
+    "x-ratelimit-remaining-requests": "162",
+    "x-ratelimit-remaining-tokens": "69674",
+    "x-ratelimit-reset-requests": "8h26m46.025s",
+    "x-ratelimit-reset-tokens": "279.428571ms",
+    "x-request-id": "req_01k6rbz077e628t6yjtxhyfyvz"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199626, Requested 1130. Please try again in 5m26.346s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "compound",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199626, Requested 1130. Please try again in 5m26.346s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"compound","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T19:42:55.447Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T19:42:55.448Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T19:42:55.448Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T19:42:55.448Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T19:42:55.448Z] [INFO] Final query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T19:42:55.448Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T19:42:55.448Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T19:43:12.755Z] [ERROR] Error during final extraction

@@ -1,0 +1,8 @@
+{
+  "authors": "Renjini Lalitha, Matthew Hicks, Mosarrat Qureshi, Kumar Kumaran",
+  "date": "2024",
+  "documentType": "retrospective case-control study",
+  "summary": "This study investigates risk factors for Bell's Stage III necrotizing enterocolitis (NEC-III) in preterm neonates born <33 weeks gestation, focusing on the association between umbilical arterial catheter (UAC) duration and NEC-III development. It found that UAC duration >5 days and earlier onset distinguish NEC-III from NEC-II.",
+  "methods": "• Single-center retrospective case-control study, 2015-2018\n• Neonates <33 weeks GA, 1360 admissions\n• Cases: NEC-III; Controls: NEC-II (1:1) and non-NEC (1:2–4) matched by GA ±1 week and birth date ±3 months\n• Data sources: neonatal database and chart review\n• Variables: maternal/neonatal demographics, perinatal data, feeding, UAC presence/duration, illness severity (SNAPPE-II)\n• Statistics: χ², Fisher’s, ANOVA/t-tests; multivariate logistic regression (p<0.2 entry, p<0.05 significance)",
+  "findings": "• NEC-III incidence 46% of NEC cases; median onset 13.7 vs 23.9 days (NEC-II), p=0.01\n• Lower GA in NEC-III (25.4±2.3 vs 27.3±2.7 weeks), p=0.0003\n• Higher illness severity: SNAPPE-II 47.5 vs 28.4 (NEC-II) and 37 (non-NEC), p=0.003\n• UAC >5 days independently associated with NEC-III (AOR provided in full paper)\n• Suggests upper limit for UAC duration may prevent NEC-III"
+}

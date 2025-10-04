@@ -1,0 +1,20 @@
+[
+  {
+    "extractionFile": "extraction-1759598911085.json",
+    "pdfFile": "Unknown",
+    "datesMatch": "No",
+    "datesCorrectPercentage": "0%",
+    "authorsMatch": "No",
+    "authorsCorrectPercentage": "0%",
+    "documentTypeCorrect": "No",
+    "methodologiesCorrect": "No",
+    "methodologiesGroundedPercentage": "0%",
+    "summaryCorrect": "No",
+    "summaryGroundedPercentage": "0%",
+    "findingsCorrect": "No",
+    "findingsGroundedPercentage": "0%",
+    "overallScore": 0,
+    "scoreReason": "Evaluation failed",
+    "error": "Rate limit exceeded. Please wait and try again."
+  }
+]

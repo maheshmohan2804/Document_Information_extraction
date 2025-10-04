@@ -1,0 +1,27 @@
+{
+  "name": "pdf-evaluation-pipeline",
+  "version": "1.0.0",
+  "description": "Automated PDF extraction quality evaluation using Gemini 2.5 Pro",
+  "main": "evaluate.ts",
+  "scripts": {
+    "evaluate": "ts-node evaluate.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "pdf",
+    "evaluation",
+    "gemini",
+    "testing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
