@@ -15,20 +15,11 @@ import FormData from 'form-data';
 import axios from 'axios';
 import { chunkDocument } from './chunking';
 import { tagChunksAndExtractMetadata } from './tagging';
-import { VectorStore } from './vectorStore';
+import { VectorStoreBERT } from './vectorStoreBERT';
 import { HybridSearcher } from './hybridSearch';
 import { extractDocumentInformation, answerQuery } from './extraction';
 import { logger } from './logger';
-import { ExtractionResult, GroqConfig, ChunkingConfig, QueryAnswerResult } from './types';
-
-interface PipelineConfig {
-  doclingApiUrl: string;
-  groqApiKey: string;
-  groqModel: string;
-  groqTemperature: number;
-  groqMaxTokens: number;
-  chunkingConfig: ChunkingConfig;
-}
+import { ExtractionResult, GroqConfig, ChunkingConfig, QueryAnswerResult, PipelineConfig } from './types';
 
 interface DoclingResponse {
   status: string;
@@ -111,6 +102,11 @@ export async function runCorrectiveRAGPipeline(
   config: PipelineConfig
 ): Promise<ExtractionResult> {
   logger.section('Corrective RAG Pipeline Started');
+  logger.separator('=');
+  logger.info('🔍 PROCESSING PDF:');
+  logger.info(`   Full Path: ${pdfFilePath}`);
+  logger.info(`   Filename: ${path.basename(pdfFilePath)}`);
+  logger.separator('=');
   logger.info('Configuration:', {
     pdfFile: path.basename(pdfFilePath),
     doclingApi: config.doclingApiUrl,
@@ -156,7 +152,7 @@ export async function runCorrectiveRAGPipeline(
     );
 
     // Step 4: Create vector store and add chunks
-    const vectorStore = new VectorStore();
+    const vectorStore = new VectorStoreBERT();
     await vectorStore.addChunks(taggedChunks);
 
     // Step 5: Initialize hybrid searcher
@@ -244,7 +240,7 @@ export async function runQueryMode(
     );
 
     // Step 4: Create vector store and add chunks
-    const vectorStore = new VectorStore();
+    const vectorStore = new VectorStoreBERT();
     await vectorStore.addChunks(taggedChunks);
 
     // Step 5: Initialize hybrid searcher

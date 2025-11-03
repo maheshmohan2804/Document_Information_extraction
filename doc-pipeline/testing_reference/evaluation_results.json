@@ -1,20 +1,19 @@
 [
   {
-    "extractionFile": "extraction-1759598911085.json",
-    "pdfFile": "Unknown",
-    "datesMatch": "No",
-    "datesCorrectPercentage": "0%",
-    "authorsMatch": "No",
-    "authorsCorrectPercentage": "0%",
-    "documentTypeCorrect": "No",
-    "methodologiesCorrect": "No",
-    "methodologiesGroundedPercentage": "0%",
-    "summaryCorrect": "No",
-    "summaryGroundedPercentage": "0%",
-    "findingsCorrect": "No",
-    "findingsGroundedPercentage": "0%",
-    "overallScore": 0,
-    "scoreReason": "Evaluation failed",
-    "error": "Rate limit exceeded. Please wait and try again."
+    "extractionFile": "extraction-1760549376058.json",
+    "pdfFile": "1760549376058.pdf",
+    "datesMatch": "Yes",
+    "datesCorrectPercentage": "100%",
+    "authorsMatch": "Yes",
+    "authorsCorrectPercentage": "100%",
+    "documentTypeCorrect": "Yes",
+    "methodologiesCorrect": "Yes",
+    "methodologiesGroundedPercentage": "95%",
+    "summaryCorrect": "Yes",
+    "summaryGroundedPercentage": "95%",
+    "findingsCorrect": "Yes",
+    "findingsGroundedPercentage": "90%",
+    "overallScore": 95,
+    "scoreReason": "The extracted information accurately reflects the ground truth document. Minor improvements could be made in fully capturing all details in the findings section."
   }
 ]

@@ -78,3 +78,12 @@ export interface ChunkingConfig {
   maxChunkSize: number;
   overlap: number;
 }
+
+export interface PipelineConfig {
+  doclingApiUrl: string;
+  groqApiKey: string;
+  groqModel: string;
+  groqTemperature: number;
+  groqMaxTokens: number;
+  chunkingConfig: ChunkingConfig;
+}

@@ -2,7 +2,7 @@
  * Unit tests for corrective RAG module
  */
 
-import { correctiveRAGRetrieval, gradeRelevance, rewriteQuery } from '../src/correctiveRAG';
+import { correctiveRAGRetrieval, gradeChunkRelevance, rewriteQuery } from '../src/correctiveRAG';
 import { HybridSearcher } from '../src/hybridSearch';
 import { VectorStore } from '../src/vectorStore';
 import { GroqConfig, TaggedChunk } from '../src/types';
@@ -54,7 +54,7 @@ describe('CorrectiveRAG Module', () => {
       const mockCreate = jest.fn().mockResolvedValue({
         choices: [{
           message: {
-            content: 'RELEVANCE: HIGH\nREASON: The chunk directly answers the query about machine learning in healthcare.'
+            content: 'RELEVANT: yes\nSCORE: high\nREASON: The chunk directly answers the query about machine learning in healthcare.'
           }
         }]
       });
@@ -67,21 +67,23 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
-      const result = await gradeRelevance(
-        'What machine learning methods were used?',
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
+      const result = await gradeChunkRelevance(
+        groqClient,
         sampleChunks[1].content,
+        'What machine learning methods were used?',
         mockConfig
       );
 
-      expect(result.isRelevant).toBe(true);
-      expect(result.relevance).toBe('HIGH');
+      expect(result.relevant).toBe(true);
+      expect(result.score).toBe('high');
     });
 
     it('should grade chunk as not relevant', async () => {
       const mockCreate = jest.fn().mockResolvedValue({
         choices: [{
           message: {
-            content: 'RELEVANCE: REJECT\nREASON: This chunk does not answer the query.'
+            content: 'RELEVANT: no\nSCORE: low\nREASON: This chunk does not answer the query.'
           }
         }]
       });
@@ -94,20 +96,22 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
-      const result = await gradeRelevance(
-        'What is quantum physics?',
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
+      const result = await gradeChunkRelevance(
+        groqClient,
         sampleChunks[0].content,
+        'What is quantum physics?',
         mockConfig
       );
 
-      expect(result.isRelevant).toBe(false);
+      expect(result.relevant).toBe(false);
     });
 
     it('should handle MEDIUM relevance', async () => {
       const mockCreate = jest.fn().mockResolvedValue({
         choices: [{
           message: {
-            content: 'RELEVANCE: MEDIUM\nREASON: Partially relevant.'
+            content: 'RELEVANT: yes\nSCORE: medium\nREASON: Partially relevant.'
           }
         }]
       });
@@ -120,14 +124,16 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
-      const result = await gradeRelevance(
-        'test query',
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
+      const result = await gradeChunkRelevance(
+        groqClient,
         'test content',
+        'test query',
         mockConfig
       );
 
-      expect(result.isRelevant).toBe(true);
-      expect(result.relevance).toBe('MEDIUM');
+      expect(result.relevant).toBe(true);
+      expect(result.score).toBe('medium');
     });
   });
 
@@ -136,7 +142,9 @@ describe('CorrectiveRAG Module', () => {
       const mockCreate = jest.fn().mockResolvedValue({
         choices: [{
           message: {
-            content: 'NEW_QUERY: What specific deep learning architectures were used for medical image analysis?'
+            content: JSON.stringify({
+              rewritten_query: 'What specific deep learning architectures were used for medical image analysis'
+            })
           }
         }]
       });
@@ -149,10 +157,12 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
       const newQuery = await rewriteQuery(
+        groqClient,
         'What methods were used?',
-        'Not specific enough',
-        mockConfig
+        mockConfig,
+        'Not specific enough'
       );
 
       expect(newQuery).toContain('deep learning');
@@ -163,7 +173,9 @@ describe('CorrectiveRAG Module', () => {
       const mockCreate = jest.fn().mockResolvedValue({
         choices: [{
           message: {
-            content: 'NEW_QUERY: How were neural networks trained for healthcare applications?'
+            content: JSON.stringify({
+              rewritten_query: 'How were neural networks trained for healthcare applications'
+            })
           }
         }]
       });
@@ -176,8 +188,9 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
       const original = 'What is the training method?';
-      const rewritten = await rewriteQuery(original, 'Too vague', mockConfig);
+      const rewritten = await rewriteQuery(groqClient, original, mockConfig, 'Too vague');
 
       expect(rewritten).not.toBe(original);
     });
@@ -189,21 +202,21 @@ describe('CorrectiveRAG Module', () => {
         .mockResolvedValueOnce({
           choices: [{
             message: {
-              content: 'RELEVANCE: HIGH\nREASON: Directly answers the query.'
+              content: 'RELEVANT: yes\nSCORE: high\nREASON: Directly answers the query.'
             }
           }]
         })
         .mockResolvedValueOnce({
           choices: [{
             message: {
-              content: 'RELEVANCE: HIGH\nREASON: Very relevant.'
+              content: 'RELEVANT: yes\nSCORE: high\nREASON: Very relevant.'
             }
           }]
         })
         .mockResolvedValueOnce({
           choices: [{
             message: {
-              content: 'RELEVANCE: MEDIUM\nREASON: Partially relevant.'
+              content: 'RELEVANT: yes\nSCORE: medium\nREASON: Partially relevant.'
             }
           }]
         });
@@ -232,28 +245,33 @@ describe('CorrectiveRAG Module', () => {
       const mockCreate = jest.fn()
         // First iteration - reject all
         .mockResolvedValueOnce({
-          choices: [{ message: { content: 'RELEVANCE: REJECT\nREASON: Not relevant.' } }]
+          choices: [{ message: { content: 'RELEVANT: no\nSCORE: low\nREASON: Not relevant.' } }]
         })
         .mockResolvedValueOnce({
-          choices: [{ message: { content: 'RELEVANCE: REJECT\nREASON: Not relevant.' } }]
+          choices: [{ message: { content: 'RELEVANT: no\nSCORE: low\nREASON: Not relevant.' } }]
+        })
+        .mockResolvedValueOnce({
+          choices: [{ message: { content: 'RELEVANT: no\nSCORE: low\nREASON: Not relevant.' } }]
         })
         // Query rewriting
         .mockResolvedValueOnce({
           choices: [{
             message: {
-              content: 'NEW_QUERY: What deep learning architectures were implemented?'
+              content: JSON.stringify({
+                rewritten_query: 'What deep learning architectures were implemented'
+              })
             }
           }]
         })
         // Second iteration - accept
         .mockResolvedValueOnce({
-          choices: [{ message: { content: 'RELEVANCE: HIGH\nREASON: Relevant.' } }]
+          choices: [{ message: { content: 'RELEVANT: yes\nSCORE: high\nREASON: Relevant.' } }]
         })
         .mockResolvedValueOnce({
-          choices: [{ message: { content: 'RELEVANCE: HIGH\nREASON: Relevant.' } }]
+          choices: [{ message: { content: 'RELEVANT: yes\nSCORE: high\nREASON: Relevant.' } }]
         })
         .mockResolvedValueOnce({
-          choices: [{ message: { content: 'RELEVANCE: HIGH\nREASON: Relevant.' } }]
+          choices: [{ message: { content: 'RELEVANT: yes\nSCORE: high\nREASON: Relevant.' } }]
         });
 
       (Groq as jest.MockedClass<typeof Groq>).mockImplementation(() => ({
@@ -317,13 +335,17 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
-      const result = await gradeRelevance(
-        'test query',
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
+      const result = await gradeChunkRelevance(
+        groqClient,
         'test content',
+        'test query',
         mockConfig
       );
 
-      expect(result.isRelevant).toBe(false);
+      // On error, the function returns a fallback grade with relevant=true
+      expect(result.relevant).toBe(true);
+      expect(result.score).toBe('medium');
     });
 
     it('should handle query rewriting errors', async () => {
@@ -337,8 +359,9 @@ describe('CorrectiveRAG Module', () => {
         }
       } as any));
 
+      const groqClient = new Groq({ apiKey: mockConfig.apiKey });
       const originalQuery = 'test query';
-      const result = await rewriteQuery(originalQuery, 'feedback', mockConfig);
+      const result = await rewriteQuery(groqClient, originalQuery, mockConfig, 'feedback');
 
       expect(result).toBe(originalQuery);
     });

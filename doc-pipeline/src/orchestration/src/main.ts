@@ -3,6 +3,7 @@
  * Provides command-line interface for running the pipeline
  */
 
+import 'dotenv/config';
 import * as path from 'path';
 import { runCorrectiveRAGPipeline, runQueryMode, saveExtractionResults } from './correctiveRAGPipeline';
 import { logger } from './logger';
@@ -101,12 +102,12 @@ async function main() {
   const pipelineConfig = {
     doclingApiUrl,
     groqApiKey,
-    groqModel: 'groq/compound',
+    groqModel: 'openai/gpt-oss-120b',
     groqTemperature: 0.1,
-    groqMaxTokens: 1500,
+    groqMaxTokens: 2500,
     chunkingConfig: {
       minChunkSize: 1000,
-      maxChunkSize: 8000,
+      maxChunkSize: 6000,
       overlap: 200
     }
   };

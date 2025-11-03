@@ -1,3 +1,11 @@
+/**
+ * Code to process a PDF file via an API and display/save the results
+ * Uses axios for HTTP requests and form-data for file uploads
+ * Supports command line arguments for file path, API URL, model, temperature, output format, and saving outputs
+ * Outputs results to console and optionally saves markdown and HTML files
+ * Designed for easy integration into document processing pipelines
+ */
+
 import * as fs from 'fs';
 import * as path from 'path';
 import FormData from 'form-data';
@@ -30,7 +38,7 @@ async function processPDF(filePath: string, options: CliOptions = {}): Promise<P
     model = 'meta-llama/llama-4-scout-17b-16e-instruct',
     temperature = 0.1,
     topP = 0.10,
-    maxTokens = 350,
+    maxTokens =500,
     outputFormat = 'markdown',
     saveOutputs = false,
     outputDir = './outputs'

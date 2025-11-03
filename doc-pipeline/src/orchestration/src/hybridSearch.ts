@@ -1,10 +1,16 @@
 /**
  * Hybrid search module
  * Combines semantic search (embeddings) with BM25 keyword search
+ * Uses @xenova/transformers for high-quality semantic embeddings, computes cosine similarity to compute semantic score. Normalises the semantic score
+ * BM25 is a Normalised TF-IDF based scoring algorithm. Normalises the BM25 score
+ * Combines both scores using a weighted average controlled by alpha parameter (0 = BM25 only, 1 = Semantic only)
+ * Supports optional tag-based filtering to restrict search to specific sections (e.g., <methods>, <findings>)
+ * 
  */
 
 import { SearchResult } from './types';
 import { VectorStore } from './vectorStore';
+import { VectorStoreBERT } from './vectorStoreBERT';
 import { logger } from './logger';
 
 /**
@@ -16,7 +22,7 @@ class BM25 {
   private docLengths: number[] = [];
   private idf: Map<string, number> = new Map();
   private k1: number = 1.5;
-  private b: number = 0.75;
+  private b: number = 0.5;
 
   /**
    * Initialize BM25 with documents
@@ -108,11 +114,11 @@ class BM25 {
  * Hybrid search combining semantic and BM25
  */
 export class HybridSearcher {
-  private vectorStore: VectorStore;
+  private vectorStore: VectorStore | VectorStoreBERT;
   private bm25: BM25;
   private allDocuments: string[] = [];
 
-  constructor(vectorStore: VectorStore) {
+  constructor(vectorStore: VectorStore | VectorStoreBERT) {
     this.vectorStore = vectorStore;
     this.bm25 = new BM25();
   }

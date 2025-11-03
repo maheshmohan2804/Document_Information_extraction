@@ -19,6 +19,8 @@ describe('Pipeline Integration Tests', () => {
     doclingApiUrl: 'http://localhost:8000',
     groqApiKey: 'test-api-key',
     groqModel: 'test-model',
+    groqTemperature: 0.3,
+    groqMaxTokens: 4096,
     chunkingConfig: {
       minChunkSize: 1000,
       maxChunkSize: 8000,

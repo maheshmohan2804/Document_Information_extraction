@@ -7,6 +7,26 @@
  * - Recursive chunking with overlap for documents without headers
  */
 
+/**
+ * Chunking Thought Process:
+ * A header-based chunking strategy can give the LLM the best possible information to 
+ * provide key details such as Summary, Methods, Findings, etc.
+ * Code Logic: The code uses multiple strategies to chunk:
+ * If the document was written in markdown, it uses:
+      * - Header-based chunking: It splits the document at markdown headers (levels 1-3).
+      * - Combines smaller chunks under each header to meet a minimum size.
+      * - Splits larger chunks that exceed a maximum size by removing the latest combined chunk.
+      * - Table detection: It identifies markdown tables and ensures they are kept intact within chunks.
+      * - Size constraints: It enforces minimum and maximum chunk sizes, combining smaller chunks and splitting larger ones as needed.
+  * If the document lacks markdown structure, it falls back to recursive chunking with overlap:
+      * - This method splits text into chunks of a specified maximum size, with overlapping text between chunks to preserve context.
+      * - It attempts to split at paragraph boundaries first, then sentences, and finally words as a last resort.
+  * Throughout the process, it logs detailed information about the chunking steps, including any warnings about chunks that still exceed size limits (e.g., due to large tables).
+  * The final output is an array of chunks, each with metadata indicating its header, content, character count, and whether it contains a table.
+ * 
+ * 
+ */
+
 import { Chunk, ChunkingConfig } from './types';
 import { logger } from './logger';
 
@@ -30,6 +50,19 @@ function extractTables(markdownText: string): Array<{ content: string; start: nu
 
   logger.debug(`Extracted ${tables.length} tables from markdown`);
   return tables;
+}
+
+/**
+ * Check if a text range intersects with any table
+ */
+function rangeIntersectsTable(
+  start: number,
+  end: number,
+  tableRanges: Array<{ start: number; end: number }>
+): boolean {
+  return tableRanges.some(
+    table => (start <= table.start && table.start < end) || (start < table.end && table.end <= end) || (table.start <= start && end <= table.end)
+  );
 }
 
 /**
@@ -183,12 +216,12 @@ export function chunkDocument(
   const tables = extractTables(markdownText);
   const tableRanges = tables.map(t => ({ start: t.start, end: t.end }));
 
-  // Split by markdown headers (levels 1-3)
-  const pattern = /(^#{1,3}\s+.+?)(?=\n#{1,3}\s+|\Z)/gms;
-  const matches = Array.from(markdownText.matchAll(pattern));
+  // Find all markdown headers (levels 1-3)
+  const headerPattern = /^#{1,3}\s+.+$/gm;
+  const headerMatches = Array.from(markdownText.matchAll(headerPattern));
 
   // If no headers found, use recursive chunking
-  if (matches.length === 0) {
+  if (headerMatches.length === 0) {
     logger.warn('No markdown headers found. Using recursive chunking with overlap.');
     const chunkTexts = recursiveChunkWithOverlap(markdownText, maxChunkSize, overlap);
 
@@ -203,28 +236,34 @@ export function chunkDocument(
     return chunks;
   }
 
-  // Process header-based chunks
+  // Process header-based chunks by extracting content between headers
   const rawChunks: Chunk[] = [];
 
-  for (const match of matches) {
-    const chunkText = match[0].trim();
+  for (let idx = 0; idx < headerMatches.length; idx++) {
+    const headerMatch = headerMatches[idx];
+    const headerStart = headerMatch.index!;
+    const nextHeaderStart = idx + 1 < headerMatches.length
+      ? headerMatches[idx + 1].index!
+      : markdownText.length;
 
-    // Skip truly empty matches
+    // Extract content from this header to the next header (or end of document)
+    let chunkText = markdownText.substring(headerStart, nextHeaderStart).trim();
+
+    // Skip truly empty chunks
     if (!chunkText) {
       continue;
     }
 
     // Capture header text (support 1-3 hashes)
-    const headerMatch = chunkText.match(/^(#{1,3}\s+)(.+)/);
-    const header = headerMatch ? headerMatch[2].trim() : 'Unknown';
+    const headerTextMatch = chunkText.match(/^(#{1,3}\s+)(.+)/);
+    const header = headerTextMatch ? headerTextMatch[2].trim() : 'Unknown';
 
     // Check if chunk contains a table
-    const chunkStart = match.index!;
-    const chunkEnd = chunkStart + chunkText.length;
+    const chunkEnd = headerStart + chunkText.length;
     const containsTable = tableRanges.some(
       ({ start, end }) =>
-        (chunkStart <= start && start < chunkEnd) ||
-        (chunkStart < end && end <= chunkEnd)
+        (headerStart <= start && start < chunkEnd) ||
+        (headerStart < end && end <= chunkEnd)
     );
 
     rawChunks.push({

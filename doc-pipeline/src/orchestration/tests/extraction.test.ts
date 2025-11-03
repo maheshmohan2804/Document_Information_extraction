@@ -66,7 +66,7 @@ describe('Extraction Module', () => {
       const mockGradingResponse = {
         choices: [{
           message: {
-            content: 'RELEVANCE: HIGH\nREASON: Directly relevant.'
+            content: 'RELEVANT: yes\nSCORE: high\nREASON: Directly relevant.'
           }
         }]
       };
@@ -87,18 +87,20 @@ describe('Extraction Module', () => {
         }]
       };
 
-      const mockCreate = jest.fn()
-        .mockResolvedValue(mockGradingResponse);
+      // CorrectiveRAG retrieves topK=4 chunks for each of 6 fields (authors, date, documentType, summary, methods, findings)
+      // Each chunk needs grading = 4*6 = 24 grading calls + 1 final extraction call = 25 total
+      const mockCreate = jest.fn();
 
-      // Override for the final extraction call
-      mockCreate
-        .mockResolvedValueOnce(mockGradingResponse) // authors grading
-        .mockResolvedValueOnce(mockGradingResponse) // date grading
-        .mockResolvedValueOnce(mockGradingResponse) // documentType grading
-        .mockResolvedValueOnce(mockGradingResponse) // summary grading
-        .mockResolvedValueOnce(mockGradingResponse) // methods grading
-        .mockResolvedValueOnce(mockGradingResponse) // findings grading
-        .mockResolvedValueOnce(mockExtractionResponse); // final extraction
+      // Mock 24 grading responses (4 chunks x 6 fields)
+      for (let i = 0; i < 24; i++) {
+        mockCreate.mockResolvedValueOnce(mockGradingResponse);
+      }
+
+      // Final extraction call
+      mockCreate.mockResolvedValueOnce(mockExtractionResponse);
+
+      // Default fallback for any extra calls
+      mockCreate.mockResolvedValue(mockGradingResponse);
 
       (Groq as jest.MockedClass<typeof Groq>).mockImplementation(() => ({
         chat: {
@@ -123,56 +125,34 @@ describe('Extraction Module', () => {
     });
 
     it('should handle JSON with markdown code blocks', async () => {
-      const mockCreate = jest.fn()
-        .mockResolvedValue({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: '```json\n{"authors": "Test Author", "date": "2024", "documentType": "Research Article", "summary": "Test summary", "methods": "Test methods", "findings": "Test findings"}\n```'
-            }
-          }]
-        });
+      const mockGradingResponse = {
+        choices: [{
+          message: {
+            content: 'RELEVANT: yes\nSCORE: high\nREASON: Relevant.'
+          }
+        }]
+      };
+
+      const mockExtractionResponse = {
+        choices: [{
+          message: {
+            content: '```json\n{"authors": "Test Author", "date": "2024", "documentType": "Research Article", "summary": "Test summary", "methods": "Test methods", "findings": "Test findings"}\n```'
+          }
+        }]
+      };
+
+      const mockCreate = jest.fn();
+
+      // Mock 24 grading responses (4 chunks x 6 fields)
+      for (let i = 0; i < 24; i++) {
+        mockCreate.mockResolvedValueOnce(mockGradingResponse);
+      }
+
+      // Final extraction call with markdown code blocks
+      mockCreate.mockResolvedValueOnce(mockExtractionResponse);
+
+      // Default fallback for any extra calls
+      mockCreate.mockResolvedValue(mockGradingResponse);
 
       (Groq as jest.MockedClass<typeof Groq>).mockImplementation(() => ({
         chat: {
@@ -193,56 +173,34 @@ describe('Extraction Module', () => {
     });
 
     it('should use defaults when JSON parsing fails', async () => {
-      const mockCreate = jest.fn()
-        .mockResolvedValue({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'This is not valid JSON {invalid}'
-            }
-          }]
-        });
+      const mockGradingResponse = {
+        choices: [{
+          message: {
+            content: 'RELEVANT: yes\nSCORE: high\nREASON: Relevant.'
+          }
+        }]
+      };
+
+      const mockInvalidExtractionResponse = {
+        choices: [{
+          message: {
+            content: 'This is not valid JSON {invalid}'
+          }
+        }]
+      };
+
+      const mockCreate = jest.fn();
+
+      // Mock 24 grading responses (4 chunks x 6 fields)
+      for (let i = 0; i < 24; i++) {
+        mockCreate.mockResolvedValueOnce(mockGradingResponse);
+      }
+
+      // Final extraction call with invalid JSON
+      mockCreate.mockResolvedValueOnce(mockInvalidExtractionResponse);
+
+      // Default fallback for any extra calls
+      mockCreate.mockResolvedValue(mockGradingResponse);
 
       (Groq as jest.MockedClass<typeof Groq>).mockImplementation(() => ({
         chat: {
@@ -265,28 +223,34 @@ describe('Extraction Module', () => {
 
   describe('Query answering', () => {
     it('should answer custom queries', async () => {
-      const mockCreate = jest.fn()
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Answers the query.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'RELEVANCE: HIGH\nREASON: Relevant.'
-            }
-          }]
-        })
-        .mockResolvedValueOnce({
-          choices: [{
-            message: {
-              content: 'The accuracy was 95% on the test dataset.'
-            }
-          }]
-        });
+      const mockGradingResponse = {
+        choices: [{
+          message: {
+            content: 'RELEVANT: yes\nSCORE: high\nREASON: Answers the query.'
+          }
+        }]
+      };
+
+      const mockAnswerResponse = {
+        choices: [{
+          message: {
+            content: 'The accuracy was 95% on the test dataset.'
+          }
+        }]
+      };
+
+      const mockCreate = jest.fn();
+
+      // answerQuery uses correctiveRAG with topK=4, so it needs 4 grading calls + 1 answer call
+      for (let i = 0; i < 4; i++) {
+        mockCreate.mockResolvedValueOnce(mockGradingResponse);
+      }
+
+      // Final answer generation call
+      mockCreate.mockResolvedValueOnce(mockAnswerResponse);
+
+      // Default fallback for any extra calls
+      mockCreate.mockResolvedValue(mockGradingResponse);
 
       (Groq as jest.MockedClass<typeof Groq>).mockImplementation(() => ({
         chat: {

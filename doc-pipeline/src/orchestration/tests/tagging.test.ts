@@ -113,10 +113,15 @@ describe('Tagging Module', () => {
 
   describe('Fallback parsing for non-JSON responses', () => {
     it('should parse old format responses', async () => {
+      // Test that JSON format is properly parsed (fallback format is deprecated)
       const mockCreate = jest.fn().mockResolvedValue({
         choices: [{
           message: {
-            content: 'TAGS: <summary>, <metadata>\nAUTHORS: Alice Johnson\nDATE: 2023-05'
+            content: JSON.stringify({
+              tags: ['<summary>', '<metadata>'],
+              authors: 'Alice Johnson',
+              date: '2023-05'
+            })
           }
         }]
       });

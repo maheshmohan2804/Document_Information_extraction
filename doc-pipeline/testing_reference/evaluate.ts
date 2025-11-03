@@ -35,9 +35,18 @@ interface EvaluationResult {
   error?: string;
 }
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const EXTRACTION_OUTPUT_DIR = path.join(__dirname, '..', 'src', 'orchestration', 'output');
-const RESULTS_FILE = path.join(__dirname, 'evaluation_results.json');
+const OUTPUTS_DIR = path.join(__dirname, 'outputs');
+
+// Create outputs directory if it doesn't exist
+if (!fs.existsSync(OUTPUTS_DIR)) {
+  fs.mkdirSync(OUTPUTS_DIR, { recursive: true });
+}
+
+// Generate results file name with datetime
+const timestamp = new Date().toISOString().replace(/:/g, '-').replace(/\..+/, '');
+const RESULTS_FILE = path.join(OUTPUTS_DIR, `evaluation-results-${timestamp}.json`);
 
 async function evaluateWithGemini(
   extractionData: ExtractionData,
@@ -105,33 +114,36 @@ Guidelines:
 Respond ONLY with the JSON object, no additional text.`;
 
   try {
-    console.log('   Sending request to OpenRouter (Gemini 2.0 Flash)...');
+    console.log('   Sending request to Google Gemini API...');
     console.log(`   Prompt length: ${prompt.length} characters`);
 
     const response = await axios.post(
-      'https://openrouter.ai/api/v1/chat/completions',
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${GEMINI_API_KEY}`,
       {
-        model: 'google/gemini-2.0-flash-exp:free',
-        messages: [
+        contents: [
           {
-            role: 'user',
-            content: prompt
+            parts: [
+              {
+                text: prompt
+              }
+            ]
           }
         ],
-        temperature: 0.1,
+        generationConfig: {
+          temperature: 0.1,
+          maxOutputTokens: 2048,
+          responseMimeType: 'application/json'
+        }
       },
       {
         headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'http://localhost:3000',
-          'X-Title': 'PDF Evaluation Pipeline'
+          'Content-Type': 'application/json'
         },
-        timeout: 60000 // 60 second timeout
+        timeout: 60000
       }
     );
 
-    const content = response.data.choices[0].message.content;
+    const content = response.data.candidates[0].content.parts[0].text;
     // Extract JSON from markdown code blocks if present
     const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/\{[\s\S]*\}/);
     const jsonStr = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : content;
@@ -140,14 +152,10 @@ Respond ONLY with the JSON object, no additional text.`;
   } catch (error: any) {
     if (error.response?.status === 429) {
       console.error('\n⚠️  Rate limit exceeded!');
-      console.error('   The free tier has strict rate limits.');
-      console.error('   Solutions:');
-      console.error('   1. Wait a few minutes and try again');
-      console.error('   2. Use EVALUATE_ALL=false to evaluate only the latest file');
-      console.error('   3. Consider upgrading to a paid OpenRouter plan');
+      console.error('   Please wait a few minutes and try again');
       throw new Error('Rate limit exceeded. Please wait and try again.');
     }
-    console.error('Error calling OpenRouter API:', error.response?.data || error.message);
+    console.error('Error calling Gemini API:', error.response?.data || error.message);
     throw error;
   }
 }
@@ -181,7 +189,7 @@ async function evaluateExtractionFile(extractionFilePath: string): Promise<Evalu
       throw new Error('No markdown content available. Please regenerate extraction with updated pipeline.');
     }
 
-    console.log('\n🤖 Evaluating with Gemini 2.5 Pro...');
+    console.log('\n🤖 Evaluating with Gemini 2.0 Flash...');
 
     // Evaluate with Gemini using markdown as ground truth
     const evaluation = await evaluateWithGemini(extractionData, extractionFileName);
@@ -229,12 +237,12 @@ async function main() {
   console.log('');
 
   // Validate API key
-  if (!OPENROUTER_API_KEY) {
-    console.error('❌ Error: OPENROUTER_API_KEY environment variable not set');
+  if (!GEMINI_API_KEY) {
+    console.error('❌ Error: GEMINI_API_KEY not set');
     console.error('\nSet it with:');
-    console.error('  export OPENROUTER_API_KEY="your-key"  # Linux/Mac');
-    console.error('  set OPENROUTER_API_KEY=your-key       # Windows CMD');
-    console.error('  $env:OPENROUTER_API_KEY="your-key"    # Windows PowerShell');
+    console.error('  export GEMINI_API_KEY="your-key"  # Linux/Mac');
+    console.error('  set GEMINI_API_KEY=your-key       # Windows CMD');
+    console.error('  $env:GEMINI_API_KEY="your-key"    # Windows PowerShell');
     process.exit(1);
   }
 
@@ -264,19 +272,47 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\n📁 Found ${extractionFiles.length} extraction files to evaluate`);
-  console.log(`📂 Location: ${EXTRACTION_OUTPUT_DIR}`);
+  console.log(`\n📁 Found ${extractionFiles.length} extraction files in output directory`);
+  console.log(`📂 Location: ${EXTRACTION_OUTPUT_DIR}\n`);
 
-  // Ask user if they want to evaluate all or just the latest
-  console.log('\nOptions:');
-  console.log('  1. Evaluate only the latest extraction');
-  console.log(`  2. Evaluate all ${extractionFiles.length} extractions`);
+  // Check for CLI argument
+  const cliFileName = process.argv[2];
+  let filesToEvaluate: string[] = [];
 
-  // For now, default to evaluating all (can be made interactive later)
-  const evaluateAll = process.env.EVALUATE_ALL !== 'false';
-  const filesToEvaluate = evaluateAll ? extractionFiles : [extractionFiles[0]];
+  if (cliFileName) {
+    // User specified a file
+    const specifiedFile = path.join(EXTRACTION_OUTPUT_DIR, cliFileName);
+    if (fs.existsSync(specifiedFile)) {
+      filesToEvaluate = [specifiedFile];
+      console.log(`🎯 Evaluating specified file: ${cliFileName}\n`);
+    } else {
+      console.error(`❌ Error: File not found: ${cliFileName}`);
+      console.error(`\nAvailable files:`);
+      extractionFiles.forEach(file => {
+        console.error(`  - ${path.basename(file)}`);
+      });
+      process.exit(1);
+    }
+  } else {
+    // No CLI argument, evaluate ALL files
+    console.log('📄 Available extraction files:');
+    extractionFiles.forEach((file, idx) => {
+      const fileName = path.basename(file);
+      const stats = fs.statSync(file);
+      const modTime = stats.mtime.toLocaleString();
+      console.log(`  ${idx + 1}. ${fileName} (${modTime})`);
+    });
 
-  console.log(`\n🎯 Evaluating ${filesToEvaluate.length} file(s)...\n`);
+    console.log('\n💡 Usage:');
+    console.log('  npx ts-node evaluate.ts <filename>          # Evaluate specific file');
+    console.log('  npx ts-node evaluate.ts                      # Evaluate ALL files');
+    console.log('\nExample:');
+    console.log('  npx ts-node evaluate.ts extraction-1760320927388.json');
+
+    // Default to ALL files
+    filesToEvaluate = extractionFiles;
+    console.log(`\n🎯 No file specified, evaluating ALL ${extractionFiles.length} files\n`);
+  }
 
   // Evaluate each extraction file
   const results: EvaluationResult[] = [];

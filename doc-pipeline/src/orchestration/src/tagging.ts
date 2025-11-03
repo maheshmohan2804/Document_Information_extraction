@@ -47,17 +47,17 @@ Return JSON in this exact format:
 IMPORTANT: Return ONLY the JSON object with no markdown formatting, no code blocks, no additional text.
 
 Text:
-${chunkContent.slice(0, 2000)}`;
+${chunkContent.slice(0, 6000)}`;
 
   try {
     const response = await groqClient.chat.completions.create({
       model: config.model,
       messages: [
-        { role: 'system', content: 'You are a JSON generator. Always return valid JSON objects only, no other text.' },
+        { role: 'system', content: 'You are a Chunk tagger and metadata creator in JSON Format. Generates tags for the chunks and always return valid JSON objects only, no other text.' },
         { role: 'user', content: taggingPrompt }
       ],
       temperature: config.temperature,
-      max_tokens: 300
+      max_tokens: 400
     });
 
     const result = response.choices[0]?.message?.content || '';
@@ -139,44 +139,64 @@ export async function tagChunksAndExtractMetadata(
 
   const taggedChunks: TaggedChunk[] = [];
 
-  // First pass: Look for authors and dates in first 3 chunks with enhanced prompting
-  for (let i = 0; i < Math.min(3, chunks.length); i++) {
+  // First pass: Look for authors and dates in first 5 chunks with enhanced prompting
+  for (let i = 0; i < Math.min(5, chunks.length); i++) {
     const chunk = chunks[i];
     logger.debug(`Processing chunk ${i + 1}/${chunks.length} (metadata extraction): ${chunk.header.slice(0, 50)}...`);
 
+    // Log first chunk content for debugging
+    if (i === 0) {
+      logger.separator('-');
+      logger.info('FIRST CHUNK CONTENT (for debugging):');
+      logger.info(`Header: ${chunk.header}`);
+      logger.info(`Content preview (first 500 chars):\n${chunk.content.slice(0, 2000)}`);
+      logger.separator('-');
+    }
+
     try {
       // Use enhanced prompt for first few chunks to extract metadata
-      const enhancedPrompt = `Extract metadata from this research paper chunk. Return ONLY a valid JSON object.
+      const enhancedPrompt = `Tag chunks and extract metadata from this research paper chunk. Return ONLY a valid JSON object.
 
-Look for:
-- Author names (full names, usually at the beginning)
-- Publication date (year, month, or full date)
-- Content tags
+Assign tags based on content:
+- <summary>: abstract, introduction, conclusion
+- <research_methods>: methodology, study design, data collection
+- <findings_conclusion>: results, findings, conclusions
+- <metadata>: authors, dates, affiliations
 
-Return JSON in this exact format:
+
+
+Strictly Return JSON in this exact format:
 {
   "tags": ["<summary>", "<research_methods>", "<findings_conclusion>", "<metadata>"],
-  "authors": "comma-separated full names or null",
+  "authors": "ALL full names comma-separated or null",
   "date": "publication date (YYYY, MM/YYYY, or DD/MM/YYYY) or null"
 }
 
-IMPORTANT: Return ONLY the JSON object with no markdown formatting, no code blocks, no additional text.
+IMPORTANT: STRICTLY return ONLY the JSON object with no markdown formatting, no code blocks, no additional text.
 
 Text:
-${chunk.content.slice(0, 3000)}`;
+${chunk.content.slice(0, 6000)}`;
 
       const response = await groqClient.chat.completions.create({
         model: config.model,
         messages: [
-          { role: 'system', content: 'You are a JSON generator. Always return valid JSON objects only, no other text.' },
+          { role: 'system', content: 'You are a Chunk tagger and metadata extractor in JSON Format. Generates tags for the chunks and always return valid JSON objects only, no other text.' },
           { role: 'user', content: enhancedPrompt }
         ],
         temperature: 0.1,
-        max_tokens: 300
+        max_tokens: 400
       });
 
       const result = response.choices[0]?.message?.content || '';
-      logger.debug(`Raw metadata extraction response: ${result.slice(0, 200)}`);
+      logger.debug(`Raw metadata extraction response: ${result}`);
+
+      // Log first chunk LLM response for debugging
+      if (i === 0) {
+        logger.separator('-');
+        logger.info('FIRST CHUNK LLM RESPONSE:');
+        logger.info(result);
+        logger.separator('-');
+      }
 
       // Parse JSON
       try {
@@ -204,8 +224,18 @@ ${chunk.content.slice(0, 3000)}`;
         });
 
         logger.debug(`Chunk ${i + 1} tagged with: ${parsedData.tags?.join(', ') || 'none'}`);
+
+        // Log first chunk parsed result for debugging
+        if (i === 0) {
+          logger.separator('-');
+          logger.info('FIRST CHUNK PARSED RESULT:');
+          logger.info(`Authors: ${parsedData.authors || 'null'}`);
+          logger.info(`Date: ${parsedData.date || 'null'}`);
+          logger.info(`Tags: ${parsedData.tags?.join(', ') || 'none'}`);
+          logger.separator('-');
+        }
       } catch (parseError) {
-        logger.debug(`JSON parse failed for chunk ${i + 1}, adding without tags`);
+        logger.debug(`JSON parse failed for chunk ${i + 1}, adding without tags`,result);
         taggedChunks.push({
           ...chunk,
           chunkId: i,
@@ -223,7 +253,7 @@ ${chunk.content.slice(0, 3000)}`;
   }
 
   // Second pass: Tag remaining chunks (if any) with standard tagging
-  for (let i = 3; i < chunks.length; i++) {
+  for (let i = 5; i < chunks.length; i++) {
     const chunk = chunks[i];
     logger.debug(`Processing chunk ${i + 1}/${chunks.length}: ${chunk.header.slice(0, 50)}...`);
 

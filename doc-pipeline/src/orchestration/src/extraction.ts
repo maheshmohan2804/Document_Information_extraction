@@ -1,6 +1,16 @@
 /**
  * Document extraction module
  * Uses corrective RAG to extract structured information from documents
+ * Prompy to extract infomration
+ */
+
+/**
+ * Predifined queries to extract Authors, Date, Document Type, Summary, Methods, Findings
+ * Run the corrective RAG retrieval for each query
+ * Concatenate chunks for each section
+ * Main prompt to extract all sections in one go
+ * Clean and Extract JSON
+ * Return structured ExtractionResult
  */
 
 import Groq from 'groq-sdk';
@@ -21,12 +31,12 @@ export async function extractDocumentInformation(
 
   // Define extraction queries for each section
   const queries = {
-    authors: 'Who are the authors of this paper? List all author names.',
-    date: 'What is the publication date or year of this paper?',
+    authors: 'author names affiliations byline contributors. Right below the title, near the title or authors contributions section',
+    date: 'publication date published received accepted submission year',
     documentType: 'What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.',
     summary: 'What is the abstract, main purpose, and overview of this paper?',
     methods: 'What research methods, study design, and analytical approaches were used?',
-    findings: 'What are the key findings, discussions, overall results, results from tables and graphs and conclusions?'
+    findings: 'What are the key findings, discussions, overall results, results and inference from tables and graphs and conclusions?'
   };
 
   // Retrieve relevant chunks for each section using corrective RAG
@@ -39,85 +49,114 @@ export async function extractDocumentInformation(
       query,
       hybridSearcher,
       config,
-      2, // max iterations
-      5  // top K
+      2, // max iterations (reduced from 2 for speed)
+      4  // top K (reduced from 5 for speed)
     );
 
     extractionResults[section] = result;
   }
 
+  /**
+   * Clean text for author extraction - remove invalid special characters
+   * Keep only: () {} [] / % @ ' , . and alphanumeric
+   */
+  function cleanAuthorText(text: string): string {
+    // Replace invalid special characters with space
+    // Keep: alphanumeric, spaces, and valid specials: ( ) { } [ ] / % @ ' , .
+    return text
+      .replace(/[^\w\s()\{\}\[\]/%@',.]/g, ' ')  // Remove invalid chars
+      .replace(/\s+/g, ' ')  // Collapse multiple spaces
+      .trim();
+  }
+
   // Compile contexts from relevant chunks
+  // Log which chunks are being used for authors
+  logger.separator('=');
+  logger.info('AUTHORS EXTRACTION - Retrieved Chunks:');
+  extractionResults.authors.relevantChunks.slice(0, 5).forEach((chunk, idx) => {
+    logger.info(`Chunk ${idx + 1}:`);
+    logger.info(`  Header: ${chunk.header}`);
+    logger.info(`  ChunkId: ${chunk.chunkId}`);
+    logger.info(`  Score: ${chunk.score}`);
+    logger.info(`  Content preview: ${chunk.content.slice(0, 200)}...`);
+  });
+  logger.separator('=');
+
   const authorsContext = extractionResults.authors.relevantChunks
-    .slice(0, 3)
-    .map(c => c.content.slice(0, 2000))
+    .slice(0, 5)
+    .map(c => cleanAuthorText(c.content))  // Clean author chunks
     .join('\n\n---\n\n');
 
   const dateContext = extractionResults.date.relevantChunks
-    .slice(0, 3)
-    .map(c => c.content.slice(0, 2000))
+    .slice(0, 5)
+    .map(c => c.content.slice(0, 4000))
     .join('\n\n---\n\n');
 
   const documentTypeContext = extractionResults.documentType.relevantChunks
-    .slice(0, 3)
-    .map(c => c.content.slice(0, 2500))
+    .slice(0, 5)
+    .map(c => c.content.slice(0, 3500))
     .join('\n\n---\n\n');
 
   const summaryContext = extractionResults.summary.relevantChunks
-    .slice(0, 3)
-    .map(c => c.content.slice(0, 2500))
+    .slice(0, 5)
+    .map(c => c.content.slice(0, 4500))
     .join('\n\n---\n\n');
 
   const methodsContext = extractionResults.methods.relevantChunks
-    .slice(0, 3)
-    .map(c => c.content.slice(0, 2500))
+    .slice(0, 5)
+    .map(c => c.content.slice(0, 4500))
     .join('\n\n---\n\n');
 
   const findingsContext = extractionResults.findings.relevantChunks
-    .slice(0, 3)
-    .map(c => c.content.slice(0, 2500))
+    .slice(0, 5)
+    .map(c => c.content.slice(0, 4500))
     .join('\n\n---\n\n');
 
   // Generate final extraction using LLM
   logger.info('Generating final extraction with LLM...');
+  logger.info(`Authors context : ${authorsContext} `);
 
   const finalPrompt = `You are a research paper analyst. Extract information from the provided context chunks and return ONLY a valid JSON object.
 
 Based on the context provided, extract the information and respond with a JSON object in this exact format:
 
 {
-  "authors": "comma-separated list of author names",
+  "authors": "comma-separated list of ALL author names (full names, e.g., 'John Smith, Jane Doe, Bob Lee')",
   "date": "publication date (year, month/year, or full date)",
   "documentType": "type of document (e.g., meta-analysis, research article, case study, etc.)",
   "summary": "2-3 sentence summary of the document's main purpose and overview",
-  "methods": "Give bullet points for study design, data sources, sample size, and analytical methods and give a brief sumamary of the research methods",
-  "findings": "Add bullet points and summarise primary outcomes, infernce from graphs and tables, statistical significance, 2-3 sentence conclusion and implications of the paper"
+  "methods": "Give 3 bullet points for study design, 1 bullet point explaining the data sources,  1 for sample size , and  3 explaining the unique analytical methods. Give a 2 sentence brief sumamary of the research methods",
+  "findings": "Add 3 bullet points explaining the hard facts from results, 2 bullet points inferring from graphs and 2 bullet points outlining major important findings from the tables, 1 bullet points about statistical significance, 3 sentence conclusion and implications of the paper"
 }
 
-IMPORTANT: Return ONLY the JSON object with no markdown formatting, no code blocks, no additional text.
+IMPORTANT:
+- Return ONLY the JSON object with no markdown formatting, no code blocks, no additional text
+- For authors: Extract ALL author names (first and last names). Look for patterns like "Author Name¹", "Name, Name, and Name", author bylines near the title
+- For date: Look for "Published:", "Received:", "Accepted:", or standalone dates in YYYY format
 
 ---
-AUTHORS CONTEXT:
-${authorsContext.slice(0, 2000)}
+AUTHORS CONTEXT: Extract ALL FULL NAMES of the authors. Authors typically appear near the title, in a byline, or in "Authors' contributions" sections. Include ALL authors, not just the first one.
+${authorsContext.slice(0, 6000)}
 
 ---
-DATE CONTEXT:
-${dateContext.slice(0, 2000)}
+DATE CONTEXT: Extract the PUBLICATION DATE. Look for: "Published:", "Received:", "Accepted:", or standalone years. Prefer the published/accepted date.
+${dateContext.slice(0, 6000)}
 
 ---
 DOCUMENT TYPE CONTEXT:
-${documentTypeContext.slice(0, 3000)}
+${documentTypeContext.slice(0, 5000)}
 
 ---
 SUMMARY CONTEXT:
-${summaryContext.slice(0, 4000)}
+${summaryContext}
 
 ---
 METHODS CONTEXT:
-${methodsContext.slice(0, 4000)}
+${methodsContext}
 
 ---
 FINDINGS CONTEXT:
-${findingsContext.slice(0, 3000)}
+${findingsContext}
 `;
 
   const groqClient = new Groq({ apiKey: config.apiKey });
@@ -126,8 +165,8 @@ ${findingsContext.slice(0, 3000)}
     const response = await groqClient.chat.completions.create({
       model: config.model,
       messages: [{ role: 'user', content: finalPrompt }],
-      temperature: 0.2,
-      max_tokens: 1500
+      temperature: 0.3,
+      max_tokens: 4500
     });
 
     const extractionText = response.choices[0]?.message?.content || '';
@@ -241,8 +280,8 @@ export async function answerQuery(
     query,
     hybridSearcher,
     config,
-    3, // max iterations
-    5  // top K
+    2, // max iterations
+    4  // top K
   );
 
   // Compile context from relevant chunks

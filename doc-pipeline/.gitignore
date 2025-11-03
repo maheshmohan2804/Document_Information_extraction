@@ -17,6 +17,21 @@ dist/
 .ipynb_checkpoints/
 
 
+# Logs
+src/orchestration/logs/
+
+# Output files
+src/orchestration/output/
+src/orchestration/output.json
+src/orchestration/nul
+
+# Test data
+Data/*.pdf
+reference-docs/*.pdf
+
+# Testing outputs
+testing_reference/outputs/
+
 # OS
 .DS_Store
 Thumbs.db
