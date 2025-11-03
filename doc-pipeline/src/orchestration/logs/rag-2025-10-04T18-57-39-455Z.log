@@ -1,0 +1,1866 @@
+[2025-10-04T18:57:39.457Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T18-57-39-455Z.log
+[2025-10-04T18:57:39.642Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T18:57:39.643Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T18:57:39.644Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "ssrn-4102750.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "moonshotai/kimi-k2-instruct-0905",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T18:57:39.645Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T18:57:39.645Z] [INFO] File: ssrn-4102750.pdf
+[2025-10-04T18:57:39.645Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T18:57:39.647Z] [INFO] Uploading and processing PDF...
+[2025-10-04T18:58:44.448Z] [SUCCESS] Conversion complete.
+[2025-10-04T18:58:44.449Z] [INFO] Markdown length: 48658 chars
+[2025-10-04T18:58:44.449Z] [INFO] HTML length: 51024 chars
+[2025-10-04T18:58:44.449Z] [INFO] Pages: 20
+================================================================================
+[2025-10-04T18:58:44.450Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T18:58:44.450Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T18:58:44.450Z] [DEBUG] Extracted 4 tables from markdown
+[2025-10-04T18:58:44.450Z] [WARN] No markdown headers found. Using recursive chunking with overlap.
+[2025-10-04T18:58:44.451Z] [SUCCESS] Created 7 chunks using recursive strategy
+[2025-10-04T18:58:44.451Z] [SUCCESS] Created 7 chunks from markdown
+================================================================================
+[2025-10-04T18:58:44.451Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T18:58:44.452Z] [INFO] Processing 7 chunks
+[2025-10-04T18:58:44.452Z] [DEBUG] Processing chunk 1/7 (metadata extraction): Chunk 1...
+[2025-10-04T18:58:44.598Z] [ERROR] Error processing chunk 1
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e994f92dd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:44 GMT",
+    "retry-after": "253",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=NwGT0NLi5toLcwONM375_PTZgvt.sewYO_zBGFhm9uA-1759604324-1.0.1.1-e.ncknHrtKef3huJAjnu5Ynh_oZ2nL88K279odK9KJsNjy7d2NrtgULKPlNAaOehSbUKK32Ugw04CpnpSF_vJdG07SPRIsbJ9DfX1yDwARw; path=/; expires=Sat, 04-Oct-25 19:28:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.561s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9ee9te06v5p2kp4c68js6",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300021, Requested 855. Please try again in 4m12.414s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300021, Requested 855. Please try again in 4m12.414s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:168:24)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.618Z] [DEBUG] Processing chunk 2/7 (metadata extraction): Chunk 2...
+[2025-10-04T18:58:44.685Z] [ERROR] Error processing chunk 2
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9958a92d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:44 GMT",
+    "retry-after": "253",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=LhocaFv71xIh.J1CigiQOelsCFKHNrioxzOdH.MowpA-1759604324-1.0.1.1-5LQZmoqVT6rqCZdMnO_0G20d1.XF4RAmqR8zNvrvYvoj4e14bDgCCXEf1mGnVwrqTZ73rh.rP0Ow9d5n7TFS0vrs7wuZLRzs6.DOia.JKDo; path=/; expires=Sat, 04-Oct-25 19:28:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.469s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eecpe2kac2rqs98nr0f3",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300021, Requested 857. Please try again in 4m12.898s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300021, Requested 857. Please try again in 4m12.898s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:168:24)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.687Z] [DEBUG] Processing chunk 3/7 (metadata extraction): Chunk 3...
+[2025-10-04T18:58:44.747Z] [ERROR] Error processing chunk 3
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e995fb63d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "395",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:44 GMT",
+    "retry-after": "333",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=GGquvjj9qtFA96rzRdL3hDiGzjcCyHg2FXFhbvS39a0-1759604324-1.0.1.1-K_Zu1xOBjJlj_fV2qpJzkW08yQEqLC1sHBEElcE2p4obXRwLrs5qEhR7PB2prkm3RMjmH2eTHQSptW5CXoEf9.6yGB5krgX1PS0bkGPO5Kw; path=/; expires=Sat, 04-Oct-25 19:28:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.405s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eeene2k8yqvtzqepbsm9",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 1134. Please try again in 5m32.611s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 1134. Please try again in 5m32.611s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:168:24)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.750Z] [DEBUG] Processing chunk 4/7: Chunk 4...
+[2025-10-04T18:58:44.811Z] [ERROR] Error tagging chunk
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9965c22d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:44 GMT",
+    "retry-after": "205",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=1qyevSfHic_8ZFnO0NHt637tMPUqp_s3a4jF1Gk2c48-1759604324-1.0.1.1-A52oxcG1M51OPAVOu32wk1k5TYzAr4A.cNiD4O5GK2cjAds5f31ZFhFvkScLFNbHM7yKicO1uqVD8HgOAusbPyyqZiCYjKMuebxKD8LZPgo; path=/; expires=Sat, 04-Oct-25 19:28:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.342s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eegne2k94p8mf22n53bn",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 691. Please try again in 3m24.963s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 691. Please try again in 3m24.963s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagSingleChunk (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:53:22)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:231:39)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.812Z] [DEBUG] Chunk 4 tagged with: 
+[2025-10-04T18:58:44.812Z] [DEBUG] Processing chunk 5/7: Chunk 5...
+[2025-10-04T18:58:44.869Z] [ERROR] Error tagging chunk
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e996cd01d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:44 GMT",
+    "retry-after": "201",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=auYtkG3injsKW7k60r1FnBzZvCsS6xT4kdruYv52nZg-1759604324-1.0.1.1-r3r8TeuZ7Rfho5_Lipy7UleIJPtTPpb_BzstZbOKPYPM5hv8U2j42oheeRBhwg6augDsZIDXwNnUYDlj3bxKLrRPBx__EjxAfr2u61NDnJM; path=/; expires=Sat, 04-Oct-25 19:28:44 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.283s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eejfe2kbchxkq6x4qntd",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 674. Please try again in 3m20.009s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 674. Please try again in 3m20.009s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagSingleChunk (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:53:22)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:231:39)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.871Z] [DEBUG] Chunk 5 tagged with: 
+[2025-10-04T18:58:44.871Z] [DEBUG] Processing chunk 6/7: Chunk 6...
+[2025-10-04T18:58:44.931Z] [ERROR] Error tagging chunk
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9972dd1d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "257",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=SMz7djU0Fwne8JTrC0JWWunv4qp6bGPiPE6aGPCq8Fk-1759604325-1.0.1.1-1QSoUvpyOaTwE8ijvRFfGpgHgMDSbYmzCXVXiWGo.dJyYs7JPBrrjdPrbL.AxITPML9XZSuSq53.IBl8QOsiKothdDQtWzoQ9mDmMDhtuHU; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.221s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eemee07ajb212jgz5yyy",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 869. Please try again in 4m16.106s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 869. Please try again in 4m16.106s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagSingleChunk (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:53:22)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:231:39)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.933Z] [DEBUG] Chunk 6 tagged with: 
+[2025-10-04T18:58:44.933Z] [DEBUG] Processing chunk 7/7: Chunk 7...
+[2025-10-04T18:58:44.991Z] [ERROR] Error tagging chunk
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9978eb0d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "393",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "279",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=eQjRehdBQwfOtKKuTQoHQFJwFVnKL2hWjqqCMP3oZdQ-1759604325-1.0.1.1-kpx9s1NXVTHecNyvK1kf6wGtoX6fKSZPTbagzc9h4hQio85yC_h6DopCI6NdTTj0xyxRbUgHm59Z2l8EG.xwHLdB9MytWBQcYLPoENtU47I; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.16s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eepae2ka9wxxjja2kthe",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 947. Please try again in 4m38.51s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300020, Requested 947. Please try again in 4m38.51s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tagSingleChunk (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:53:22)
+    at async tagChunksAndExtractMetadata (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\tagging.ts:231:39)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:153:40)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:44.992Z] [DEBUG] Chunk 7 tagged with: 
+[2025-10-04T18:58:44.992Z] [SUCCESS] Tagged 7 chunks
+[2025-10-04T18:58:44.993Z] [INFO] Tag distribution:
+  Data: {}
+[2025-10-04T18:58:44.993Z] [INFO] Document metadata:
+  Data: {
+  "authors": null,
+  "date": null
+}
+================================================================================
+[2025-10-04T18:58:44.993Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T18:58:44.993Z] [INFO] Adding 7 chunks
+[2025-10-04T18:58:44.994Z] [DEBUG] Generating embedding for chunk 1/7
+[2025-10-04T18:58:44.994Z] [DEBUG] Generating embedding for chunk 2/7
+[2025-10-04T18:58:44.995Z] [DEBUG] Generating embedding for chunk 3/7
+[2025-10-04T18:58:44.995Z] [DEBUG] Generating embedding for chunk 4/7
+[2025-10-04T18:58:44.996Z] [DEBUG] Generating embedding for chunk 5/7
+[2025-10-04T18:58:44.996Z] [DEBUG] Generating embedding for chunk 6/7
+[2025-10-04T18:58:44.997Z] [DEBUG] Generating embedding for chunk 7/7
+[2025-10-04T18:58:44.997Z] [SUCCESS] Added 7 chunks with embeddings
+================================================================================
+[2025-10-04T18:58:44.998Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T18:58:45.002Z] [DEBUG] BM25 initialized with 7 documents
+[2025-10-04T18:58:45.003Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T18:58:45.004Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T18:58:45.004Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T18:58:45.005Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T18:58:45.005Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T18:58:45.005Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T18:58:45.005Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T18:58:45.006Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T18:58:45.006Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T18:58:45.007Z] [DEBUG] Semantic search returned 7 results
+[2025-10-04T18:58:45.009Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T18:58:45.009Z] [INFO] Grading 5 chunks...
+[2025-10-04T18:58:45.067Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e997ffddd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "94",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=JDj.hSrm_DPvY9xaDyTMlLelYB1_9QnnncjdmckJusM-1759604325-1.0.1.1-Txc9rmbGPE1y.CpenaQn6weVLhOQtfV1gF_7sFdIUGVHfJF1NnOCIW4JoFYkSszICMeZiXvGGdUxI1zQO.4vkhXsCm7rwSH7o33ANbmt.bc; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.084s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eerqfc3s6bmjbs20jthv",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 305. Please try again in 1m33.538s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 305. Please try again in 1m33.538s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.071Z] [INFO]   [ACCEPT] Chunk 5... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.138Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99858b7d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "104",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=JGHf5fU5z_lMJ_9xDq8ln9QpsGOuG4U4LVHRUfbGba8-1759604325-1.0.1.1-WgtwcI8xU3PGZyEG76lZ0ePWbnLhvqA78vZ9xrwA_YFLOmcmhZKAXl_MozbVUUXVXKg0qMOSBtSWW3w6eC_1Vu3phJG4rssYmQXYmW2ZKIQ; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m23.019s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eetre2k9ny03cxjvc2ag",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 339. Please try again in 1m43.265s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 339. Please try again in 1m43.265s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.140Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.195Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e998c9b8d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "400",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "98",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=hZssfCd8ZMSdIyiEcssXCdiymz1IdtIrrNUQuHxDH6g-1759604325-1.0.1.1-hAWp5_2h5FGQ0xVV8KreYO5rILmVziFtl5uKl0HVguwVipJbAgpVAIjmQpM35O7mCiUjtI2hlcomNZyWSuQmfzlybLxpxGykBSGYhEd8WI4; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.956s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eewpe08tvxehha5ghze0",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 320. Please try again in 1m37.729999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 320. Please try again in 1m37.729999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.196Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.257Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9992a8cd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "97",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=Asyg6vq7OGO.v.KWfVXsV3ggW2rDOmDYMV5fiYJDEXw-1759604325-1.0.1.1-2ymnXtk.jStEuqCsAhVyhTPH.pLRfDEhmFpf60yZgpQU4CA6wKDE3XKcHYkbhjRVD6htBZxyD_S6a8YkOFJjcOCheERzdZkTbIKzoUJ2Ejc; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.896s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eeykfc3rwrx1a7wkjdck",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 317. Please try again in 1m36.805s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300019, Requested 317. Please try again in 1m36.805s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.259Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.317Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9998b84d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "115",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=HVi_7tPXNuLoiOvPKLZ9i5Mka6ZPOngwKj5ECFXv9do-1759604325-1.0.1.1-3R9rKyNR8X2X1SNksuu99N8L7be7SgEWxYeQM957TB9_GVdKORYYesZM8Rlm1ZpolKyhuPkpHNHarEhhB_BdxWh5ntTMkpDso5zWcONNmN8; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.837s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9ef0efc3rpgdh22rxpy7f",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 377. Please try again in 1m54.026s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 377. Please try again in 1m54.026s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.319Z] [INFO]   [ACCEPT] Chunk 6... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.319Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T18:58:45.320Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T18:58:45.320Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T18:58:45.320Z] [INFO] Final query: "Who are the authors of this paper? List all author names."
+[2025-10-04T18:58:45.320Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T18:58:45.320Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T18:58:45.321Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T18:58:45.321Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T18:58:45.321Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T18:58:45.321Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T18:58:45.321Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T18:58:45.322Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T18:58:45.322Z] [DEBUG] Semantic search returned 7 results
+[2025-10-04T18:58:45.324Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T18:58:45.324Z] [INFO] Grading 5 chunks...
+[2025-10-04T18:58:45.381Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e999fc58d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "103",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=W3ilGHjZrIfBmE.sO7A5Nn6_01XTzOH6ZsngLabM.BY-1759604325-1.0.1.1-N9wr0oL9L2pwmLM1C05QmWxPpBRcB9I5ZxkBRpzpS1SKBu7l0fWEdmctE0ZcdL6YCrSwYudyXuDK5g_torVSHnRvJSs2dPTyaSR33rsQMJ0; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.772s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9ef2fe08rmrv1npfpkxv7",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 337. Please try again in 1m42.441s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 337. Please try again in 1m42.441s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.383Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.441Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99a5d41d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "93",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=bJ3irEawWBClXCKMhuZpGBnkSBKGDF8z4mgFQK7riYc-1759604325-1.0.1.1-km7WyqOoIJdc8NTKBznsimQ2euko_tIL6QO9iiEs6XvWENNPuTuP7eaec1fQ2n6OeEhE0POwQHKTYfQgdpi03Nc0xIU_13JwCfLBMr2kv0o; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.711s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9ef4ce2kacxkbwq9mt4g0",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 303. Please try again in 1m32.588s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 303. Please try again in 1m32.588s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.443Z] [INFO]   [ACCEPT] Chunk 5... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.501Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99aae21d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "97",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=dUAHNkPZuj3cXlJk0LIMM_Xf9chp9Jgs.xWrkVICckU-1759604325-1.0.1.1-k6J7NzF4Ckabfh4A_06pN_oq8JRQQuL7C.KjuMqKrcldFECHdfosy6wNAwph6r_Jby97lFv_1t5zz8VOG4j0bjY0qPkK7ryTelUuXz1bzkM; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.65s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9ef69fc48memj3b03gqke",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 318. Please try again in 1m36.848s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 318. Please try again in 1m36.848s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.503Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.565Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99b1f41d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "400",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "96",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=vPLkxPqNsroFDRWwYsLdY.Qlx89ZW3G3_0p9s5xNXqE-1759604325-1.0.1.1-JbasB4xPGS88KF70MsizD4l_SUnz0W_7YBwThj1q7fA45SDLtw_YH3afba53QKuBBCJWnQXQ8b18zIrSWUL2v.Mf6v9exxa9f9U0DIR_kNc; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.587s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9ef88e0a9x0gxmn65ka2c",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 315. Please try again in 1m35.920999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300018, Requested 315. Please try again in 1m35.920999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.567Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.629Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99b7832d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "400",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "113",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=wHql_u_y4.SL_N_.cKZ_UJFrGX9lEljgtC0IRTKJi8o-1759604325-1.0.1.1-7Ht89PAp0pgVgFM7o.08_LHH2h84DLMJpF8Y_wVVVZNCr9kMYXZmRQ3NWY27zmqjI.g1D92fdNu7.Cy7Io3ECOIvaoIZQpj7Go9RsV6I5bY; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.524s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efa7e2m9wz49mfkvzr7b",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 374. Please try again in 1m52.848999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 374. Please try again in 1m52.848999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.631Z] [INFO]   [ACCEPT] Chunk 3... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.632Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T18:58:45.632Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T18:58:45.632Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T18:58:45.632Z] [INFO] Final query: "What is the publication date or year of this paper?"
+[2025-10-04T18:58:45.632Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T18:58:45.632Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T18:58:45.633Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T18:58:45.633Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T18:58:45.633Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T18:58:45.633Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T18:58:45.633Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T18:58:45.634Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T18:58:45.634Z] [DEBUG] Semantic search returned 7 results
+[2025-10-04T18:58:45.636Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T18:58:45.636Z] [INFO] Grading 5 chunks...
+[2025-10-04T18:58:45.693Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99be909d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "400",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "119",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=i0Xr.6f_HPho9K2Z5NgTRI0n.7wlU5oC2G2vj8Kw6gk-1759604325-1.0.1.1-jW.m9lxHZ9rP79E8B2bYs8dmkMt_EV.oRzS2KaZqS99s0tliOIAO42t2fC0eSTisX_TPHuXv6WDxBkbXwS8t9hYry6RE.WQIUxxMgfuvdXk; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.458s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efc8e0aa0d15rz4jea2g",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 394. Please try again in 1m58.543999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 394. Please try again in 1m58.543999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.695Z] [INFO]   [ACCEPT] Chunk 6... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.751Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99c49c5d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "108",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=pbBS8eVA2ypW4YqUDMB8QaMZJYZis6qiPNBszgZGHws-1759604325-1.0.1.1-hys6vXrz0sQ8kudkBgk7kCsrXA7t9ftc7hCFYVJr7buBEuVHQ4nTSOjpdZN_Hx33fiLagN_y3YCv7pmXIvz02QLD7Fhnyxss33GsexZLC0g; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.401s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efe2fc5b4hws5b0qe0ye",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 356. Please try again in 1m47.542s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 356. Please try again in 1m47.542s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.753Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.817Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99caab3d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "102",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=g_D079aknpdRhKK1Vm694GoIgoDMUAEyRAT2ZKC2dqs-1759604325-1.0.1.1-94XiXJ9PWCRhphMGPTYAPuxiCmKhQR7qmNSdAZSWtPn_y2ax86hzwoHaLN9u50Gt6a.jjUf4BPdNnONuykiESYn_k_26JevYIcKCuG94wCQ; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.34s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9effze0dsf69eqj7m7n6n",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 334. Please try again in 1m41.145s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300017, Requested 334. Please try again in 1m41.145s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.819Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.878Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99d0b86d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:45 GMT",
+    "retry-after": "98",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=eWjcwCJ4Mat.ZNihIAtm7Zm6wsIFmHZFjLq.8iuhgO0-1759604325-1.0.1.1-u5H0iXf45iScKtPP7hgLeE0UxW1PAHChvfoI0BBdGyGp.wMuk1gYkzXsfQuiCyfmTVIAUkU54QWGduVx977FyQ6jBOPcRNu9uNB6RhXnHeY; path=/; expires=Sat, 04-Oct-25 19:28:45 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.274s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efj1e2mskb4harshqgv0",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 322. Please try again in 1m37.624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 322. Please try again in 1m37.624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.879Z] [INFO]   [ACCEPT] Chunk 5... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.938Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99d6c88d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "146",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=5c4O9Xi77NzThEd6P1VSXi.OJM3AkwV_tJAOthvrd8Q-1759604326-1.0.1.1-fDQyQ0eg1pcAuU2IzminQXpehk0Ax8rluuwWBp_JvLlK7jfZTjbsKc9.Gp1e5JVxZIQ6cKkc4iELzODvpg4U_D.gZHmYHToajjg_6KO3QLQ; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.213s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efkxfc5as72rkpxbh8a9",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 488. Please try again in 2m25.371s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 488. Please try again in 2m25.371s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:45.940Z] [INFO]   [ACCEPT] Chunk 7... - MEDIUM (Error during grading)
+[2025-10-04T18:58:45.940Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T18:58:45.940Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T18:58:45.940Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T18:58:45.941Z] [INFO] Final query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T18:58:45.941Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T18:58:45.941Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T18:58:45.941Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T18:58:45.941Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T18:58:45.941Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T18:58:45.942Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T18:58:45.942Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T18:58:45.942Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T18:58:45.942Z] [DEBUG] Semantic search returned 7 results
+[2025-10-04T18:58:45.943Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T18:58:45.943Z] [INFO] Grading 5 chunks...
+[2025-10-04T18:58:45.998Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99ddd65d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "98",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=LbVjXMqADsrELfVw67gApYKuWTP_9x.1cXMmMXXUPks-1759604326-1.0.1.1-ns_FuPAHBygGLRIwb.2ZzuFLLidkL_EEV0PH7AtthzRWjNomDfHYgU.tXGD4Dj_CAmz.JcDM7dBf6NhpIFHhHm3oFgHkoqLuiRXcwjG5X7Q; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.154s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efnsfc59qwx167gp9302",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 321. Please try again in 1m37.216s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 321. Please try again in 1m37.216s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.000Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.057Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99e2e31d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "93",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=A.uvb27DNhAe6eKb1XIf0rVVKJ1MVAr4WhIIESQRW6s-1759604326-1.0.1.1-RtH8IhJ0NPlJIeDJvaQUPC3cOozzeONu...6CtCvewgziaFBDHp2NEShf7SN3ANqc0RJ11DsbGMgoienTRheNELN4OaQrpY21IBFeTW6yfE; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.094s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efqnfc59r3q6n7d7x1t7",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 306. Please try again in 1m32.836s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 306. Please try again in 1m32.836s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.059Z] [INFO]   [ACCEPT] Chunk 5... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.116Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99e8ef2d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "393",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "103",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=DOJ_ihcbNS9RJSycNAmxhDZb1ijx5AFGvYcMtjtqZlU-1759604326-1.0.1.1-p0CT_tu3ZAM8MNlIyXIOk3mlqu3gR24kHVjjCciflreQq1OfkDAPruc3xaPYUgsy4j_5HZwKHuTvMlnZVNimEjoDt.wdqKPehco1DRWPi3Y; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m22.037s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efsee0frw4c39ks3cp93",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 340. Please try again in 1m42.57s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300016, Requested 340. Please try again in 1m42.57s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.118Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.180Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99eefead84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "97",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=JdCoJWETUV4TLFuW50FqUNqMaM3GC1enlJSeW7xmQA8-1759604326-1.0.1.1-SW.sypAHbc3uKiiDzKqtOgEkpoOh7OeTHuDZR32H9ETFW5N5cXzQ6J2uNZAritW._e4JIYcuI2ILdISO4CJjnyIv7IoifLN_tzG_ww72Nnc; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.972s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efvfe0g9xkcrbccrz6rp",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 318. Please try again in 1m36.169s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 318. Please try again in 1m36.169s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.182Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.240Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99f58e7d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "114",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=hdjROddUW0dX4w0X84ADZgtx6kGuFkX24X5a3A4zdOU-1759604326-1.0.1.1-7QTmYxui79a7hHvqeNc8Lx9D40I3UsMc79BtufyqftBg3S263LIEfWkyM.lh7AhtyVOH7wODi8bZqZcNE6Wb49PSjPnpO1Me.tAxvVqyog0; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.912s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efxbfc6apw70sembej22",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 378. Please try again in 1m53.389s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 378. Please try again in 1m53.389s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.241Z] [INFO]   [ACCEPT] Chunk 6... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.241Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T18:58:46.241Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T18:58:46.242Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T18:58:46.242Z] [INFO] Final query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T18:58:46.242Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T18:58:46.242Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T18:58:46.242Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T18:58:46.242Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T18:58:46.242Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T18:58:46.242Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T18:58:46.243Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T18:58:46.243Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T18:58:46.243Z] [DEBUG] Semantic search returned 7 results
+[2025-10-04T18:58:46.244Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T18:58:46.244Z] [INFO] Grading 5 chunks...
+[2025-10-04T18:58:46.300Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e99fb9afd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "96",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=JtNBXEhVSX5KCsZxi7a.c2zzHl5McvluWgbd3hpcDTQ-1759604326-1.0.1.1-SeH2oZgFLnsz595KvFPrhikEfKILLeBsAGbmru9WPmmV4Dapf9.y_YmXVYVEDaTLhsE8_e1Xl516zZUSEf6Nop7dg5TKRmbJmI3k1jurlcc; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.853s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9efz6fc6tznssaf6c3f94",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 317. Please try again in 1m35.762s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 317. Please try again in 1m35.762s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.301Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.370Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a00a8fd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "97",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=Fozc3RnUGj_xcxefNkOfJFqBp2ukOkE52xan2EDRw1c-1759604326-1.0.1.1-KXVkiXYz76e.SQB0TGd7tG1RMc77rJRtMhf8Mz7fpDWHBT8jWSnHrponW_dBPR1CpdYGm5LQyGc_wnmdByjA0Vvn8YfRC5Rb5iz9wT.Zpvs; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.789s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eg16e2n9973a0524k370",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 320. Please try again in 1m36.562s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 320. Please try again in 1m36.562s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.371Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.428Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a07b8fd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "393",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "102",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=X7cJkIvDO3EgdYl9eng_ILr_W53ob4vaY46TKleB1qI-1759604326-1.0.1.1-FIgIQybqaXwBZ6pGD9FoYNvg32cdU2Y0S.FSrTbDThbiyRkcR1eL.tRfbo58EXxEWPLwUUgSIbwoFmS0FF047vyThaDxA46TSisewJtIKfM; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.725s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eg36e2naq2pe7p2r2myt",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 339. Please try again in 1m41.97s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300015, Requested 339. Please try again in 1m41.97s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.429Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.492Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a0dc53d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "400",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "113",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=hfgKLa8rM.A4qttrrrKMxtE.xmt_jA785zCk1kfTGOw-1759604326-1.0.1.1-wbV32L5APvlxI9746DtSsWOuUI2hEgjiGB4NeS1GeJty2o1uaxDUgZYLWvoqg4hG2Zpb_72jcKgS_AbIMuRAuunPouX14KKPnV1WNQQ0jys; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.66s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eg57e2ntye1tbveh6jyj",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300014, Requested 377. Please try again in 1m52.848999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300014, Requested 377. Please try again in 1m52.848999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.497Z] [INFO]   [ACCEPT] Chunk 6... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.656Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a14d3fd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "400",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "93",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=pfz1KGBJ_Q_GOsekakB7ZbAFhCJiSb1jcHVXwcheyNE-1759604326-1.0.1.1-77IzxYj6NW8dw4o96ww.xfO.s8Ing6lXj1T.aLQjclm.aOrnovLhCCqKRZswINlXuKr.KxO3VXNg5qJ3MOO79lih4nK234cy_Tu6HKjigI0; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.594s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9eg78e2nt8j309zbdey65",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300014, Requested 305. Please try again in 1m32.047999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300014, Requested 305. Please try again in 1m32.047999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.658Z] [INFO]   [ACCEPT] Chunk 5... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.658Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T18:58:46.658Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T18:58:46.658Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T18:58:46.658Z] [INFO] Final query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T18:58:46.658Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T18:58:46.659Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T18:58:46.659Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T18:58:46.659Z] [INFO] Query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T18:58:46.659Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T18:58:46.659Z] [INFO] Iteration 1: Searching with query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T18:58:46.659Z] [DEBUG] Hybrid search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T18:58:46.660Z] [DEBUG] Semantic search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=10, filter=none
+[2025-10-04T18:58:46.660Z] [DEBUG] Semantic search returned 7 results
+[2025-10-04T18:58:46.661Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T18:58:46.661Z] [INFO] Grading 5 chunks...
+[2025-10-04T18:58:46.819Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a24f7cd84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "104",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=bsFd_bmiXkQLWsskfqb3rBELuHZWla.7oRsVurutmXI-1759604326-1.0.1.1-jlGnLT9RnXj7f3cTX4CmcE13BRwjXWlwRblHQvRhzUVYECUsIZ.42GdY3KDelw5W7gvGGrskP0Fb4Q4Exo006C4DtIAK6Dvlg0EpNdnFPAI; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.437s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9egc6fc7r8df7vxdxjer0",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300014, Requested 345. Please try again in 1m43.411s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300014, Requested 345. Please try again in 1m43.411s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.820Z] [INFO]   [ACCEPT] Chunk 4... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.884Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a349a9d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:46 GMT",
+    "retry-after": "98",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=0dZnHFl0pi1lTVJO3cv8I1ufyHyqCuPdB6_bkmJYn24-1759604326-1.0.1.1-cL4Lvc0yDtrSDb7jvpTq.MWFJCA6x_u.JvQJc5K.0erofVwqjHfs.lhMA1dyvb9l0PamS.UKU5n8zmWuy6raIL_unNodJeUbcVGB0evGs.k; path=/; expires=Sat, 04-Oct-25 19:28:46 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.274999999s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9egh7e0j992rs4pbgpzhb",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300013, Requested 326. Please try again in 1m37.777s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300013, Requested 326. Please try again in 1m37.777s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.886Z] [INFO]   [ACCEPT] Chunk 1... - MEDIUM (Error during grading)
+[2025-10-04T18:58:46.976Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a3bac8d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:47 GMT",
+    "retry-after": "94",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=Oo5bATQC7WhZoXEdHhlm7SULIML.c52vSbHxtY0hSA4-1759604327-1.0.1.1-jD1zdyMb3vLxr4RF19iIWF__o3cmMIMCZ6gyTSVPkz9lTtop2hNmkF7HImNqCFo9jjUbNxTlds7IO9GK2YzZ.zDTm8xkamgIQT20PowDYqU; path=/; expires=Sat, 04-Oct-25 19:28:47 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.197s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9egkpe0j8j3a2sz9rwq6q",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300013, Requested 311. Please try again in 1m33.378s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300013, Requested 311. Please try again in 1m33.378s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:46.978Z] [INFO]   [ACCEPT] Chunk 5... - MEDIUM (Error during grading)
+[2025-10-04T18:58:47.086Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a44c57d84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:47 GMT",
+    "retry-after": "97",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=0D3cBAePA0gqb_9tWs6SZo1aGQOciEOfPcqQSCI4z.s-1759604327-1.0.1.1-5Zc45Uin_OTsm5wbDYJTR72DZIk6jzp59PI7AjX1j7GQUEWK__zoRqkHFyk2PRk_iA4OJLBkRu0oV2F1336EwtnYE0GIoNaJWU7crP1NNJ8; path=/; expires=Sat, 04-Oct-25 19:28:47 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.115s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9egp8fc8bgmb3593w68sf",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300012, Requested 323. Please try again in 1m36.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300012, Requested 323. Please try again in 1m36.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:47.089Z] [INFO]   [ACCEPT] Chunk 2... - MEDIUM (Error during grading)
+[2025-10-04T18:58:47.244Z] [ERROR] Error grading chunk relevance
+  Data: {
+  "status": 429,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9896e9a4fe8ad84c-ORD",
+    "connection": "keep-alive",
+    "content-length": "394",
+    "content-type": "application/json",
+    "date": "Sat, 04 Oct 2025 18:58:47 GMT",
+    "retry-after": "141",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=EuNSnprkyRKbBiG0JkQ1i1ihH61vWQqq5Yq3npoh64U-1759604327-1.0.1.1-sYrBfr1QJQpb5q15t6RX3UQ2QNHOWDqtdudDQF4WtIW480SjVMOU5XNMrD0Jh3lizMx6T30GJClKzNsb27NcKpDXoHLIiOm7NNwjgP5FNmc; path=/; expires=Sat, 04-Oct-25 19:28:47 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "yul",
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "10000",
+    "x-ratelimit-remaining-requests": "369",
+    "x-ratelimit-remaining-tokens": "10000",
+    "x-ratelimit-reset-requests": "15h7m21.009s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_01k6r9egshe0k96k0gceh0rm9b",
+    "x-should-retry": "false"
+  },
+  "error": {
+    "error": {
+      "message": "Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300012, Requested 477. Please try again in 2m20.999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+      "type": "tokens",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
+  Stack: Error: 429 {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01jq889mvefcpawf57qfraqeka` service tier `on_demand` on tokens per day (TPD): Limit 300000, Used 300012, Requested 477. Please try again in 2m20.999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+    at Function.generate (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\error.ts:82:14)
+    at Groq.makeStatusError (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:383:21)
+    at Groq.makeRequest (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\node_modules\groq-sdk\src\core.ts:446:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gradeChunkRelevance (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:37:22)
+    at async correctiveRAGRetrieval (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAG.ts:148:21)
+    at async extractDocumentInformation (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\extraction.ts:38:20)
+    at async runCorrectiveRAGPipeline (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\correctiveRAGPipeline.ts:167:24)
+    at async main (C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\src\main.ts:143:26)
+[2025-10-04T18:58:47.245Z] [INFO]   [ACCEPT] Chunk 7... - MEDIUM (Error during grading)
+[2025-10-04T18:58:47.246Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T18:58:47.246Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T18:58:47.246Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T18:58:47.246Z] [INFO] Final query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T18:58:47.246Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T18:58:47.247Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T18:58:47.309Z] [ERROR] Error during final extraction

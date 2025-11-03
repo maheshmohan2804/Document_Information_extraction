@@ -1,0 +1,354 @@
+[2025-10-04T16:28:33.876Z] [INFO] Logger initialized. Log file: logs\rag-2025-10-04T16-28-33-874Z.log
+[2025-10-04T16:28:34.112Z] [INFO] Running in FULL EXTRACTION MODE
+================================================================================
+[2025-10-04T16:28:34.113Z] [INFO] Corrective RAG Pipeline Started
+================================================================================
+[2025-10-04T16:28:34.113Z] [INFO] Configuration:
+  Data: {
+  "pdfFile": "JPGN rep - 2024 - Lalitha - Umbilical arterial catheter duration as risk factor for Bell s Stage III necrotizing.pdf",
+  "doclingApi": "http://localhost:8000",
+  "groqModel": "moonshotai/kimi-k2-instruct-0905",
+  "chunking": {
+    "minChunkSize": 1000,
+    "maxChunkSize": 8000,
+    "overlap": 200
+  }
+}
+================================================================================
+[2025-10-04T16:28:34.115Z] [INFO] PDF Conversion
+================================================================================
+[2025-10-04T16:28:34.116Z] [INFO] File: JPGN rep - 2024 - Lalitha - Umbilical arterial catheter duration as risk factor for Bell s Stage III necrotizing.pdf
+[2025-10-04T16:28:34.116Z] [INFO] API URL: http://localhost:8000
+[2025-10-04T16:28:34.118Z] [INFO] Uploading and processing PDF...
+[2025-10-04T16:29:22.803Z] [SUCCESS] Conversion complete.
+[2025-10-04T16:29:22.803Z] [INFO] Markdown length: 42469 chars
+[2025-10-04T16:29:22.804Z] [INFO] HTML length: 46108 chars
+[2025-10-04T16:29:22.804Z] [INFO] Pages: 9
+================================================================================
+[2025-10-04T16:29:22.804Z] [INFO] Starting Document Chunking
+================================================================================
+[2025-10-04T16:29:22.804Z] [INFO] Config: min=1000, max=8000, overlap=200
+[2025-10-04T16:29:22.805Z] [DEBUG] Extracted 4 tables from markdown
+[2025-10-04T16:29:22.805Z] [INFO] Created 23 raw chunks from headers
+[2025-10-04T16:29:22.806Z] [SUCCESS] Chunking complete: 9 total chunks
+[2025-10-04T16:29:22.806Z] [INFO] Size distribution: Small=0, Medium=8, Large=1, Tables=1
+[2025-10-04T16:29:22.806Z] [WARN] Warning: 1 chunks still exceed max size (likely tables)
+[2025-10-04T16:29:22.806Z] [SUCCESS] Created 9 chunks from markdown
+================================================================================
+[2025-10-04T16:29:22.807Z] [INFO] Tagging Chunks and Extracting Metadata
+================================================================================
+[2025-10-04T16:29:22.807Z] [INFO] Processing 9 chunks
+[2025-10-04T16:29:22.807Z] [DEBUG] Processing chunk 1/9 (metadata extraction): ORIGINAL ARTICLE + Umbilical arterial catheter dur...
+[2025-10-04T16:29:23.360Z] [DEBUG] Raw metadata extraction response: {"tags":["retrospective case-control study","preterm neonates","necrotizing enterocolitis","umbilical arterial catheter","risk factors","Bell stage III NEC","neonatal intensive care","gestational age"
+[2025-10-04T16:29:23.360Z] [INFO] Found authors: Renjini Lalitha, Matthew Hicks, Mosarrat Qureshi, Kumar Kumaran
+[2025-10-04T16:29:23.360Z] [DEBUG] Chunk 1 tagged with: retrospective case-control study, preterm neonates, necrotizing enterocolitis, umbilical arterial catheter, risk factors, Bell stage III NEC, neonatal intensive care, gestational age, multivariate analysis
+[2025-10-04T16:29:23.361Z] [DEBUG] Processing chunk 2/9 (metadata extraction): KEYWORDS...
+[2025-10-04T16:29:23.870Z] [DEBUG] Raw metadata extraction response: {"tags":["necrotizing enterocolitis staging and risk factors in very-low-birth-weight neonates","observational cohort review","umbilical vascular catheters and prematurity are key risks; no single pro
+[2025-10-04T16:29:23.870Z] [INFO] Found date: 2024
+[2025-10-04T16:29:23.870Z] [DEBUG] Chunk 2 tagged with: necrotizing enterocolitis staging and risk factors in very-low-birth-weight neonates, observational cohort review, umbilical vascular catheters and prematurity are key risks; no single proven intervention, 2024 open-access JPGN Reports article
+[2025-10-04T16:29:23.870Z] [DEBUG] Processing chunk 3/9 (metadata extraction): 1.1 | Study rationale + 1.2 | Objectives + What is...
+[2025-10-04T16:29:24.309Z] [DEBUG] Raw metadata extraction response: {
+  "tags": ["NEC-III", "necrotizing enterocolitis", "preterm neonates", "risk factors", "umbilical line placement", "case fatality rate", "morbidity", "mortality"],
+  "authors": null,
+  "date": null
+
+[2025-10-04T16:29:24.310Z] [DEBUG] Chunk 3 tagged with: NEC-III, necrotizing enterocolitis, preterm neonates, risk factors, umbilical line placement, case fatality rate, morbidity, mortality
+[2025-10-04T16:29:24.310Z] [DEBUG] Processing chunk 4/9: What is New + 1.3 | De /uniFB01 nitions...
+[2025-10-04T16:29:24.604Z] [DEBUG] Raw tagging response: {"tags":["research_methods","findings_conclusion"],"authors":null,"date":null}
+[2025-10-04T16:29:24.604Z] [DEBUG] Chunk 4 tagged with: research_methods, findings_conclusion
+[2025-10-04T16:29:24.604Z] [DEBUG] Processing chunk 5/9: 2 | METHODS...
+[2025-10-04T16:29:24.907Z] [DEBUG] Raw tagging response: {"tags":["research_methods"],"authors":null,"date":null}
+[2025-10-04T16:29:24.907Z] [DEBUG] Chunk 5 tagged with: research_methods
+[2025-10-04T16:29:24.908Z] [DEBUG] Processing chunk 6/9: 2.1 | Data collection + 2.2 | Statistical analysis...
+[2025-10-04T16:29:25.146Z] [DEBUG] Raw tagging response: {"tags":["research_methods"],"authors":null,"date":null}
+[2025-10-04T16:29:25.146Z] [DEBUG] Chunk 6 tagged with: research_methods
+[2025-10-04T16:29:25.146Z] [DEBUG] Processing chunk 7/9: 3 | RESULTS...
+[2025-10-04T16:29:25.404Z] [DEBUG] Raw tagging response: {"tags":["findings_conclusion"],"authors":null,"date":null}
+[2025-10-04T16:29:25.405Z] [DEBUG] Chunk 7 tagged with: findings_conclusion
+[2025-10-04T16:29:25.405Z] [DEBUG] Processing chunk 8/9: 4 | DISCUSSION...
+[2025-10-04T16:29:25.658Z] [DEBUG] Raw tagging response: {"tags":["findings_conclusion","research_methods"],"authors":null,"date":null}
+[2025-10-04T16:29:25.659Z] [DEBUG] Chunk 8 tagged with: findings_conclusion, research_methods
+[2025-10-04T16:29:25.659Z] [DEBUG] Processing chunk 9/9: 5 | CONCLUSION + CONFLICT OF INTEREST STATEMENT + ...
+[2025-10-04T16:29:25.920Z] [DEBUG] Raw tagging response: {"tags":["findings_conclusion"],"authors":"Renjini Lalitha","date":"2024"}
+[2025-10-04T16:29:25.921Z] [DEBUG] Chunk 9 tagged with: findings_conclusion
+[2025-10-04T16:29:25.921Z] [SUCCESS] Tagged 9 chunks
+[2025-10-04T16:29:25.921Z] [INFO] Tag distribution:
+  Data: {
+  "retrospective case-control study": 1,
+  "preterm neonates": 2,
+  "necrotizing enterocolitis": 2,
+  "umbilical arterial catheter": 1,
+  "risk factors": 2,
+  "Bell stage III NEC": 1,
+  "neonatal intensive care": 1,
+  "gestational age": 1,
+  "multivariate analysis": 1,
+  "necrotizing enterocolitis staging and risk factors in very-low-birth-weight neonates": 1,
+  "observational cohort review": 1,
+  "umbilical vascular catheters and prematurity are key risks; no single proven intervention": 1,
+  "2024 open-access JPGN Reports article": 1,
+  "NEC-III": 1,
+  "umbilical line placement": 1,
+  "case fatality rate": 1,
+  "morbidity": 1,
+  "mortality": 1,
+  "research_methods": 4,
+  "findings_conclusion": 4
+}
+[2025-10-04T16:29:25.923Z] [INFO] Document metadata:
+  Data: {
+  "authors": "Renjini Lalitha, Matthew Hicks, Mosarrat Qureshi, Kumar Kumaran",
+  "date": "2024"
+}
+================================================================================
+[2025-10-04T16:29:25.924Z] [INFO] Adding Chunks to Vector Store
+================================================================================
+[2025-10-04T16:29:25.925Z] [INFO] Adding 9 chunks
+[2025-10-04T16:29:25.925Z] [DEBUG] Generating embedding for chunk 1/9
+[2025-10-04T16:29:25.925Z] [DEBUG] Generating embedding for chunk 2/9
+[2025-10-04T16:29:25.926Z] [DEBUG] Generating embedding for chunk 3/9
+[2025-10-04T16:29:25.926Z] [DEBUG] Generating embedding for chunk 4/9
+[2025-10-04T16:29:25.926Z] [DEBUG] Generating embedding for chunk 5/9
+[2025-10-04T16:29:25.927Z] [DEBUG] Generating embedding for chunk 6/9
+[2025-10-04T16:29:25.927Z] [DEBUG] Generating embedding for chunk 7/9
+[2025-10-04T16:29:25.928Z] [DEBUG] Generating embedding for chunk 8/9
+[2025-10-04T16:29:25.930Z] [DEBUG] Generating embedding for chunk 9/9
+[2025-10-04T16:29:25.930Z] [SUCCESS] Added 9 chunks with embeddings
+================================================================================
+[2025-10-04T16:29:25.931Z] [INFO] Initializing Hybrid Search
+================================================================================
+[2025-10-04T16:29:25.936Z] [DEBUG] BM25 initialized with 9 documents
+[2025-10-04T16:29:25.936Z] [SUCCESS] Hybrid search initialized
+================================================================================
+[2025-10-04T16:29:25.937Z] [INFO] Complete Document Extraction
+================================================================================
+[2025-10-04T16:29:25.937Z] [INFO] Extracting: AUTHORS
+================================================================================
+[2025-10-04T16:29:25.938Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T16:29:25.938Z] [INFO] Query: "Who are the authors of this paper? List all author names."
+[2025-10-04T16:29:25.938Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T16:29:25.939Z] [INFO] Iteration 1: Searching with query: "Who are the authors of this paper? List all author names."
+[2025-10-04T16:29:25.939Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:25.939Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T16:29:25.945Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:25.947Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:25.948Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:29:26.220Z] [DEBUG]   [REJECT] KEYWORDS... - Rejected (The chunk contains copyright and license information but does not list any author names.)
+[2025-10-04T16:29:26.533Z] [DEBUG]   [REJECT] 5 | CONCLUSION + CONFLICT OF INTEREST STATEMENT + ... - Rejected (The chunk only lists one author’s ORCID (Renjini Lalitha) and does not provide the complete author list requested by the query.)
+[2025-10-04T16:29:26.794Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (The chunk contains results and statistical data but does not mention any author names.)
+[2025-10-04T16:29:27.174Z] [DEBUG]   [REJECT] 2 | METHODS... - Rejected (The chunk describes the study methods and setting but contains no author names.)
+[2025-10-04T16:29:27.445Z] [DEBUG]   [REJECT] 2.1 | Data collection + 2.2 | Statistical analysis... - Rejected (The chunk describes data collection and statistical methods but contains no author names.)
+[2025-10-04T16:29:27.445Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T16:29:27.445Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T16:29:27.633Z] [DEBUG] Query rewritten: "Who are the authors of this paper? List all author names." -> "List every author name mentioned in the full text of this paper."
+[2025-10-04T16:29:27.633Z] [INFO] Iteration 2: Searching with query: "List every author name mentioned in the full text of this paper."
+[2025-10-04T16:29:27.634Z] [DEBUG] Hybrid search: query="List every author name mentioned in the full text of this paper.", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:27.634Z] [DEBUG] Semantic search: query="List every author name mentioned in the full text of this paper.", topK=10, filter=none
+[2025-10-04T16:29:27.635Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:27.636Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:27.636Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:29:27.867Z] [DEBUG]   [REJECT] KEYWORDS... - Rejected (The chunk contains copyright and license information but no author names.)
+[2025-10-04T16:29:28.094Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (The chunk contains results and data analysis but no author names.)
+[2025-10-04T16:29:28.350Z] [DEBUG]   [REJECT] 4 | DISCUSSION... - Rejected (The chunk contains no author names or affiliations, only study findings and discussion.)
+[2025-10-04T16:29:28.629Z] [DEBUG]   [REJECT] 2 | METHODS... - Rejected (The chunk describes the study methods and setting but contains no author names.)
+[2025-10-04T16:29:28.862Z] [DEBUG]   [REJECT] 1.1 | Study rationale + 1.2 | Objectives + What is... - Rejected (The chunk contains no author names or by-line information.)
+[2025-10-04T16:29:28.863Z] [INFO] Found 0 relevant chunks (Total: 0)
+[2025-10-04T16:29:28.863Z] [WARN] No relevant chunks found after all iterations. Using fallback...
+[2025-10-04T16:29:28.863Z] [DEBUG] Hybrid search: query="Who are the authors of this paper? List all author names.", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:28.863Z] [DEBUG] Semantic search: query="Who are the authors of this paper? List all author names.", topK=10, filter=none
+[2025-10-04T16:29:28.864Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:28.865Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:28.865Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T16:29:28.865Z] [INFO] Final query: "List every author name mentioned in the full text of this paper."
+[2025-10-04T16:29:28.866Z] [INFO] Iterations: 2, Relevant chunks: 5
+[2025-10-04T16:29:28.866Z] [INFO] Extracting: DATE
+================================================================================
+[2025-10-04T16:29:28.866Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T16:29:28.866Z] [INFO] Query: "What is the publication date or year of this paper?"
+[2025-10-04T16:29:28.866Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T16:29:28.866Z] [INFO] Iteration 1: Searching with query: "What is the publication date or year of this paper?"
+[2025-10-04T16:29:28.867Z] [DEBUG] Hybrid search: query="What is the publication date or year of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:28.867Z] [DEBUG] Semantic search: query="What is the publication date or year of this paper?", topK=10, filter=none
+[2025-10-04T16:29:28.867Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:28.868Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:28.868Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:29:29.170Z] [DEBUG]   [REJECT] What is New + 1.3 | De /uniFB01 nitions... - Rejected (The chunk contains clinical findings and definitions but never mentions any publication date or year.)
+[2025-10-04T16:29:29.411Z] [DEBUG]   [REJECT] 1.1 | Study rationale + 1.2 | Objectives + What is... - Rejected (The chunk contains no publication date or year information.)
+[2025-10-04T16:29:30.734Z] [DEBUG]   [REJECT] 4 | DISCUSSION... - Rejected (The excerpt contains no publication date or year information.)
+[2025-10-04T16:29:33.047Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (The chunk contains only study results and no publication date or year.)
+[2025-10-04T16:29:35.370Z] [INFO]   [ACCEPT] KEYWORDS... - HIGH (The copyright line “© 2024 The Author(s)” directly indicates the publication year of the paper.)
+[2025-10-04T16:29:35.370Z] [INFO] Found 1 relevant chunks (Total: 1)
+[2025-10-04T16:29:35.370Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T16:29:35.559Z] [DEBUG] Query rewritten: "What is the publication date or year of this paper?" -> "publication date year when was this paper published"
+[2025-10-04T16:29:35.560Z] [INFO] Iteration 2: Searching with query: "publication date year when was this paper published"
+[2025-10-04T16:29:35.560Z] [DEBUG] Hybrid search: query="publication date year when was this paper published", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:35.561Z] [DEBUG] Semantic search: query="publication date year when was this paper published", topK=10, filter=none
+[2025-10-04T16:29:35.562Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:35.564Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:35.565Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:29:37.980Z] [DEBUG]   [REJECT] 4 | DISCUSSION... - Rejected (The excerpt contains no publication date or year information.)
+[2025-10-04T16:29:40.404Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (The chunk contains only results data and no publication date or year.)
+[2025-10-04T16:29:44.183Z] [DEBUG]   [REJECT] 2 | METHODS... - Rejected (The chunk describes study methods and timeframe but contains no publication date or year.)
+[2025-10-04T16:29:46.581Z] [DEBUG]   [REJECT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - Rejected (The chunk contains no publication date or year.)
+[2025-10-04T16:29:46.582Z] [INFO] Found 0 relevant chunks (Total: 1)
+[2025-10-04T16:29:46.582Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T16:29:46.583Z] [INFO] Final query: "publication date year when was this paper published"
+[2025-10-04T16:29:46.583Z] [INFO] Iterations: 2, Relevant chunks: 1
+[2025-10-04T16:29:46.584Z] [INFO] Extracting: DOCUMENTTYPE
+================================================================================
+[2025-10-04T16:29:46.584Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T16:29:46.585Z] [INFO] Query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T16:29:46.586Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T16:29:46.586Z] [INFO] Iteration 1: Searching with query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T16:29:46.586Z] [DEBUG] Hybrid search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:46.587Z] [DEBUG] Semantic search: query="What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc.", topK=10, filter=none
+[2025-10-04T16:29:46.587Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:46.589Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:46.589Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:29:48.959Z] [INFO]   [ACCEPT] 2.1 | Data collection + 2.2 | Statistical analysis... - HIGH (The text explicitly describes a retrospective data-collection and analysis methodology, which is characteristic of a research article.)
+[2025-10-04T16:29:51.425Z] [INFO]   [ACCEPT] 1.1 | Study rationale + 1.2 | Objectives + What is... - HIGH (The text explicitly labels itself an “exploratory study,” which directly answers the query about document type.)
+[2025-10-04T16:29:53.758Z] [INFO]   [ACCEPT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - HIGH (The chunk is labeled “ORIGINAL ARTICLE,” which directly identifies the document type as a research article.)
+[2025-10-04T16:29:56.087Z] [INFO]   [ACCEPT] KEYWORDS... - HIGH (The chunk explicitly states “This is an open access article …” which directly answers the query about document type.)
+[2025-10-04T16:29:58.454Z] [INFO]   [ACCEPT] 2 | METHODS... - HIGH (The chunk explicitly states “This was a single-center retrospective case-control study,” directly identifying the document type.)
+[2025-10-04T16:29:58.455Z] [INFO] Found 5 relevant chunks (Total: 5)
+[2025-10-04T16:29:58.455Z] [SUCCESS] SUCCESS: Found 5 relevant chunks!
+[2025-10-04T16:29:58.455Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T16:29:58.455Z] [INFO] Final query: "What type of document is this? Examples: case study, clinical trial, review article, meta-analysis, research article, technical workshop paper, etc."
+[2025-10-04T16:29:58.456Z] [INFO] Iterations: 1, Relevant chunks: 5
+[2025-10-04T16:29:58.456Z] [INFO] Extracting: SUMMARY
+================================================================================
+[2025-10-04T16:29:58.456Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T16:29:58.456Z] [INFO] Query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T16:29:58.456Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T16:29:58.457Z] [INFO] Iteration 1: Searching with query: "What is the abstract, main purpose, and overview of this paper?"
+[2025-10-04T16:29:58.457Z] [DEBUG] Hybrid search: query="What is the abstract, main purpose, and overview of this paper?", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:29:58.457Z] [DEBUG] Semantic search: query="What is the abstract, main purpose, and overview of this paper?", topK=10, filter=none
+[2025-10-04T16:29:58.457Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:29:58.458Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:29:58.458Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:30:00.921Z] [DEBUG]   [REJECT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - Rejected (The chunk only shows the title, authors, and the first sentence of the introduction; it does not contain the abstract, purpose, or overview requested by the query.)
+[2025-10-04T16:30:03.295Z] [INFO]   [ACCEPT] 1.1 | Study rationale + 1.2 | Objectives + What is... - HIGH (The chunk explicitly states the study’s rationale and objectives, which together convey the paper’s main purpose and a concise overview.)
+[2025-10-04T16:30:05.626Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (The chunk presents detailed results data, not the abstract, purpose, or overview of the paper.)
+[2025-10-04T16:30:08.100Z] [INFO]   [ACCEPT] What is New + 1.3 | De /uniFB01 nitions... - MEDIUM (The chunk lists the study’s novel findings and objective, which together convey the paper’s main purpose, but it omits an explicit abstract or full overview.)
+[2025-10-04T16:30:09.474Z] [DEBUG]   [REJECT] 4 | DISCUSSION... - Rejected (The chunk is from the Discussion section and does not contain the paper’s abstract, stated purpose, or overview.)
+[2025-10-04T16:30:09.474Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T16:30:09.475Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T16:30:10.942Z] [DEBUG] Query rewritten: "What is the abstract, main purpose, and overview of this paper?" -> "Retrieve the paper's abstract, the explicitly-stated main purpose or objective, and a concise overview of the key findings, methods, and contributions."
+[2025-10-04T16:30:10.942Z] [INFO] Iteration 2: Searching with query: "Retrieve the paper's abstract, the explicitly-stated main purpose or objective, and a concise overview of the key findings, methods, and contributions."
+[2025-10-04T16:30:10.943Z] [DEBUG] Hybrid search: query="Retrieve the paper's abstract, the explicitly-stated main purpose or objective, and a concise overview of the key findings, methods, and contributions.", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:30:10.943Z] [DEBUG] Semantic search: query="Retrieve the paper's abstract, the explicitly-stated main purpose or objective, and a concise overview of the key findings, methods, and contributions.", topK=10, filter=none
+[2025-10-04T16:30:10.943Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:30:10.945Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:30:10.945Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:30:13.565Z] [INFO]   [ACCEPT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - HIGH (The chunk contains the paper’s title and the opening of the Introduction, which together give an immediate overview of the study’s focus on catheter duration and NEC, directly addressing the query’s request for purpose and scope.)
+[2025-10-04T16:30:15.918Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (This section presents detailed results data, not the abstract, purpose, or overview of the paper.)
+[2025-10-04T16:30:18.347Z] [DEBUG]   [REJECT] 2.1 | Data collection + 2.2 | Statistical analysis... - Rejected (The chunk describes data-collection and statistical-analysis methods, not the paper’s abstract, purpose, or overview.)
+[2025-10-04T16:30:19.676Z] [DEBUG]   [REJECT] What is New + 1.3 | De /uniFB01 nitions... - Rejected (The chunk lists novel findings and objectives but does not provide the paper’s abstract, main purpose, or overview.)
+[2025-10-04T16:30:22.019Z] [DEBUG]   [REJECT] KEYWORDS... - Rejected (The chunk only lists keywords and staging criteria, providing no abstract, purpose, or overview of the paper.)
+[2025-10-04T16:30:22.020Z] [INFO] Found 1 relevant chunks (Total: 3)
+[2025-10-04T16:30:22.020Z] [SUCCESS] SUCCESS: Found 3 relevant chunks!
+[2025-10-04T16:30:22.020Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T16:30:22.020Z] [INFO] Final query: "Retrieve the paper's abstract, the explicitly-stated main purpose or objective, and a concise overview of the key findings, methods, and contributions."
+[2025-10-04T16:30:22.021Z] [INFO] Iterations: 2, Relevant chunks: 3
+[2025-10-04T16:30:22.021Z] [INFO] Extracting: METHODS
+================================================================================
+[2025-10-04T16:30:22.021Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T16:30:22.022Z] [INFO] Query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T16:30:22.022Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T16:30:22.022Z] [INFO] Iteration 1: Searching with query: "What research methods, study design, and analytical approaches were used?"
+[2025-10-04T16:30:22.022Z] [DEBUG] Hybrid search: query="What research methods, study design, and analytical approaches were used?", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:30:22.022Z] [DEBUG] Semantic search: query="What research methods, study design, and analytical approaches were used?", topK=10, filter=none
+[2025-10-04T16:30:22.023Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:30:22.024Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:30:22.025Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:30:24.434Z] [INFO]   [ACCEPT] 2.1 | Data collection + 2.2 | Statistical analysis... - HIGH (The chunk explicitly describes the data-collection procedures and the retrospective, convenience-sample study design, directly addressing the query’s focus on research methods and study design.)
+[2025-10-04T16:30:26.863Z] [DEBUG]   [REJECT] 1.1 | Study rationale + 1.2 | Objectives + What is... - Rejected (The text only states the study’s rationale and objectives; it does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T16:30:29.233Z] [DEBUG]   [REJECT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - Rejected (The excerpt only lists authors, affiliations, and the study topic; it contains no information about research methods, study design, or analytical approaches.)
+[2025-10-04T16:30:30.610Z] [INFO]   [ACCEPT] 2 | METHODS... - HIGH (The chunk explicitly states the study design (single-center retrospective case-control), research methods (neonatal database and chart review), and analytical approach (matched case-control comparisons).)
+[2025-10-04T16:30:33.070Z] [DEBUG]   [REJECT] What is New + 1.3 | De /uniFB01 nitions... - Rejected (The chunk only states the study’s objectives and diagnostic definitions, without describing the research methods, study design, or analytical approaches used.)
+[2025-10-04T16:30:33.070Z] [INFO] Found 2 relevant chunks (Total: 2)
+[2025-10-04T16:30:33.070Z] [INFO] Insufficient relevant chunks. Rewriting query...
+[2025-10-04T16:30:34.547Z] [DEBUG] Query rewritten: "What research methods, study design, and analytical approaches were used?" -> "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?"
+[2025-10-04T16:30:34.548Z] [INFO] Iteration 2: Searching with query: "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?"
+[2025-10-04T16:30:34.548Z] [DEBUG] Hybrid search: query="What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:30:34.548Z] [DEBUG] Semantic search: query="What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?", topK=10, filter=none
+[2025-10-04T16:30:34.549Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:30:34.553Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:30:34.553Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:30:39.392Z] [DEBUG]   [REJECT] 3 | RESULTS... - Rejected (The chunk presents results, not the research methods, study design, or analytical approaches used.)
+[2025-10-04T16:30:40.755Z] [DEBUG]   [REJECT] 1.1 | Study rationale + 1.2 | Objectives + What is... - Rejected (The text only states the study’s rationale and objectives; it does not mention any research methods, study design, or analytical approaches.)
+[2025-10-04T16:30:45.697Z] [DEBUG]   [REJECT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - Rejected (The excerpt only lists authors, affiliations, and the study topic; it contains no information about research methods, study design, or analytical approaches.)
+[2025-10-04T16:30:45.697Z] [INFO] Found 0 relevant chunks (Total: 2)
+[2025-10-04T16:30:45.697Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T16:30:45.697Z] [INFO] Final query: "What specific research methods (e.g., qualitative, quantitative, mixed-methods), study design (e.g., RCT, cohort, cross-sectional), and analytical approaches (e.g., regression, thematic analysis, machine learning) were employed in the study, and where in the text are these details explicitly stated?"
+[2025-10-04T16:30:45.697Z] [INFO] Iterations: 2, Relevant chunks: 2
+[2025-10-04T16:30:45.697Z] [INFO] Extracting: FINDINGS
+================================================================================
+[2025-10-04T16:30:45.698Z] [INFO] Corrective RAG Retrieval
+================================================================================
+[2025-10-04T16:30:45.698Z] [INFO] Query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T16:30:45.698Z] [INFO] Max iterations: 2, Top-K: 5
+[2025-10-04T16:30:45.698Z] [INFO] Iteration 1: Searching with query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T16:30:45.698Z] [DEBUG] Hybrid search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=5, alpha=0.5, filter=none
+[2025-10-04T16:30:45.698Z] [DEBUG] Semantic search: query="What are the key findings, discussions, overall results, results from tables and graphs and conclusions?", topK=10, filter=none
+[2025-10-04T16:30:45.698Z] [DEBUG] Semantic search returned 9 results
+[2025-10-04T16:30:45.699Z] [DEBUG] Hybrid search returned 5 results
+[2025-10-04T16:30:45.699Z] [INFO] Grading 5 chunks...
+[2025-10-04T16:30:48.041Z] [DEBUG]   [REJECT] KEYWORDS... - Rejected (The chunk only lists keywords and copyright information, not findings, results, or conclusions.)
+[2025-10-04T16:30:50.467Z] [INFO]   [ACCEPT] What is New + 1.3 | De /uniFB01 nitions... - MEDIUM (It lists novel findings (earlier onset of NEC-III, UAC duration >5 days linked to NEC-III) that directly feed into the paper’s key results and conclusions.)
+[2025-10-04T16:30:52.962Z] [INFO]   [ACCEPT] 3 | RESULTS... - HIGH (The chunk directly presents key numerical results (incidence, GA, onset age, SNAPPE-II scores) and references Figure 1 and Table 1, exactly matching the query’s request for “overall results” and “results from tables and graphs.”)
+[2025-10-04T16:30:55.370Z] [INFO]   [ACCEPT] 5 | CONCLUSION + CONFLICT OF INTEREST STATEMENT + ... - HIGH (The chunk directly presents the study’s key conclusion that prolonged UAC use and membrane rupture are linked to severe NEC in VLBW neonates, explicitly answering the query’s request for conclusions.)
+[2025-10-04T16:30:57.767Z] [DEBUG]   [REJECT] ORIGINAL ARTICLE + Umbilical arterial catheter dur... - Rejected (The chunk only contains bibliographic metadata and the introduction’s first sentence, none of the requested results, tables, graphs, or conclusions.)
+[2025-10-04T16:30:57.768Z] [INFO] Found 3 relevant chunks (Total: 3)
+[2025-10-04T16:30:57.769Z] [SUCCESS] SUCCESS: Found 3 relevant chunks!
+[2025-10-04T16:30:57.769Z] [SUCCESS] Corrective RAG retrieval complete
+[2025-10-04T16:30:57.770Z] [INFO] Final query: "What are the key findings, discussions, overall results, results from tables and graphs and conclusions?"
+[2025-10-04T16:30:57.770Z] [INFO] Iterations: 1, Relevant chunks: 3
+[2025-10-04T16:30:57.772Z] [INFO] Generating final extraction with LLM...
+[2025-10-04T16:31:27.667Z] [DEBUG] Raw LLM extraction response:
+[2025-10-04T16:31:27.667Z] [DEBUG] {
+  "authors": "Renjini Lalitha, Matthew Hicks, Mosarrat Qureshi, Kumar Kumaran",
+  "date": "2024",
+  "documentType": "retrospective case-control study",
+  "summary": "This study investigates risk factors for Bell's Stage III necrotizing enterocolitis (NEC-III) in preterm neonates born <33 weeks gestation, focusing on the association between umbilical arterial catheter (UAC) duration and NEC-III development. It found that UAC duration >5 days and earlier onset distinguish NEC-III from NEC-II.",
+  "methods": "• Single-center retrospective case-control study, 2015-2018\n• Neonates <33 weeks GA, 1360 admissions\n• Cases: NEC-III; Controls: NEC-II (1:1) and non-NEC (1:2–4) matched by GA ±1 week and birth date ±3 months\n• Data sources: neonatal database and chart review\n• Variables: maternal/neonatal demographics, perinatal data, feeding, UAC presence/duration, illness severity (SNAPPE-II)\n• Statistics: χ², Fisher’s, ANOVA/t-tests; multivariate logistic regression (p<0.2 entry, p<0.05 significance)",
+  "findings": "• NEC-III incidence 46% of NEC cases; median onset 13.7 vs 23.9 days (NEC-II), p=0.01\n• Lower GA in NEC-III (25.4±2.3 vs 27.3±2.7 weeks), p=0.0003\n• Higher illness severity: SNAPPE-II 47.5 vs 28.4 (NEC-II) and 37 (non-NEC), p=0.003\n• UAC >5 days independently associated with NEC-III (AOR provided in full paper)\n• Suggests upper limit for UAC duration may prevent NEC-III"
+}
+[2025-10-04T16:31:27.670Z] [SUCCESS] Successfully parsed JSON response
+[2025-10-04T16:31:27.670Z] [SUCCESS] Document extraction complete
+[2025-10-04T16:31:27.671Z] [INFO] Extraction statistics:
+  Data: {
+  "authorsChunks": 5,
+  "dateChunks": 1,
+  "documentTypeChunks": 5,
+  "summaryChunks": 3,
+  "methodsChunks": 2,
+  "findingsChunks": 3,
+  "totalIterations": 10
+}
+================================================================================
+[2025-10-04T16:31:27.684Z] [INFO] Pipeline Complete
+================================================================================
+[2025-10-04T16:31:27.685Z] [SUCCESS] Total execution time: 173.56s
+[2025-10-04T16:31:27.685Z] [INFO] Extraction result:
+  Data: {
+  "authors": "Renjini Lalitha, Matthew Hicks, Mosarrat Qureshi, Kumar Kumaran",
+  "date": "2024",
+  "documentType": "retrospective case-control study",
+  "summary": "This study investigates risk factors for Bell's Stage III necrotizing enterocolitis (NEC-III) in preterm neonates born <33 weeks gestation, focusing on the association between umbilical arterial catheter (UAC) duration and NEC-III development. It found that UAC duration >5 days and earlier onset distinguish NEC-III from NEC-II.",
+  "methods": "• Single-center retrospective case-control study, 2015-2018\n• Neonates <33 weeks GA, 1360 admissions\n• Cases: NEC-III; Controls: NEC-II (1:1) and non-NEC (1:2–4) matched by GA ±1 week and birth date ±3 months\n• Data sources: neonatal database and chart review\n• Variables: maternal/neonatal demographics, perinatal data, feeding, UAC presence/duration, illness severity (SNAPPE-II)\n• Statistics: χ², Fisher’s, ANOVA/t-tests; multivariate logistic regression (p<0.2 entry, p<0.05 significance)",
+  "findings": "• NEC-III incidence 46% of NEC cases; median onset 13.7 vs 23.9 days (NEC-II), p=0.01\n• Lower GA in NEC-III (25.4±2.3 vs 27.3±2.7 weeks), p=0.0003\n• Higher illness severity: SNAPPE-II 47.5 vs 28.4 (NEC-II) and 37 (non-NEC), p=0.003\n• UAC >5 days independently associated with NEC-III (AOR provided in full paper)\n• Suggests upper limit for UAC duration may prevent NEC-III"
+}
+[2025-10-04T16:31:27.686Z] [INFO] Log file: logs\rag-2025-10-04T16-28-33-874Z.log
+================================================================================
+[2025-10-04T16:31:27.686Z] [INFO] EXTRACTION RESULTS
+================================================================================
+================================================================================
+[2025-10-04T16:31:27.688Z] [INFO] Saving extraction results to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\output\extraction-1759595487688.json
+[2025-10-04T16:31:27.689Z] [SUCCESS] Results saved to: C:\Users\madha\OneDrive\Documents\PDF Data Extraction Pipeline\doc-pipeline\src\orchestration\output\extraction-1759595487688.json
+[2025-10-04T16:31:27.690Z] [SUCCESS] Pipeline completed successfully
