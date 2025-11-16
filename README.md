@@ -1,174 +1,250 @@
-# Corrective RAG Document Extraction Pipeline
+# PDF Data Extraction and Insights Generation Pipeline
 
-A TypeScript implementation of an agentic corrective RAG (Retrieval-Augmented Generation) system for intelligent PDF document extraction.
+## Overview
+The PDF Data Extraction Pipeline processes and extracts meaningful information from scientific PDF documents using Docling and Groq's vision models. The pipeline features advanced document parsing, Agentic Retrieval Augmented Generation (RAG), and automated quality evaluation.
 
-## Features
+### Key Features
+- **Advanced PDF Processing**: Leverages Docling with Groq vision models for accurate text and image extraction
+- **Multi-format Output**: Generates both Markdown and HTML outputs
+- **Modular Architecture**: Easy to customize and extend for various use cases
+- **Hybrid Chunking**: Combines recursive chunking with heading and paragraph-based segmentation
+- **Hybrid Retrieval**: Utilizes keyword-based (BM25) + semantic (embedding) retrieval
+- **Reranking**: Employs BM25 reranker for superior result ranking
+- **Agentic Corrective RAG**: Leverages AI reasoning to grade chunks and improve retrieval through query rewriting when needed
 
-- **PDF to Markdown Conversion**: Uses Docling API to convert PDFs to structured markdown
-- **Advanced Chunking**: Intelligent document chunking with:
-  - Markdown header-based splitting
-  - Table detection and preservation
-  - Min/max size constraints with combining/splitting
-  - Recursive chunking with overlap for unstructured content
-- **LLM Tagging**: Automatic categorization of chunks (summary, methods, findings)
-- **Metadata Extraction**: Automatic extraction of authors and dates
-- **Hybrid Search**: Combines semantic similarity and BM25 keyword search
-- **Corrective RAG**: Agentic retrieval with:
-  - Relevance grading of retrieved chunks
-  - Query rewriting based on feedback
-  - Iterative retrieval until sufficient relevant chunks found
-- **Comprehensive Logging**: All processes logged to both console and file
-
-## Architecture
+### Architecture Overview
 
 ```
-PDF File
-   |
-   v
-[Docling API] --> Markdown
-   |
-   v
-[Chunking] --> Chunks (with table preservation)
-   |
-   v
-[LLM Tagging] --> Tagged Chunks + Metadata
-   |
-   v
-[Vector Store] --> Embeddings
-   |
-   v
-[Hybrid Search] --> Semantic + BM25
-   |
-   v
-[Corrective RAG] --> Iterative Retrieval
-   |
-   v
-[Extraction] --> Structured Output
+┌─────────────────────────────────────────────────────────────────┐
+│                      Document Processing                        │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+                    ┌───────────────────────┐
+                    │  Docling Parser       │
+                    │  • PDF → Markdown     │
+                    │  • PDF → HTML         │
+                    │  • Image Extraction   │
+                    └───────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                        Chunking Layer                           │
+│  ┌──────────────────────┐    ┌────────────────────────────┐    │
+│  │ Recursive Chunking   │    │ Heading/Paragraph Based    │    │
+│  │ • Hierarchical       │ +  │ • Structure-aware          │    │
+│  │ • Overlap            │    │ • Semantic boundaries      │    │
+│  └──────────────────────┘    └────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      Hybrid Retrieval                           │
+│  ┌──────────────────┐         ┌──────────────────────────┐     │
+│  │ Keyword Search   │         │  Semantic Search         │     │
+│  │ (BM25)           │    +    │  (Embeddings)            │     │
+│  └──────────────────┘         └──────────────────────────┘     │
+│                                │                                │
+│                                ▼                                │
+│                      ┌──────────────────┐                       │
+│                      │  BM25 Reranker   │                       │
+│                      └──────────────────┘                       │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  Agentic Corrective RAG                         │
+│                                                                 │
+│  1. Grade retrieved chunks (relevant/not relevant)              │
+│  2. If insufficient relevant chunks → Query rewrite             │
+│  3. Re-retrieve with improved query                             │
+│  4. Generate final output with graded context                   │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+                    ┌───────────────────────┐
+                    │   Structured Output   │
+                    │   • Authors           │
+                    │   • Date              │
+                    │   • Document Type     │
+                    │   • Summary           │
+                    │   • Methods           │
+                    │   • Findings          │
+                    │   • Full Markdown     │
+                    └───────────────────────┘
 ```
+
+## Experimentation Process
+
+I conducted systematic experiments to identify the optimal approach:
+
+1. **PDF Parsing Libraries**: Evaluated multiple frameworks and identified **Docling** as the best-performing library for scientific document parsing
+2. **Simple RAG**: Initial implementation with basic retrieval - results did not meet quality expectations
+3. **Corrective RAG**: Implemented agentic RAG with chunk grading and query rewriting - achieved best results with minimal hallucinations
+
+## Results & Evaluation
+
+### Evaluation Methodology
+Used ChatGPT with Reasoning to assess:
+- ✓ Date extraction accuracy
+- ✓ Author name completeness and correctness
+- ✓ Document type classification accuracy
+- ✓ Research methodology summarization accuracy and grounding
+- ✓ Summary factual accuracy and grounding
+- ✓ Findings/conclusions accuracy and grounding
+- ✓ Overall quality score (0-100)
+
+### Performance Metrics
+- **96** - Average overall quality rating
+- **100%** - Dates correctly extracted
+- **100%** - Methodologies factually correct
+- **98.4%** - Summaries factually accurate
+- **97.2%** - Findings accurately extracted
+- **95.7%** - Author names perfectly extracted
+- **95.7%** - Document types correctly identified
+
+*Detailed evaluation results available in the `doc-pipeline/Evaluation/` folder*
+
+## Design Trade-offs
+
+### Prioritized Quality over Speed
+- **Higher LLM calls**: Each chunk is individually graded for relevance
+- **Increased latency**: Multiple retrieval iterations when needed
+- **Benefit**: Significantly reduced hallucinations and improved factual grounding
+
+## Time Investment
+
+| Phase | Duration |
+|-------|----------|
+| Problem analysis & system design | 2 hours |
+| Python prototype & performance testing | 3 hours |
+| Full framework build & integration | 6 hours |
+| Testing & documentation | 3 hours |
+| **Total** | **14 hours** |
+
+## Prerequisites
+
+1. **Node.js** (v16 or higher)
+2. **Python 3.8+**
+3. **npm** (Node Package Manager)
+4. **API Keys**:
+   - Groq API key (for document processing)
+   - OpenRouter API key (optional, for evaluation)
 
 ## Installation
 
-```bash
-cd src/orchestration
-npm install
-```
+### Backend Setup (Python/FastAPI)
+
+1. Navigate to the document parsing directory:
+   ```bash
+   cd doc-pipeline/src/documentParsing
+   ```
+
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Set environment variables:
+   ```bash
+   # Linux/Mac
+   export GROQ_API_KEY="your-groq-api-key"
+
+   # Windows PowerShell
+   $env:GROQ_API_KEY="your-groq-api-key"
+
+   # Windows CMD
+   set GROQ_API_KEY=your-groq-api-key
+   ```
+
+4. Start the FastAPI server:
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+### Frontend Setup (TypeScript CLI)
+
+1. Navigate to the orchestration directory:
+   ```bash
+   cd doc-pipeline/src/orchestration
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
 ## Usage
 
-### Prerequisites
-
-1. **Docling API** must be running (default: `http://localhost:8000`)
-2. **Groq API Key** required (get from https://console.groq.com)
-
 ### Basic Usage
 
+Process a single PDF:
 ```bash
-# Set your Groq API key
-export GROQ_API_KEY="your-api-key-here"
-
-# Run the pipeline
-npm start -- path/to/document.pdf
+npm start -- "<path-to-pdf>" --groq-key "<your-groq-key>"
 ```
 
-### Advanced Usage
+### Save Outputs
 
+Save both Markdown and HTML outputs:
 ```bash
-# Specify custom Docling API URL
-npm start -- document.pdf --api-url http://192.168.1.100:8000
-
-# Specify Groq API key via command line
-npm start -- document.pdf --groq-key sk-xxx
-
-# Save output to specific file
-npm start -- document.pdf --groq-key sk-xxx --output results.json
+npm start -- "<path-to-pdf>" --groq-key "<your-groq-key>" --save-outputs --output-dir "./outputs"
 ```
 
-### Help
+### Advanced Options
 
 ```bash
-npm start -- --help
+npm start -- "<path-to-pdf>" \
+  --api-url "http://localhost:8000" \
+  --model "meta-llama/llama-4-scout-17b-16e-instruct" \
+  --temperature 0.1 \
+  --top-p 0.10 \
+  --max-tokens 350 \
+  --format markdown \
+  --save-outputs \
+  --output-dir "./outputs"
 ```
 
-## Output
+### CLI Parameters
 
-The pipeline produces:
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `<path-to-pdf>` | Absolute path to PDF file | Required |
+| `--groq-key` | Groq API key | Required |
+| `--api-url` | API base URL | `http://localhost:8000` |
+| `--model` | Groq model to use | `meta-llama/llama-4-scout-17b-16e-instruct` |
+| `--temperature` | Sampling temperature | `0.1` |
+| `--top-p` | Top-p sampling parameter | `0.10` |
+| `--max-tokens` | Max completion tokens | `350` |
+| `--format` | Output format (`markdown` or `json`) | `markdown` |
+| `--save-outputs` | Save markdown and HTML files | `false` |
+| `--output-dir` | Directory for saved outputs | `./outputs` |
 
-1. **Console output**: Real-time progress and results
-2. **Log file**: Detailed logs in `./logs/rag-TIMESTAMP.log`
-3. **JSON output**: Extraction results in `./output/extraction-TIMESTAMP.json`
+## Project Structure
 
-### Extraction Format
-
-```json
-{
-  "authors": "Author names",
-  "date": "Publication date",
-  "summary": "2-3 sentence summary of the paper",
-  "methods": "Summary of research methods used",
-  "findings": "Key findings and conclusions"
-}
+```
+.
+├── doc-pipeline/
+│   ├── Data/                    # Sample PDF documents
+│   ├── Evaluation/              # Evaluation results & metrics
+│   ├── Notebooks/               # Jupyter notebooks for experimentation
+│   ├── reference-docs/          # Reference documents for testing
+│   ├── src/
+│   │   ├── documentParsing/     # FastAPI backend (Docling integration)
+│   │   └── orchestration/       # TypeScript CLI (RAG pipeline)
+│   └── testing_reference/       # Automated quality evaluation framework
+└── README.md
 ```
 
-## Configuration
+## Automated Quality Evaluation
 
-Default configuration in `main.ts`:
+An automated evaluation framework using Gemini 2.5 Pro is available in `doc-pipeline/testing_reference/`.
 
-```typescript
-{
-  groqModel: 'llama-3.3-70b-versatile',
-  groqTemperature: 0.1,
-  groqMaxTokens: 1500,
-  chunkingConfig: {
-    minChunkSize: 1000,
-    maxChunkSize: 8000,
-    overlap: 200
-  }
-}
-```
+See the [evaluation README](doc-pipeline/testing_reference/README.md) for setup and usage instructions.
 
-## Module Structure
-
-- **types.ts**: TypeScript type definitions
-- **logger.ts**: Logging system (console + file)
-- **chunking.ts**: Advanced document chunking
-- **tagging.ts**: LLM-based chunk tagging and metadata extraction
-- **vectorStore.ts**: In-memory vector storage
-- **hybridSearch.ts**: Hybrid search (Semantic + BM25)
-- **correctiveRAG.ts**: Agentic corrective retrieval
-- **extraction.ts**: Document information extraction
-- **correctiveRAGPipeline.ts**: Main pipeline orchestration
-- **main.ts**: CLI entry point
-
-## Development
-
-### Build
-
-```bash
-npm run build
-```
-
-### Run Built Version
-
-```bash
-node dist/main.js document.pdf --groq-key sk-xxx
-```
-
-## Logging
-
-Logs are automatically created in the `./logs` directory with timestamps. Each log file contains:
-
-- Timestamps for all operations
-- Log levels (DEBUG, INFO, WARN, ERROR, SUCCESS)
-- Detailed process information
-- Error stack traces
-
-## Notes
-
-- The vector store implementation is simplified (in-memory, simple embeddings)
-- For production, consider integrating with ChromaDB or Pinecone for proper vector storage
-- The system requires an active internet connection for Groq API calls
-- Processing time depends on document size and API response times
+---
 
 ## License
+MIT License
 
-MIT
+## Contact
+For questions or issues, please open a GitHub issue or contact the repository owner.

@@ -9,7 +9,6 @@
  */
 
 import { SearchResult } from './types';
-import { VectorStore } from './vectorStore';
 import { VectorStoreBERT } from './vectorStoreBERT';
 import { logger } from './logger';
 
@@ -114,11 +113,11 @@ class BM25 {
  * Hybrid search combining semantic and BM25
  */
 export class HybridSearcher {
-  private vectorStore: VectorStore | VectorStoreBERT;
+  private vectorStore: VectorStoreBERT;
   private bm25: BM25;
   private allDocuments: string[] = [];
 
-  constructor(vectorStore: VectorStore | VectorStoreBERT) {
+  constructor(vectorStore: VectorStoreBERT) {
     this.vectorStore = vectorStore;
     this.bm25 = new BM25();
   }
